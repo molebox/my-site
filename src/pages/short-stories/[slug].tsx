@@ -1,7 +1,7 @@
 import React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
-import { getAllArticles, getSingleArticle, SHORT_STORIES_PATH } from "../../utlis/mdx";
-import { components } from "../../utlis/shortcodes";
+import { getAllArticles, getSingleArticle, SHORT_STORIES_PATH } from "utlis/mdx";
+import { components } from "utlis/shortcodes";
 
 
 const ShortStory = ({ code, frontmatter }) => {

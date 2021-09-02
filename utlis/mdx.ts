@@ -4,9 +4,9 @@ import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
 
 export const ROOT = process.cwd();
-export const POSTS_PATH = path.join(process.cwd(), "content/posts");
-export const ARCHIVE_PATH = path.join(process.cwd(), "content/archive");
-export const SHORT_STORIES_PATH = path.join(process.cwd(), "content/short-stories");
+export const POSTS_PATH = path.join(process.cwd(), "src/content/posts");
+export const ARCHIVE_PATH = path.join(process.cwd(), "src/content/archive");
+export const SHORT_STORIES_PATH = path.join(process.cwd(), "src/content/short-stories");
 
 export const getFileContent = (contentPath: string, filename: string) => {
     return fs.readFileSync(path.join(contentPath, filename), "utf8");

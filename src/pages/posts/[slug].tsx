@@ -1,7 +1,8 @@
 import React from "react";
 import { getMDXComponent } from "mdx-bundler/client";
-import { getAllArticles, getSingleArticle, POSTS_PATH } from "../../utlis/mdx";
-import { components } from "../../utlis/shortcodes";
+import { getAllArticles, getSingleArticle, POSTS_PATH } from "utlis/mdx";
+import { components } from "utlis/shortcodes";
+
 
 const Post = ({ code, frontmatter }) => {
     const Component = React.useMemo(() => getMDXComponent(code), [code]);
