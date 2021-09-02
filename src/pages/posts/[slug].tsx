@@ -4,7 +4,7 @@ import { getAllArticles, getSingleArticle, POSTS_PATH } from "utlis/mdx";
 import { components } from "utlis/shortcodes";
 
 
-const Post = ({ code, frontmatter }) => {
+export default function Post({ code, frontmatter }) {
     const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
     return (
@@ -32,5 +32,3 @@ export const getStaticPaths = async () => {
         fallback: false,
     };
 };
-
-export default Post;
