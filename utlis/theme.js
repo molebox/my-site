@@ -1,11 +1,17 @@
 import { extendTheme } from "@chakra-ui/react"
 
 export const theme = extendTheme({
+    fonts: {
+        heading: "Pomfret Web",
+        body: "Inconsolata",
+    },
     colors: {
         brand: {
-            100: "#f7fafc",
-            900: "#1a202c",
-            green: "#00FF00"
+            grey: "#EDEDED",
+            blue: "#0B315E",
+            orange: "#FF9D00",
+            white: "#F4F4F4",
+            black: "#1A1A1A"
         },
     },
 })

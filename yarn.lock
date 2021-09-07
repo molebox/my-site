@@ -231,6 +231,14 @@
   dependencies:
     "@chakra-ui/utils" "1.8.2"
 
+"@chakra-ui/icons@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-1.0.15.tgz#90b0e3c2c161c5a100d6b83a277941b22945f880"
+  integrity sha512-MMuPwmeCil9vAXceIN/Fxn6CNHbhkLofFQaKUfs+UaBsviiU2tvS0nqGaxm/9FNzLr5ithPVWpbz3uV7DXc77g==
+  dependencies:
+    "@chakra-ui/icon" "1.1.11"
+    "@types/react" "^17.0.0"
+
 "@chakra-ui/image@1.0.19":
   version "1.0.19"
   resolved "https://registry.yarnpkg.com/@chakra-ui/image/-/image-1.0.19.tgz#c0055f8a04a62e68ae62bc5ee1b906c30b717aa5"
@@ -761,6 +769,11 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
+"@fontsource/inconsolata@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/inconsolata/-/inconsolata-4.5.0.tgz#52a4e55fd497e1c82aead1e2baeb85f3f3e3bc3d"
+  integrity sha512-oJowMSSurNbuaQjaHXi5vwcx//+aWuYupY/+sq5inOkMeXw6tqVa4WLaXNsnxMo7sBYoDOLZ9Wb9AZCCPFbE4g==
+
 "@hapi/accept@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@hapi/accept/-/accept-5.0.2.tgz#ab7043b037e68b722f93f376afb05e85c0699523"
@@ -1058,7 +1071,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
-"@types/react@^17.0.19":
+"@types/react@^17.0.0", "@types/react@^17.0.19":
   version "17.0.19"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.19.tgz#8f2a85e8180a43b57966b237d26a29481dacc991"
   integrity sha512-sX1HisdB1/ZESixMTGnMxH9TDe8Sk709734fEQZzCV/4lSu9kJCPbo2PbTRoZM+53Pp0P10hYVyReUueGwUi4A==
@@ -2623,6 +2636,11 @@ gray-matter@^4.0.3:
     kind-of "^6.0.2"
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
+
+gsap@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.7.1.tgz#1c5857f4fbcbd3f5ca0b513ef7abf828fbaa20a8"
+  integrity sha512-4qxuaC2yFWRjMRof5tI/7c9/+L4xMsCoqHrZAmuh+IbOokTnZyoeF0VgvcVHq3uo+/VJZCs7PTvjrFasfGl+ww==
 
 has-bigints@^1.0.1:
   version "1.0.1"
@@ -4378,6 +4396,11 @@ react-focus-lock@2.5.0:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
+react-icons@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
+  integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
+
 react-is@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
@@ -4411,6 +4434,13 @@ react-remove-scroll@2.4.1:
     tslib "^1.0.0"
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
+
+react-rough-notation@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-rough-notation/-/react-rough-notation-1.0.1.tgz#ac0f3e52734c59e2c7659a3f361e4bca5e637885"
+  integrity sha512-UZQZ09XiZgbDRZFFP0qaFmTzs0rMKO929Npa5fHb2TOzLvKNEamaUtjRwjBx79cFzf+xMl/y8Y4HbYvvcKHQGQ==
+  dependencies:
+    rough-notation "^0.4.0"
 
 react-style-singleton@^2.1.0:
   version "2.1.1"
@@ -4590,6 +4620,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+rough-notation@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/rough-notation/-/rough-notation-0.4.0.tgz#6f97324cb50fc91ec8064219253aa2528a69210f"
+  integrity sha512-hDgn9qMIxWnfY+WWjt30aLMtDHR13H8r/NI3EQNdJiEFAzpklH5nKg4eH/thpxCWTYzyg8ueMsKIfz9MzOBQ4Q==
 
 run-parallel@^1.1.9:
   version "1.2.0"
