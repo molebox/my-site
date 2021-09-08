@@ -8,11 +8,12 @@ interface Props {
     text: string;
     size: Size | Size[]
     uppercase?: boolean;
+    font?: string;
     // children: React.ReactNode;
 
 }
 
-export default function Link({ text, href, size, uppercase = false }: Props) {
+export default function Link({ text, href, size, uppercase = false, font = "heading" }: Props) {
 
 
     return (
@@ -20,7 +21,7 @@ export default function Link({ text, href, size, uppercase = false }: Props) {
             <Box
                 as="a"
                 color="brand.grey"
-                fontFamily="heading"
+                fontFamily={font}
                 fontSize={size}
                 textTransform={uppercase && uppercase ? "uppercase" : "none"}
                 letterSpacing={2}

@@ -36,11 +36,11 @@ export default function Header() {
                 borderBottom="solid 2px"
                 borderColor="brand.grey"
             >
-                <Link href="/" text="Home" size="header" uppercase />
-                <Link href="/posts" text="Blog posts" size="header" uppercase />
-                <Link href="/posts" text="Short stories" size="header" uppercase />
-                <Link href="/posts" text="Projects" size="header" uppercase />
-                <Link href="/posts" text="Who am i" size="header" uppercase />
+                <Link href="/" text="Home" size="header" uppercase font="body" />
+                <Link href="/posts" text="Blog posts" size="header" uppercase font="body" />
+                <Link href="/posts" text="Short stories" size="header" uppercase font="body" />
+                <Link href="/posts" text="Projects" size="header" uppercase font="body" />
+                <Link href="/posts" text="Who am i" size="header" uppercase font="body" />
             </Flex>
         </Box>
     )
