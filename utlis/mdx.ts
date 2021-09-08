@@ -8,6 +8,11 @@ export const POSTS_PATH = path.join(process.cwd(), "src/content/posts");
 export const ARCHIVE_PATH = path.join(process.cwd(), "src/content/archive");
 export const SHORT_STORIES_PATH = path.join(process.cwd(), "src/content/short-stories");
 
+export type Frontmatter = {
+    slug: string;
+    title: string;
+  }
+
 export function getFileContent(contentPath: string, filename: string) {
     return fs.readFileSync(path.join(contentPath, filename), "utf8");
 };
