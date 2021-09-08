@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export type Size = "xs" | "sm" | "md" | "lg"
 
-const Header = ({children, as, size}: HeaderProps) => {
+const Header = ({ children, as, size }: HeaderProps) => {
     const id = children.replace(/ /g, "_").toLowerCase();
 
     return <Heading id={id} my={10} as={as} fontSize={size} color="brand.grey" letterSpacing={2} textTransform="uppercase">{children}</Heading>
@@ -23,5 +23,5 @@ export const components = {
     h2: (props: any) => <Header as="h2" size="sm">{props.children}</Header>,
     h3: (props: any) => <Header as="h3" size="sm">{props.children}</Header>,
     h4: (props: any) => <Header as="h4" size="sm">{props.children}</Header>,
-    p: (props: any) => <Text as="p" fontSize="xs" {...props} color="brand.grey" />,
+    p: (props: any) => <Text as="p" my={10} fontSize="xs" {...props} color="brand.grey" />,
 }

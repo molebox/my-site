@@ -5,15 +5,18 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { MDXEmbedProvider } from 'mdx-embed';
 import { theme } from 'utlis/theme'
 import Fonts from "../components/fonts"
+import Provider from '../../utlis/context'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <MDXEmbedProvider>
-      <ChakraProvider theme={theme}>
-        <Fonts/>
+    <Provider>
+      <MDXEmbedProvider>
+        <ChakraProvider theme={theme}>
+          <Fonts />
           <Component {...pageProps} />
-      </ChakraProvider>
-    </MDXEmbedProvider>
+        </ChakraProvider>
+      </MDXEmbedProvider>
+    </Provider>
   )
 }
 

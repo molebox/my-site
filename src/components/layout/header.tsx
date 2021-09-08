@@ -1,13 +1,22 @@
-import React from 'react'
-import { Button, Flex, Menu, MenuButton, MenuItem, MenuList, Spacer } from "@chakra-ui/react"
-import { ChevronDownIcon } from '@chakra-ui/icons'
-import Link from "components/link"
+import { Flex } from "@chakra-ui/react"
+import Burger from './burger'
 
 
 export default function Header() {
     return (
-        <Flex as="header" h={100} w="100%" p={3} mx={5} alignItems="center" justifyContent="center">
-            <Button>Menu</Button>
+        <Flex
+            as="header"
+            h={75}
+            w="100%"
+            zIndex={9999}
+            p={3}
+            bgColor="brand.black"
+            alignItems="center"
+            justifyContent="flex-start"
+            borderBottom="solid 2px"
+            borderColor="brand.grey"
+        >
+            <Burger />
         </Flex>
     )
 }

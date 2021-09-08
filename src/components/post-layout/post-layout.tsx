@@ -1,19 +1,22 @@
 import { Flex } from '@chakra-ui/react';
+import Header from 'components/layout/header';
+import Menu from 'components/layout/menu';
 
 
 
 export default function PostLayout({ children }) {
   return (
-      <Flex direction="column" minH="100vh" h="100%" bgColor="brand.black">
-
-        <Flex
+    <Flex direction="column" minH="100vh" h="100%" bgColor="brand.black">
+      <Header />
+      <Menu />
+      <Flex
         as="main"
         direction="column"
         minH="100vh"
-        >
-          {children}
-        </Flex>
-
+      >
+        {children}
       </Flex>
+
+    </Flex>
   )
 }

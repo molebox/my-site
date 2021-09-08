@@ -9,36 +9,37 @@ import Toc from 'components/post-layout/toc';
 
 export default function Post({ code, frontmatter }) {
     const Component = React.useMemo(() => getMDXComponent(code), [code]);
-    const {title, description} = frontmatter;
+    const { title, description } = frontmatter;
 
     return (
         <PostLayout>
             <Flex direction={["column", "column", "row"]} w="100%" mb={10} borderBottom="solid 2px" borderColor="brand.grey">
-                <Flex 
-                direction="column" 
-                justifyContent="center" 
-                h="auto" 
-                maxW={["100%", "100%", "60%"]} 
-                p={5} 
-                bgColor="brand.black"
-                color="brand.grey"
-                fontWeight={400}
-                transition="all 0.3s ease-in-out"
-                borderRight="solid 2px"
-                borderColor="brand.grey"
-                _hover={{
-                    bgColor: "brand.silver",
-                    color: "brand.black",
-                    fontWeight: 700
-                }}
+                <Flex
+                    direction="column"
+                    justifyContent="center"
+                    h="auto"
+                    maxW={["100%", "100%", "60%"]}
+                    py={5}
+                    px={10}
+                    bgColor="brand.black"
+                    color="brand.grey"
+                    fontWeight={400}
+                    transition="all 0.3s ease-in-out"
+                    borderRight="solid 2px"
+                    borderColor="brand.grey"
+                    _hover={{
+                        bgColor: "brand.silver",
+                        color: "brand.black",
+                        fontWeight: 700
+                    }}
                 >
-                    <Text fontFamily="heading" fontSize={["xs", "sm", "md", "lg"]} letterSpacing={2} textTransform="uppercase">{title}</Text>
+                    <Text fontFamily="heading" fontSize={["xs", "sm", "md", "lg"]} letterSpacing={2} css={`word-spacing: 12px;`} textTransform="uppercase">{title}</Text>
                     <Text fontFamily="heading" fontSize={["xs", "xs", "sm", "sm"]} letterSpacing={2}>{description}</Text>
                 </Flex>
-                <Toc/>
+                <Toc />
             </Flex>
             <Box maxW={1000} m={["0 1rem", "0 1rem", "0 auto"]}>
-            <Component components={components} />
+                <Component components={components} />
             </Box>
         </PostLayout>
     );
