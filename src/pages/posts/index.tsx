@@ -5,13 +5,7 @@ import { List, ListItem } from '@chakra-ui/react';
 
 import PostLayout from 'components/post-layout/post-layout';
 
-type Post = {
-  frontmatter: Frontmatter;
-  code: string;
-  slug: string;
-}
-
-export default function BlogPosts({posts}: Post[]) {
+export default function BlogPosts({posts}: any) {
   return (
     <PostLayout>
     <List p={10}>
