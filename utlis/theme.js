@@ -10,6 +10,7 @@ export const theme = extendTheme({
         sm: "30pt",
         md: "60pt",
         lg: "90pt",
+        header: "20pt"
     },
     colors: {
         brand: {

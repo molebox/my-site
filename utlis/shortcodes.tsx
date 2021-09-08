@@ -8,7 +8,7 @@ interface HeaderProps {
     children: any
 }
 
-export type Size = "xs" | "sm" | "md" | "lg"
+export type Size = "xs" | "sm" | "md" | "lg" | "header"
 
 const Header = ({ children, as, size }: HeaderProps) => {
     const id = children.replace(/ /g, "_").toLowerCase();
