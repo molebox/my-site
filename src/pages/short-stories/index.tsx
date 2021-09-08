@@ -11,7 +11,7 @@ export default function ShortStories({ shortStories }: any) {
       <List p={10}>
         {shortStories.map((post, index) => (
           <li key={index}>
-            <Link href={`shortStories/${post.slug}`} text={`${post.frontmatter.title}`} size={["xs", "sm", "md"]} uppercase />
+            <Link href={`short-stories/${post.slug}`} text={`${post.frontmatter.title}`} size={["xs", "sm", "md"]} uppercase />
           </li>
         ))}
       </List>
