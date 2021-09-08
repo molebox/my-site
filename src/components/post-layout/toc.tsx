@@ -81,10 +81,10 @@ export default function Toc() {
         fontSize="xs" 
         letterSpacing={2}
         _before={{
-          content: "open-quote",
+          content: `open-quote`,
         }}
         _after={{
-          content: "close-quote",
+          content: `close-quote`,
         }}
         >
           I love to talk about nothing. It's the only thing I know anything about.
