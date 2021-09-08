@@ -6,11 +6,11 @@ published: true
 ---
 
 I recently received [Colby Fayocks](https://twitter.com/colbyfayock) [50reactprojects](https://50reactprojects.com/) and thought it would be a fun idea to run through some of the example projects as tutorials, while putting a little spin on them. So we begin with project 1 of the 50 (well, why not!), the marketing website. Colby does a great job of listing out the requirements of the project and some of the tech you could use to get it made.
-
+<!--
 <Prerequisites
   audience="This tutorial assumes some prior knowledge of modern frontend development but will safely guide you through the whole setup and development process."
   stackKnowledge={['React', 'JavaScript']}
-/>
+/> -->
 
 For a sneek peek at what we will build head on over to [next-mdx-landing-page.vercel.app/](https://next-mdx-landing-page.vercel.app/). The full source code can be viewed at [github.com/molebox/next-mdx-landing-page](https://github.com/molebox/next-mdx-landing-page).
 
@@ -218,14 +218,14 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 ```
-
+<!--
 <LearntSoFar
   pointsCovered={[
     'Setup a fresh NextJS project with MDX!',
     'Added a new font',
     'Setup Chakra-UI and a custom theme',
   ]}
-/>
+/> -->
 
 ## MDX Components
 
@@ -489,8 +489,8 @@ Here we are creating a flexible section, setting its background color to the pos
 ## The Poster
 
 So now that we have all of our pieces lets put them together and see how simple it can be to re-create that poster! Head on over to the index.mdx file you created at the beginning of this tutorial and add the following:
-
-<CodeDump>
+<!--
+<CodeDump> -->
 
 ```jsx
 <Layout>
@@ -560,8 +560,8 @@ But we don't have to use a component in MDX......
 
 We could just write here, but seeing as we don't have a global layout for this file, this text wont conform to the max width set by our layout component.
 ```
-
-</CodeDump>
+<!--
+</CodeDump> -->
 
 Its not a perfect match to the poster but I believe that our client would be mightily impressed with our work!
 

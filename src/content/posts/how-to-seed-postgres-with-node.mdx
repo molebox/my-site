@@ -8,7 +8,7 @@ published: true
 This guide will walk through seeding a Postgres database. It will cover creating a Node script to seed the data and touch on some of the pros and cons as to the chosen approach.
 
 The source code for this guide can be found here: [github.com/molebox/seed-postgres-database-tutorial](https://github.com/molebox/seed-postgres-database-tutorial)
-
+<!--
 <Prerequisites
 	audience="This tutorial assumed that you have Postgres setup and know how to access its databases, though the guide will cover some basic commands towards the end. The guide uses the default user postgres for accessing the database. If you have another user account you would prefer to use then swap in that. "
 	stackKnowledge={[
@@ -16,7 +16,7 @@ The source code for this guide can be found here: [github.com/molebox/seed-postg
 		'Postgres',
 		'The guide uses version 13.1 of Postgres and version 14.15.1 of Node. It was developed on a Windows machine.',
 	]}
-/>
+/> -->
 
 ## What do we mean by seed?
 
@@ -171,8 +171,8 @@ async function writeToCsvFile() {
 ```
 
 Now that the csv file is created and populated with fake data, you can begin the process of actually seeding that data into the Postgres database. `fast-csv` is a library for parsing and formatting csv files. You'll use it in combination with the `validator` library and `node-postgres`.
-
-<CodeDump>
+<!--
+<CodeDump> -->
 
 ```js
 // other imports...
@@ -227,8 +227,8 @@ function insertFromCsv() {
 	);
 }
 ```
-
-</CodeDump>
+<!--
+</CodeDump> -->
 
 The function first validates the contents of the row using the contains function from the `validator` library. This is necessary because some countries can have an extra comma in their name. An extra comma in a csv file equates to an extra column and the table created and defined in the `schema.sql` file dictates that only 3 columns will exist. If this check fails `fast-csv `will not accept the row and throw an event, which is used to print a message to the console to inform the user.
 

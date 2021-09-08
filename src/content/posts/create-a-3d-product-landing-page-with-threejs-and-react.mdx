@@ -11,17 +11,17 @@ We are going to be creating a product landing page which will utilize 3D models 
 The final project can be viewed at [3d-product-page.netlify.app/](https://3d-product-page.netlify.app/)
 
 And the final code can be viewed at [github.com/molebox/3d-product-page](https://github.com/molebox/3d-product-page)
-
+<!--
 <Prerequisites
   audience="This tutorial assumes some prior knowledge of modern frontend development but will safely guide you through the whole setup and development process."
   stackKnowledge={['React', 'JavaScript', 'CSS', 'The command line']}
-/>
+/> -->
 
 ## What tools are we using?
 
 ### Snowpack
 
-We are going to be using [snowpack](https://www.snowpack.dev/) as our build tool. Its a modern tool that is similar to Webpack, but takes a slightly different approach. Instead of bundling our entire application and recompiling on every code change and save, snowpack only rebuilds single files where the changes have been made. This results in a very fast development process. The term used by the snowpack team is **unbundled development** where individual files are loaded to the browser during development with ESM syntax. 
+We are going to be using [snowpack](https://www.snowpack.dev/) as our build tool. Its a modern tool that is similar to Webpack, but takes a slightly different approach. Instead of bundling our entire application and recompiling on every code change and save, snowpack only rebuilds single files where the changes have been made. This results in a very fast development process. The term used by the snowpack team is **unbundled development** where individual files are loaded to the browser during development with ESM syntax.
 
 ### Chakra-ui
 
@@ -29,7 +29,7 @@ Our application will be written in React and use [Chakra-ui](https://chakra-ui.c
 
 ### Threejs and react-three-fiber
 
-We will be utilizing Threejs by way of a wonderful React library called [react-three-fiber](https://github.com/pmndrs/react-three-fiber), which allows us to easily interact with Three using common React techniques. The library is a renderer for Three, using it we can skip a lot of mundane work such as scene creation and concentrate on composing our components in a declarative way with props and states. 
+We will be utilizing Threejs by way of a wonderful React library called [react-three-fiber](https://github.com/pmndrs/react-three-fiber), which allows us to easily interact with Three using common React techniques. The library is a renderer for Three, using it we can skip a lot of mundane work such as scene creation and concentrate on composing our components in a declarative way with props and states.
 
 The renderer allows us to use all of the Three classes, objects and properties as elements in our markup. All classes constructors arguments can be accessed via an `args` prop. A simple mesh with a box class can be seen below. Don't worry if you don't understand what this means, we will go over everything shortly.
 
@@ -42,11 +42,11 @@ The renderer allows us to use all of the Three classes, objects and properties a
 
 ### MDX
 
-Our page will be rendered in [MDX](https://mdxjs.com/), a format which allows us to write JSX and include React components in markdown files. It's a wonderful development experience and one I hope you will fall in love with once we reach the end of the tutorial. 
+Our page will be rendered in [MDX](https://mdxjs.com/), a format which allows us to write JSX and include React components in markdown files. It's a wonderful development experience and one I hope you will fall in love with once we reach the end of the tutorial.
 
 ## Install the fun
 
-I have created a handy snowpack template that creates a project with snowpack, chakra and MDX all installed. It also comes with React Router v6 but we wont be using that so will remove that boilerplate. 
+I have created a handy snowpack template that creates a project with snowpack, chakra and MDX all installed. It also comes with React Router v6 but we wont be using that so will remove that boilerplate.
 
 Open a new terminal and navigate to your desired project folder and run the following which will create our new project. Change `my-new-app` to your apps name.
 
@@ -123,7 +123,7 @@ MDX is just markdown that you can write JSX in. So that means that we can write 
 
 But we can also add to that React components We can even compose React components right in the MDX file! Let's open up the `index.js` file in the `src` folder and check out how we can add components to our MDX file without using imports.
 
-Let's break down what's going on in here. If we scroll to the bottom we can see an `MDXProvider` wrapping our app. It accepts a components prop into which we have passed a components object declared above. The components object allows us to map React components to markdown elements as well as passing in custom components for use in our MDX files. As you can see, this template has set this all up for us by mapping some basic markdown elements to some Chakra components. Where there is no object key we have passed in a custom component which can be used in the MDX file without importing it as you would in a normal js or jsx file. 
+Let's break down what's going on in here. If we scroll to the bottom we can see an `MDXProvider` wrapping our app. It accepts a components prop into which we have passed a components object declared above. The components object allows us to map React components to markdown elements as well as passing in custom components for use in our MDX files. As you can see, this template has set this all up for us by mapping some basic markdown elements to some Chakra components. Where there is no object key we have passed in a custom component which can be used in the MDX file without importing it as you would in a normal js or jsx file.
 
 MDX accepts a special key called `wrapper` which will wrap the entire file with whatever is passed to it. In our case it will take our previously created layout component along with it's grid and use that to wrap our MDX file. Now that we know where the components are coming from when using them in our MDX file, let's go ahead and write some React in markdown!
 
@@ -141,13 +141,13 @@ Opening up the `page-one.mdx` file located in the pages folder, add the followin
 </Flex>
 ```
 
-We are using the Flex component provided to us from Chakra via the `MDXProvider`. This component allows us to quickly apply flex box props to the base element, a div. Even though the component is based upon a div we can give it semantic meaning by utilizing the `as` props and setting it the header. If we check our layout file again and look at our grid areas we can see that we have `edge` on the first and second rows. So we have set the grid area to edge and the row to 1. 
+We are using the Flex component provided to us from Chakra via the `MDXProvider`. This component allows us to quickly apply flex box props to the base element, a div. Even though the component is based upon a div we can give it semantic meaning by utilizing the `as` props and setting it the header. If we check our layout file again and look at our grid areas we can see that we have `edge` on the first and second rows. So we have set the grid area to edge and the row to 1.
 
 This places our component in the top left hand corner of the page. We have given it a margin-left (ml) so that it doesn't hit the edge. As you can see from the code block above, we are inserting an image. If you navigate to [this](https://www.transparentpng.com/search.php?q=nike) url you will see that it's a Nike swish (swoosh, tick? I dunno)
 
 ## The copy
 
-Let's add some copy to our page. This will be in the first column of our two middle columns. It will hold the title to our page and some copy about the Nike Air Jordan 1's, the product we are showcasing. Directly below the first Flex code block in the `page-one.mdx` file add the following: 
+Let's add some copy to our page. This will be in the first column of our two middle columns. It will hold the title to our page and some copy about the Nike Air Jordan 1's, the product we are showcasing. Directly below the first Flex code block in the `page-one.mdx` file add the following:
 
 ```jsx
 <Flex
@@ -238,7 +238,7 @@ If you now run `npm run start` from the root of the project you should see a red
 
 ## The third dimension
 
-Before we dive into adding a 3D model to our page let's take a little time to understand how we are going to do that. This isn't some deep dive into Threejs, WebGL and how the react-three-fiber renderer works, rather we will look at what you can use and why you should use it. 
+Before we dive into adding a 3D model to our page let's take a little time to understand how we are going to do that. This isn't some deep dive into Threejs, WebGL and how the react-three-fiber renderer works, rather we will look at what you can use and why you should use it.
 
 For us to render a 3D model on the page we will need to create a Three scene, attach a camera, some lights, use a mesh to create a surface for our model to live on and finally render all that to the page. We could go vanilla js here and type out all that using Three and it's classes and objects, but why bother when we can use react-three-fiber and rather lovely abstraction library call drei (Three in German).
 
@@ -300,7 +300,7 @@ An oldie but a goodie, article in [smashing magazine](https://www.smashingmagazi
 
 <CodeSandbox codeSandboxId="takeshape-article-directional-light-forked-i1dhj?fontsize=14&hidenavigation=1&theme=dark"/>
 
-We can view the following example which uses the react-three-fiber Three elements and also outlines examples or doing the same thing but with the drei helper library. 
+We can view the following example which uses the react-three-fiber Three elements and also outlines examples or doing the same thing but with the drei helper library.
 
 ```jsx
 <Canvas>
@@ -427,7 +427,7 @@ const CanvasContainer = ({
 export default CanvasContainer;
 ```
 
-Our new component has a container div (Box) which takes props for it's width, height and anything else we might fancy passing in. It's z-index is set to a high value as we will be placing some text beneath if. The canvas has a camera set with a field of view (where the higher the number the further away the view). We wrap the children in a `Suspense` so that the application doesn't crash while it's loading. 
+Our new component has a container div (Box) which takes props for it's width, height and anything else we might fancy passing in. It's z-index is set to a high value as we will be placing some text beneath if. The canvas has a camera set with a field of view (where the higher the number the further away the view). We wrap the children in a `Suspense` so that the application doesn't crash while it's loading.
 
 Now create a new file in the same folder called `product.js` and add the following code.
 
@@ -504,7 +504,7 @@ Now add the following below the Flex component that sets the innovation text.
 </Flex>
 ```
 
-Setting the grid area to product places our model in the correct row and column of our grid. We give the Flex component a position of relative as we want to absolutely position the text that is underneath the model. This gives our page a sense of depth that is accentuated by the 3D model. If we run our development server again we should we the shoes spinning around to the right of the copy! 
+Setting the grid area to product places our model in the correct row and column of our grid. We give the Flex component a position of relative as we want to absolutely position the text that is underneath the model. This gives our page a sense of depth that is accentuated by the 3D model. If we run our development server again we should we the shoes spinning around to the right of the copy!
 
 ## Add some glitter
 
@@ -554,8 +554,8 @@ Utilizing out generic canvas and model components we are able to create a new co
 Sweet! It's almost complete. Subtle animations that aren't obvious to the user straight away are a nice addition to any website. Let's add a glitch effect to our title text which only runs when the site visitor hovers their mouse over the text.
 
 Inside the components folder create a new file called `glitch-text.js` and add the following.
-
-<CodeDump>
+<!--
+<CodeDump> -->
 
 ```jsx
 import React from 'react';
@@ -668,7 +668,7 @@ export default ({ children }) => {
   return <Container data-text={children}>{children}</Container>;
 };
 ```
-</CodeDump>
+<!-- </CodeDump> -->
 
 Our new component uses a styled div component to set its internal css. We state that the following effect shall only run when the element is hovered and then use the pseudo elements to insert some glitchy goodness. The pseudo content is the text passed in as children, we animate some clip paths via some keyframes and give the effect that the text is moving. Add this new component to the components object as `GlitchText` and then wrap the title text in the new component in the MDX markup.
 
@@ -681,7 +681,7 @@ Our new component uses a styled div component to set its internal css. We state 
 
 ## Finishing touches
 
-We've come so far and we have covered some steep terrain. We have taken a broad overview of working with 3D components and models in React, looked at designing layouts using css grid. Utilized a component library to make our life easier and explored how to create cool, interactive markdown pages with MDX. Our product page is basically complete, anyone who came across this on the interwebs would certainly be more drawn in than your run of the mill static product pages. But there is one last thing I would like you to add, something subtle to make the page pop. Let's add some particles! 
+We've come so far and we have covered some steep terrain. We have taken a broad overview of working with 3D components and models in React, looked at designing layouts using css grid. Utilized a component library to make our life easier and explored how to create cool, interactive markdown pages with MDX. Our product page is basically complete, anyone who came across this on the interwebs would certainly be more drawn in than your run of the mill static product pages. But there is one last thing I would like you to add, something subtle to make the page pop. Let's add some particles!
 
 We have already installed the package so create a new file inside the component folder called background and add the following.
 
@@ -721,7 +721,7 @@ const Background = () => (
 );
 ```
 
-This will serve as our background to our site. We have absolutely positioned the parent container of the particles so that they take up the whole of the page. Next open the routes file and add a Box component and the new `Background` component. 
+This will serve as our background to our site. We have absolutely positioned the parent container of the particles so that they take up the whole of the page. Next open the routes file and add a Box component and the new `Background` component.
 
 ```jsx
 import React from 'react';

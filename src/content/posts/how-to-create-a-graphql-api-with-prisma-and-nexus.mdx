@@ -14,11 +14,11 @@ You are going to build a GraphQL api backed by a postgres database. This api wil
 Once complete you will have learnt how to setup your own GraphQL api, how to use Prisma as an ORM layer and how to use Nexus as a means of producing code first GraphQL schemas.
 
 The complete project code can be found at [company-competence-graphql-api](https://github.com/molebox/company-competence-graphql-api)
-
+<!--
 <Prerequisites
 	audience="This tutorial assumes basic knowledge of databases, APIs and how to setup a project and install packages. The tutorial borrows heavily from the awesome docs for Prisma and Nexus."
 	stackKnowledge={['GraphQL', 'TypeScript']}
-/>
+/> -->
 
 ## What is Prisma and Nexus?
 
@@ -269,8 +269,8 @@ t.nonNull.list.nonNull.field('roles', {
 The field is not nullable, that is, it can't be null `t.nonNull`, it's an array (a list) of values which can also not be null, `t.nonNull.list.nonNull`. In the field you have given it a name that corresponds to the name used in the schema and set it's model type, `Role`, you then resolve the relationship. The first argument in the resolver is the parent or root node, this is used to pass information from the parent to the child resolvers. The second is the arguments passed to the resolver and the third the schema context, which we will shortly be covering. The Prisma client (via the context) is used to query for the model and find the record where the id matches. So in this case the query will resolve to find zero or one Company that matches the filter.
 
 The full contents of `api/GraphQL`
-
-<CodeDump>
+<!--
+<CodeDump> -->
 
 
 ```typescript
@@ -346,8 +346,8 @@ export const Skill = objectType({
 	},
 });
 ```
-
-</CodeDump>
+<!--
+</CodeDump> -->
 
 
 Finally, export the types from the `api/GraphQL/index.ts` file:
@@ -440,8 +440,8 @@ Now the context has been created and passed to the GraphQL server. The context c
 ## Writing queries and mutations
 
 The API isn't much good if you can't make any requests against it. Begin by opening back up the `companies.ts` file. Under the `objectType` creation of the `Company` type, add the new `Query` and `Mutation` types.
-
-<CodeDump>
+<!--
+<CodeDump> -->
 
 
 ```typescript
@@ -578,8 +578,8 @@ export const CompanyMutation = extendType({
 	},
 });
 ```
-
-</CodeDump>
+<!--
+</CodeDump> -->
 
 
 Let's dissect that massive block of code. Starting with the `Query` block, the queries available to you in the playground are defined using much of the same syntax as when the object itself was defined with fields and resolvers.
@@ -655,7 +655,7 @@ Moving onto the mutations and creating a new company in the database.
                         website: args.website,
                         roles: {
                             connect: [
-                                {id: args.roleId || undefined}, 
+                                {id: args.roleId || undefined},
                             ]
                         }
                     }
@@ -664,7 +664,7 @@ Moving onto the mutations and creating a new company in the database.
         })
 ```
 
-Much of this code will now be familiar, the field type is given a logical name (which will be used to run the mutation) and a bunch of args are defined outlining what the resolver can expect and in what format the variables will be passed as. An interesting point to notice here is the `roleId`, which is the foreign key for the `Role` type, and the `roles` arg which uses a custom input type to tell the resolver what type to expect. As the `Role` isn't a primitive you have to declare a custom type which is used instead. As the plural name suggests, this argument is of type `list`. The `RoleInputType` is defined in the `role.ts` file and defines an `id`. 
+Much of this code will now be familiar, the field type is given a logical name (which will be used to run the mutation) and a bunch of args are defined outlining what the resolver can expect and in what format the variables will be passed as. An interesting point to notice here is the `roleId`, which is the foreign key for the `Role` type, and the `roles` arg which uses a custom input type to tell the resolver what type to expect. As the `Role` isn't a primitive you have to declare a custom type which is used instead. As the plural name suggests, this argument is of type `list`. The `RoleInputType` is defined in the `role.ts` file and defines an `id`.
 
 The resolver uses the create method on the Prisma context and defines a `data` object which maps the args passed through to the corresponding object keys. The roles arg uses the `connect` method and the foreign key to connect the new company to a previously defined role.
 
@@ -694,7 +694,7 @@ mutation CreateRole {
 }
 ```
 
-The `createRole` mutation accepts a `name` argument and an optional `skillId`, which is the foreign key to the skill you would like to link to the role. In this case you are creating a new `Backend Developer` role and assigning it the skill of `GraphQL` via the skills id. 
+The `createRole` mutation accepts a `name` argument and an optional `skillId`, which is the foreign key to the skill you would like to link to the role. In this case you are creating a new `Backend Developer` role and assigning it the skill of `GraphQL` via the skills id.
 
 Finally you can create a new company. By taking advantage of the foreign key (`roleId`) you can link not only a role but certain skills to the company. In this mutation your new company has a `Backend Developer` role which requires/uses a `GraphQL` skill.
 
@@ -767,7 +767,7 @@ query GetSkills {
 
 ## Conclusion
 
-As a predominantly frontend developer using Prisma and combining it with Nexus for the first time has been a relatively painless experience. Of course much of that is due to the excellent documentation which allows you to get up and running quickly and without fuss. Some areas where I did find myself rather confused was nested mutations and relations in the schema. People learn in different ways, I enjoy quite a lot of visuals with pictures forming a better understanding in my head as opposed to just blocks of text. Perhaps the docs could do with some more video instructions and interactive elements. That being said this was quite a text and code block heavy piece itself! 
+As a predominantly frontend developer using Prisma and combining it with Nexus for the first time has been a relatively painless experience. Of course much of that is due to the excellent documentation which allows you to get up and running quickly and without fuss. Some areas where I did find myself rather confused was nested mutations and relations in the schema. People learn in different ways, I enjoy quite a lot of visuals with pictures forming a better understanding in my head as opposed to just blocks of text. Perhaps the docs could do with some more video instructions and interactive elements. That being said this was quite a text and code block heavy piece itself!
 
 This was the first of many pieces about my journey learning Prisma and what it can do. This article only touched on some base concepts but I found it very helpful in getting a grasp of what is possible. My take away from this piece is that I need to dive deeper into relationships and how they are used as this seems to be a focal point of what you can do with Prisma.
 

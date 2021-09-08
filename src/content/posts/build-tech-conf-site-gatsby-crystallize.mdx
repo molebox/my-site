@@ -55,28 +55,28 @@ _Note that the modelling you do in Figma can't be exported and used in the Cryst
 ## Show me the crystals... 💎
 
 Head over to [crystallize.com](https://crystallize.com/) and create a new account, once in create a new tenent and then you will be presented with a page similar to the following:
-
-<img src="/logged-in.PNG" alt="Logged into Crystallize screenshot" />
+<!--
+<img src="/logged-in.PNG" alt="Logged into Crystallize screenshot" /> -->
 
 On the left hand side you can open the menu to reveal your options. With your Figma file open too, start creating the shapes and their components. Begin with the folders. 3 folders should do the trick, `Speakers`, `Conferences` and `Schedules`. Now create the 3 document shapes, Event, Schedule and Speaker. Each of our document shapes will be made up of components, following our content model in Figma, add the components to the newly created shapes.
 
 Once done open the catalogue tab (the one at the top) and inside the `Conference` folder create a new document of type `Event`.
 
 ### An Event
-
-<img src="/new-event.PNG" alt="Logged into Crystallize screenshot" />
+<!--
+<img src="/new-event.PNG" alt="Logged into Crystallize screenshot" /> -->
 
 Don't worry about adding anything to the schedule relationship just yet, we'll need to create a schedule first for that to make any sense! The same applies to the speakers relationships.
 
 Once you have created all your events do the same for the speakers and schedules. Now the schedules are done you can add the speaker relations to those, then coming back to the events, you can add both the schedule and speaker relations, and the circle of life is complete!
 
 ### A Speaker
-
-<img src="/speaker.PNG" alt="Logged into Crystallize screenshot" />
+<!--
+<img src="/speaker.PNG" alt="Logged into Crystallize screenshot" /> -->
 
 ### A Schedule
-
-<img src="/schedule.PNG" alt="Logged into Crystallize screenshot" />
+<!--
+<img src="/schedule.PNG" alt="Logged into Crystallize screenshot" /> -->
 
 ## Fetching data using Apollo Client
 
@@ -166,8 +166,8 @@ Often times when developing Gatsby sites you will need to remove the cache, sett
 Now that we have Apollo setup we can head back over to the Crystallize UI and navigate to the `Catalogue Explorer` tab which can be found in the left tab menu. Click `Fetch tree at root` and run the query. You should see your 3 folders returned. If we inspect the query on the left of the explorer we can see that it's in fact 1 query with many fragments. These fragments split up the requests into bite size chunks that can then be spread into other fragments or the query.
 
 A neat feature which I really like with Crystallize is the ability to test out queries directly from the shape, with provided base query and fragments to get you going. If you head to your catalogue and open up an event, then click the gql symbol which sits along the top bar an explorer will open up, it should look something like this:
-
-<img src="/event-query.PNG" alt="Logged into Crystallize screenshot" />
+<!--
+<img src="/event-query.PNG" alt="Logged into Crystallize screenshot" /> -->
 
 This is nice and allows you to play about with different fragments and see what you would get back from your query should you use it in production. Not content with offering 2 different ways to test our queries, Crystallize provides a 3rd. A url with your tenent id which looks like the following: `https://api.crystallize.com/your-tenent-id-here/catalogue`.
 
@@ -731,8 +731,8 @@ Create an `netlify.toml` file at the projects root.
 ```
 
 Next, create a new site from the repository you created earlier, I hope you have been commiting your code! Netlify will use the settings from the .toml file we just created. In the netlify dashboard head to the `Deploys` tab and then the `Deploy Settings`, scroll down until you find the build hooks section. Add a new build hook, naming it whatever you like, perhaps `NETLIFY_BUILD_ON_PUBLISH` makes the most sense as that's what it's going to do. You will be presented with a url, copy it to the clipboard and head on over to the Crystallize UI. From the tabs on the left click the little Captain Hook icon then add a new web hook
-
-<img src="/webhook.PNG" alt="The Crystallize webhook screen" />
+<!--
+<img src="/webhook.PNG" alt="The Crystallize webhook screen" /> -->
 
 Here we have selected publish as the event we want to trigger our build hook. Paste the url you copied from the netlify dahsboard into the URL section and change it from GET to POST, then hit save. Now make a small change to your data, add a shape, remove a full stop, whatever. Then open the netlify dahsboard, go to the deploy section and watch as your site rebuilds!
 
