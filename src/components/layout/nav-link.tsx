@@ -1,6 +1,8 @@
+import {useContext} from 'react';
 import { Box } from "@chakra-ui/react"
 import NextLink from "next/link"
 import { Size } from 'utlis/shortcodes';
+import { DispatchContext, StateContext } from 'utlis/context';
 
 interface Props {
     href: string;
@@ -10,7 +12,10 @@ interface Props {
     font?: string;
 }
 
-export default function Link({ text, href, size, uppercase = false, font = "heading" }: Props) {
+export default function NavLink({ text, href, size, uppercase = false, font = "heading" }: Props) {
+
+    const dispatch = useContext(DispatchContext);
+    const state = useContext(StateContext);
 
     return (
         <NextLink href={href}>
@@ -35,6 +40,7 @@ export default function Link({ text, href, size, uppercase = false, font = "head
                     backgroundPosition: "0% calc(100% - 1px), 100% calc(100% - 1px)",
                     transition: "0.3s, background-position 0.3s 0.3s"
                 }}
+                onClick={() => dispatch({ type: "menuOpen", payload: !state.menuOpen })}
             >
                 # {text}
             </Box>

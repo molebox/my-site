@@ -5,6 +5,7 @@ import { components } from "utlis/shortcodes";
 import { Flex, Text, Box } from '@chakra-ui/react';
 import PostLayout from 'components/post-layout/post-layout';
 import Toc from 'components/post-layout/toc';
+import ArrowDown from "components/post-layout/arrow-down";
 
 
 export default function Post({ code, frontmatter }) {
@@ -25,20 +26,48 @@ export default function Post({ code, frontmatter }) {
                     color="brand.grey"
                     fontWeight={400}
                     transition="all 0.3s ease-in-out"
-                    borderRight="solid 2px"
+                    borderRight={["none", "solid 2px"]}
                     borderColor="brand.grey"
                     _hover={{
                         bgColor: "brand.silver",
                         color: "brand.black",
                         fontWeight: 700
                     }}
-                >
-                    <Text fontFamily="heading" fontSize={["xs", "sm", "md", "lg"]} letterSpacing={2} css={`word-spacing: 12px;`} textTransform="uppercase">{title}</Text>
-                    <Text fontFamily="heading" fontSize={["xs", "xs", "sm", "sm"]} letterSpacing={2}>{description}</Text>
+                    >
+        <Box 
+        overflow="hidden"
+        >
+            <Text 
+            className="reveal" 
+            fontFamily="heading" 
+            fontSize={["sm", "sm", "md", "lg"]} 
+            letterSpacing={2} 
+            // css={`
+            // word-spacing: 12px;
+            // @keyframes reveal {
+            //   0% {
+            //     transform: translate(0,100%);
+            //   }
+            //   100% {
+            //     transform: translate(0,0);
+            //   }
+            // }
+            // `} 
+            textTransform="uppercase"
+            // animation="reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 1s"
+            >
+              {title}
+            </Text>
+                </Box>
+                    <Text my={[5, 0]} fontFamily="body" fontSize="xs" letterSpacing={2}>{description}</Text>
                 </Flex>
                 <Toc />
             </Flex>
-            <Box maxW={1000} m={["0 1rem", "0 1rem", "0 auto"]}>
+            <Box maxW={1000} m={["0 2rem", "0 1rem", "0 auto"]}>
+                <Flex alignContent="center" justifyContent="center">
+                <Text fontFamily="heading" textTransform="uppercase" fontSize="md" letterSpacing={2} color="brand.grey">Content</Text>
+                <ArrowDown/>
+                </Flex>
                 <Component components={components} />
             </Box>
         </PostLayout>

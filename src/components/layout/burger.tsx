@@ -7,7 +7,7 @@ export default function Burger() {
     const dispatch = useContext(DispatchContext);
     const state = useContext(StateContext);
     return (
-        <Box visibility={["visible", "visible", "visible", "hidden"]} display={["block", "block", "block", "none"]}>
+        <Box visibility={["visible", "visible", "visible", "hidden"]} display={["block", "block", "block", "none"]} >
             <HamburgerSpring
 
                 barColor="#EDEDED"

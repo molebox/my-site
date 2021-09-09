@@ -9,8 +9,6 @@ export default function Toc() {
   useEffect(() => {
     const headingElements = document.querySelectorAll("h2, h3, h4");
 
-    console.log({headingElements})
-
     const callback = ([entry]) => {
       const activeHeading = entry.target;
       const links = Array.from(
@@ -43,8 +41,6 @@ export default function Toc() {
 
     setHeadings(headings);
 
-    console.log({headings})
-
     return () => {
       Array.from(headingElements).map((heading) => {
         observer.unobserve(heading);
@@ -53,7 +49,7 @@ export default function Toc() {
   }, []);
 
   return (
-    <Flex direction="column" mx={10} p={5}>
+    <Flex direction="column" mx={10} p={[0, 5]}>
       <Text as="h2" id="table-of-contents" color="brand.grey" fontFamily="heading" letterSpacing={2}
       fontSize={["xs", "xs", "sm", "md"]}
       textDecoration={headings.length > 0 ? "none" : "line-through"}
@@ -67,7 +63,7 @@ export default function Toc() {
           <ListItem
             key={`heading-${heading.href}`}
           >
-            <Link href={heading.href} text={heading.label} size={["xs", "xs", "sm", "sm"]}/>
+            <Link href={heading.href} text={heading.label} size={["xs", "xs", "sm", "header"]}/>
           </ListItem>
         </div>
       ))}

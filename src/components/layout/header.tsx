@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Flex, Box } from "@chakra-ui/react"
 import Burger from './burger'
 import Link from "components/link"
@@ -6,7 +5,7 @@ import Link from "components/link"
 
 export default function Header() {
     return (
-        <Box as="header">
+        <Box as="header" zIndex={99999}>
             <Flex
                 visibility={["visible", "visible", "visible", "hidden"]}
                 display={["block", "block", "block", "none"]}
@@ -41,7 +40,7 @@ export default function Header() {
                 <Link href="/posts" text="Short stories" size="header" uppercase font="body" />
                 <Link href="/posts" text="Projects" size="header" uppercase font="body" />
                 <Link href="/posts" text="Who am i" size="header" uppercase font="body" />
-            </Flex>
+            </Flex> 
         </Box>
     )
 }

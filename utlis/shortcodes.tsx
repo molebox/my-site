@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, Text } from "@chakra-ui/layout";
 import { As } from '@chakra-ui/system';
+import Code from 'components/post-layout/codeblock/code';
 
 interface HeaderProps {
     as: As<any>;
@@ -24,4 +25,6 @@ export const components = {
     h3: (props: any) => <Header as="h3" size="sm">{props.children}</Header>,
     h4: (props: any) => <Header as="h4" size="sm">{props.children}</Header>,
     p: (props: any) => <Text as="p" my={10} fontSize="xs" {...props} color="brand.grey" />,
+    code: (props: any) => <Code {...props}/>,
+    inlinecode: (props: any) => <Text as="p" my={10} fontSize="xs" {...props} color="brand.grey" />
 }
