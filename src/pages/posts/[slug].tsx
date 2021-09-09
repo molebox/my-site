@@ -65,7 +65,7 @@ export default function Post({ code, frontmatter }) {
             </Flex>
             <Box maxW={1000} m={["0 2rem", "0 1rem", "0 auto"]}>
                 <Flex alignContent="center" justifyContent="center">
-                <Text fontFamily="heading" textTransform="uppercase" fontSize="md" letterSpacing={2} color="brand.grey">Content</Text>
+                <Text fontFamily="heading" textTransform="uppercase" fontSize={["xs", "md"]} letterSpacing={2} color="brand.grey">Content</Text>
                 <ArrowDown/>
                 </Flex>
                 <Component components={components} />
