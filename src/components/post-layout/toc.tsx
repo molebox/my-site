@@ -49,60 +49,60 @@ export default function Toc() {
   }, []);
 
   return (
-    <Flex direction="column" mx={10} p={[0, 5]}>
+    <Flex direction="column" mx={10} my={[10, 0]} p={[0, 5]}>
       <Text as="h2" id="table-of-contents" color="brand.grey" fontFamily="heading" letterSpacing={2}
-      fontSize={["xs", "xs", "sm", "md"]}
-      textDecoration={headings.length > 0 ? "none" : "line-through"}
+        fontSize={["xs", "xs", "sm", "md"]}
+        textDecoration={headings.length > 0 ? "none" : "line-through"}
       >
         Table of contents
       </Text>
       {headings.length > 0 ? (
-      <List my={5} className="table-of-contents">
-      {headings.map((heading, i) => (
-        <div key={i}>
-          <ListItem
-            key={`heading-${heading.href}`}
-          >
-            <Link href={heading.href} text={heading.label} size={["xs", "xs", "sm", "header"]}/>
-          </ListItem>
-        </div>
-      ))}
-    </List>
+        <List my={5} className="table-of-contents">
+          {headings.map((heading, i) => (
+            <div key={i}>
+              <ListItem
+                key={`heading-${heading.href}`}
+              >
+                <Link href={heading.href} text={heading.label} size={["xs", "xs", "sm", "header"]} />
+              </ListItem>
+            </div>
+          ))}
+        </List>
       ) : (
         <Flex direction="column">
-        <Text 
-        as="q"
-        color="brand.grey" 
-        fontFamily="heading" 
-        fontSize="xs" 
-        letterSpacing={2}
-        _before={{
-          content: `open-quote`,
-        }}
-        _after={{
-          content: `close-quote`,
-        }}
-        >
-          I love to talk about nothing. It's the only thing I know anything about.
+          <Text
+            as="q"
+            color="brand.grey"
+            fontFamily="heading"
+            fontSize="xs"
+            letterSpacing={2}
+            _before={{
+              content: `open-quote`,
+            }}
+            _after={{
+              content: `close-quote`,
+            }}
+          >
+            I love to talk about nothing. It's the only thing I know anything about.
           </Text>
           <Text
-                  color="brand.grey" 
-                  fontFamily="heading" 
-                  fontSize={["xs", "xs", "sm", "sm"]} 
-                  letterSpacing={2}
+            color="brand.grey"
+            fontFamily="heading"
+            fontSize={["xs", "xs", "sm", "sm"]}
+            letterSpacing={2}
           >
             - Oscar Wilde
           </Text>
           <Text
-          color="brand.black" 
-          fontFamily="heading"
-          fontSize="xs"
-          fontWeight={700}
-          mt={5}
-          p={2}
-          letterSpacing={2}
-          bgColor="brand.grey"
-          width="max-content"
+            color="brand.black"
+            fontFamily="heading"
+            fontSize="xs"
+            fontWeight={700}
+            my={5}
+            p={2}
+            letterSpacing={2}
+            bgColor="brand.grey"
+            width="max-content"
           >
             This post has no headings. YOLO
           </Text>

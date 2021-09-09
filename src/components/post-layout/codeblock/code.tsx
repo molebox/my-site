@@ -16,7 +16,6 @@ import Git from "./git";
 import GraphQL from "./graphql";
 
 const Code = ({ children, className }) => {
-  console.log(className)
   const language = className !== undefined && className.replace(/language-/, "");
 
   const showLanguage = () => {

@@ -8,65 +8,51 @@ import Toc from 'components/post-layout/toc';
 import ArrowDown from "components/post-layout/arrow-down";
 
 
-export default function Post({ code, frontmatter }) {
+export default function Post({ code, frontmatter }, paths) {
+    console.log({ paths })
     const Component = React.useMemo(() => getMDXComponent(code), [code]);
     const { title, description } = frontmatter;
 
     return (
         <PostLayout>
-            <Flex direction={["column", "column", "row"]} w="100%" mb={10} borderBottom="solid 2px" borderColor="brand.grey">
+            <Flex direction={["column", "column", "column", "row"]} w="100%" mb={10} borderBottom="solid 2px" borderColor="brand.grey">
                 <Flex
                     direction="column"
                     justifyContent="center"
                     h="auto"
-                    maxW={["100%", "100%", "60%"]}
+                    maxW={["100%", "100%", "100%", "60%"]}
                     py={5}
                     px={10}
-                    bgColor="brand.black"
-                    color="brand.grey"
-                    fontWeight={400}
-                    transition="all 0.3s ease-in-out"
-                    borderRight={["none", "solid 2px"]}
+                    bgColor="brand.silver"
+                    color="brand.black"
+                    fontWeight={700}
+                    borderRight={["none", "none", "none", "solid 2px"]}
                     borderColor="brand.grey"
-                    _hover={{
-                        bgColor: "brand.silver",
-                        color: "brand.black",
-                        fontWeight: 700
-                    }}
+                >
+                    <Box
+                        overflow="hidden"
                     >
-        <Box 
-        overflow="hidden"
-        >
-            <Text 
-            className="reveal" 
-            fontFamily="heading" 
-            fontSize={["sm", "sm", "md", "lg"]} 
-            letterSpacing={2} 
-            // css={`
-            // word-spacing: 12px;
-            // @keyframes reveal {
-            //   0% {
-            //     transform: translate(0,100%);
-            //   }
-            //   100% {
-            //     transform: translate(0,0);
-            //   }
-            // }
-            // `} 
-            textTransform="uppercase"
-            // animation="reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 1s"
-            >
-              {title}
-            </Text>
-                </Box>
+                        <Text
+                            className="reveal"
+                            fontFamily="heading"
+                            fontSize={["sm", "sm", "md", "lg"]}
+                            letterSpacing={2}
+                            css={`
+                            word-spacing: 12px;
+                            `}
+                            textTransform="uppercase"
+                        >
+                            {title}
+                        </Text>
+                    </Box>
                     <Text my={[5, 0]} fontFamily="body" fontSize="xs" letterSpacing={2}>{description}</Text>
                 </Flex>
                 <Toc />
             </Flex>
-            <Box maxW={1000} m={["0 2rem", "0 1rem", "0 auto"]}>
+            <Box maxW={[300, 400, 500, 1000]} m={["2rem auto", "0 1rem", "0 auto"]}>
                 <Flex alignContent="center" justifyContent="center">
-                <Text fontFamily="heading" textTransform="uppercase" fontSize={["xs", "md"]} letterSpacing={2} color="brand.grey">Content</Text>
-                <ArrowDown/>
+                    <Text fontFamily="heading" textTransform="uppercase" fontSize={["sm", "md"]} letterSpacing={2} color="brand.grey">Content</Text>
+                    <ArrowDown />
                 </Flex>
                 <Component components={components} />
             </Box>
@@ -78,8 +64,12 @@ export default function Post({ code, frontmatter }) {
 // through to the page
 export const getStaticProps = async ({ params }) => {
     const post = await getSingleArticle(POSTS_PATH, params.slug);
+    const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({ params: { slug } }));
     return {
-        props: { ...post },
+        props: {
+            ...post,
+            paths
+        },
     };
 };
 

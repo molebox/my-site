@@ -13,6 +13,7 @@ export default function PostLayout({ children }) {
         as="main"
         direction="column"
         minH="100vh"
+        m="0 auto"
       >
         {children}
       </Flex>
