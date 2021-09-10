@@ -6,6 +6,7 @@ import { Flex, Text, Box } from '@chakra-ui/react';
 import PostLayout from 'components/post-layout/post-layout';
 import Toc from 'components/post-layout/toc';
 import ArrowDown from "components/post-layout/arrow-down";
+import GlitchText from "components/glitch-text";
 
 
 export default function Post({ code, frontmatter }, paths) {
@@ -26,8 +27,7 @@ export default function Post({ code, frontmatter }, paths) {
                     bgColor="brand.silver"
                     color="brand.black"
                     fontWeight={700}
-                    borderRight={["none", "none", "none", "solid 2px"]}
-                    borderColor="brand.grey"
+                    borderRight={["none", "none", "none", "solid 2px #EDEDED"]}
                 >
                     <Box
                         overflow="hidden"
@@ -49,10 +49,22 @@ export default function Post({ code, frontmatter }, paths) {
                 </Flex>
                 <Toc />
             </Flex>
-            <Box maxW={[300, 400, 500, 1000]} m={["2rem auto", "0 1rem", "0 auto"]}>
-                <Flex alignContent="center" justifyContent="center">
-                    <Text fontFamily="heading" textTransform="uppercase" fontSize={["sm", "md"]} letterSpacing={2} color="brand.grey">Content</Text>
-                    <ArrowDown />
+            <Box 
+            maxW={[300, 400, 500, 1000]} 
+            m={["2rem auto", "0 1rem", "0 auto"]} 
+            >
+                <Flex 
+                borderBottom="solid 2px #EDEDED" 
+                alignContent="center" 
+                justifyContent="center"
+
+                >
+                    <Text fontFamily="heading" textTransform="uppercase" fontSize={["sm", "md"]} letterSpacing={2} color="brand.grey">
+                    <GlitchText>Content</GlitchText>
+                    </Text>
+                    
+                    <ArrowDown />      
+
                 </Flex>
                 <Component components={components} />
             </Box>

@@ -6,15 +6,15 @@ import Menu from 'components/layout/menu';
 
 export default function PostLayout({ children }) {
   return (
-    <Flex direction="column" minH="100vh" h="100%" bgColor="brand.black">
+    <Flex direction="column" h="100%" bgColor="brand.black">
       <Header />
       <Menu />
       <Flex
         as="main"
         direction="column"
-        minH="100vh"
         m="0 auto"
         w="100vw"
+        pt="4.5rem"
       >
         {children}
       </Flex>

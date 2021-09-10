@@ -1,12 +1,16 @@
+import { useContext } from "react"
 import { Flex, Box, Input, InputGroup, InputRightElement } from "@chakra-ui/react"
 import Burger from './burger'
 import Link from "components/link"
 import { SearchIcon } from "@chakra-ui/icons"
+import { StateContext, DispatchContext } from 'utlis/context';
 
 
 export default function Header() {
+    const state = useContext(StateContext)
+    const dispatch = useContext(DispatchContext)
     return (
-        <Box as="header" zIndex={99999}>
+        <Box as="header" zIndex={99999} position="fixed" w="100%" top={0}>
             <Flex
                 visibility={["visible", "visible", "visible", "hidden"]}
                 display={["flex", "flex", "flex", "none"]}

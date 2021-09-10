@@ -5,10 +5,12 @@ export const DispatchContext = React.createContext(null);
 
 interface Values {
     menuOpen: boolean;
+    searchOpen: boolean;
 }
 
 const initialValues: Values = {
     menuOpen: false,
+    searchOpen: false,
 };
 
 const reducer = (state, action) => {
