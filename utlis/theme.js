@@ -6,11 +6,12 @@ export const theme = extendTheme({
         body: "Inconsolata",
     },
     fontSizes: {
+        mini: "12pt",
         xs: "16pt",
         sm: "20pt",
         md: "50pt",
         lg: "80pt",
-        header: "20pt"
+        header: "20pt",
     },
     colors: {
         brand: {

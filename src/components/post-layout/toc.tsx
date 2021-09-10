@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Flex, Text, List, ListItem } from "@chakra-ui/react";
+import { Flex, Text, List, ListItem, Box } from "@chakra-ui/react";
 import Link from "./../link";
 
 
-type PostDetails = {
+export type PostDetails = {
   frontmatter: {
     title: string;
     category: string;
@@ -12,9 +12,9 @@ type PostDetails = {
   };
   slug: string;
 }
-interface TocProps {
-  previous: PostDetails;
-  next: PostDetails;
+export interface TocProps {
+  previous: PostDetails | null;
+  next: PostDetails | null;
 }
 
 export default function Toc({ previous, next }: TocProps) {
@@ -60,97 +60,122 @@ export default function Toc({ previous, next }: TocProps) {
         observer.unobserve(heading);
       });
     };
-  }, []);
+  }, [headings]);
 
   return (
-    <Flex direction="column" mx={10} my={[10, 0]} p={[0, 5]}>
-      <Text
-        as="h2"
-        id="table-of-contents"
-        color="brand.grey"
-        fontFamily="heading"
-        letterSpacing={2}
-        fontSize={["xs", "xs", "sm", "md"]}
-        textDecoration={headings.length > 0 ? "none" : "line-through"}
-      >
-        Table of contents
-      </Text>
-      {headings.length > 0 ? (
-        <List my={5} className="table-of-contents">
-          {headings.map((heading, i) => (
-            <div key={i}>
-              <ListItem key={`heading-${heading.href}`}>
-                <Link
-                  font="body"
-                  href={heading.href}
-                  text={heading.label}
-                  size={["xs", "xs", "sm", "xs"]}
-                />
-              </ListItem>
-            </div>
-          ))}
-        </List>
-      ) : (
-        <Flex direction="column">
-          <Text
-            as="q"
-            color="brand.grey"
-            fontFamily="heading"
-            fontSize="xs"
-            letterSpacing={2}
-            _before={{
-              content: `open-quote`,
-            }}
-            _after={{
-              content: `close-quote`,
-            }}
-          >
-            I love to talk about nothing. It's the only thing I know anything
-            about.
-          </Text>
-          <Text
-            color="brand.grey"
-            fontFamily="heading"
-            fontSize={["xs", "xs", "sm", "sm"]}
-            letterSpacing={2}
-          >
-            - Oscar Wilde
-          </Text>
-          <Text
-            color="brand.black"
-            fontFamily="heading"
-            fontSize="xs"
-            fontWeight={700}
-            my={5}
-            p={2}
-            letterSpacing={2}
-            bgColor="brand.grey"
-            width="max-content"
-          >
-            This post has no headings. YOLO
-          </Text>
-        </Flex>
-      )}
-      <Flex borderTop="solid 2px" borderColor="brand.grey" w="100%" justifyContent="space-evenly">
-      <Flex>
+    <Box w="40%" >
+      <Flex direction="column" my={[10, 0]} w="100%" h="100%" position="relative">
+        <Text
+          as="h2"
+          id="table-of-contents"
+          color="brand.grey"
+          fontFamily="heading"
+          letterSpacing={2}
+          fontSize={["xs", "xs", "sm", "md"]}
+          textDecoration={headings.length > 0 ? "none" : "line-through"}
+          mt={10}
+          pl={[0, 5]}
+        >
+          Table of contents
+        </Text>
+        {headings.length > 0 ? (
+          <List my={5} pl={[0, 5]} className="table-of-contents">
+            {headings.map((heading, i) => (
+              <div key={i}>
+                <ListItem key={`heading-${heading.href}`}>
+                  <Link
+                    font="body"
+                    href={heading.href}
+                    text={heading.label}
+                    size={["xs", "xs", "sm", "xs"]}
+                  />
+                </ListItem>
+              </div>
+            ))}
+          </List>
+        ) : (
+          <Flex direction="column" pl={[0, 5]}>
+            <Text
+              as="q"
+              color="brand.grey"
+              fontFamily="heading"
+              fontSize="xs"
+              letterSpacing={2}
+              _before={{
+                content: `open-quote`,
+              }}
+              _after={{
+                content: `close-quote`,
+              }}
+            >
+              I love to talk about nothing. It's the only thing I know anything
+              about.
+            </Text>
+            <Text
+              color="brand.grey"
+              fontFamily="heading"
+              fontSize={["xs", "xs", "sm", "sm"]}
+              letterSpacing={2}
+            >
+              - Oscar Wilde
+            </Text>
+            <Text
+              color="brand.black"
+              fontFamily="heading"
+              fontSize="xs"
+              fontWeight={700}
+              my={5}
+              p={2}
+              letterSpacing={2}
+              bgColor="brand.grey"
+              width="max-content"
+            >
+              This post has no headings. YOLO
+            </Text>
+          </Flex>
+        )}
+        <Flex borderTop="solid 2px" borderColor="brand.grey" w="100%" justifyContent="space-evenly" direction="row" position="absolute" bottom={0}>
+
           {previous ? (
-            <Flex direction="column" alignSelf="flex-start">
-            <Text color="brand.grey" fontSize="xs">The before times...</Text>
-            <Link href={previous.slug} text={previous.frontmatter.title} size="xs" uppercase font="body" />
+            <Flex
+              direction="column" w="50%"
+              p={5}
+              borderRight="solid 2px"
+              borderColor="brand.grey"
+            >
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>Previous...</Text>
+              <Link href={previous.slug} text={previous.frontmatter.title} size="mini" font="body" />
             </Flex>
 
-          ): null}
-          </Flex>
-          <Flex>
+          ) : (
+            <Flex
+              direction="column" w="50%"
+              p={5}
+              borderRight="solid 2px"
+              borderColor="brand.grey"
+            >
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>No more content this way...</Text>
+            </Flex>
+          )}
+
+
           {next ? (
-            <Flex direction="column">
-            <Text color="brand.grey" fontSize="xs">Next up...</Text>
-            <Link href={next.slug} text={next.frontmatter.title} size="xs" uppercase font="body" />
+            <Flex direction="column" w="50%" p={5}>
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>Next up...</Text>
+              <Link href={next.slug} text={next.frontmatter.title} size="mini" font="body" />
             </Flex>
 
-          ): null}
-          </Flex>
+          ) : (
+            <Flex
+              direction="column" w="50%"
+              p={5}
+            >
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>End of the line...</Text>
+            </Flex>
+          )}
+        </Flex>
+
       </Flex>
-    </Flex>
+    </Box>
   );
 }

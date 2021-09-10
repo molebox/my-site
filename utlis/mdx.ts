@@ -11,7 +11,10 @@ export const SHORT_STORIES_PATH = path.join(process.cwd(), "src/content/short-st
 export type Frontmatter = {
     slug: string;
     title: string;
-  }
+    category: string;
+    description: string;
+    published: boolean
+}
 
 export function getFileContent(contentPath: string, filename: string) {
     return fs.readFileSync(path.join(contentPath, filename), "utf8");
@@ -70,8 +73,8 @@ export const getSingleArticle = async (contentPath: string, slug: string) => {
     return {
         frontmatter,
         code,
-        previousArticle,
-        nextArticle,
+        previousArticle: previousArticle || null,
+        nextArticle: nextArticle || null,
     };
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { Heading, Text, Code as CharkaCode, Box, UnorderedList, ListItem } from "@chakra-ui/layout";
 import { As } from '@chakra-ui/system';
@@ -13,7 +14,7 @@ interface HeaderProps {
     children: any
 }
 
-export type Size = "xs" | "sm" | "md" | "lg" | "header"
+export type Size = "mini" | "xs" | "sm" | "md" | "lg" | "header"
 
 const Header = ({ children, as, size }: HeaderProps) => {
     const id = children.replace(/ /g, "_").toLowerCase();
@@ -29,11 +30,11 @@ export const components = {
     h3: (props: any) => <Header as="h3" size="sm">{props.children}</Header>,
     h4: (props: any) => <Header as="h4" size="sm">{props.children}</Header>,
     p: (props: any) => <Text as="p" my={10} fontSize="xs" {...props} color="brand.grey" />,
-    code: (props: any) => <Code {...props}/>,
-    i: (props: any) => <CharkaCode colorScheme="brand" {...props}/>,
-    img: (props: any) => <Image loading="lazy" {...props}/>,
+    code: (props: any) => <Code {...props} />,
+    i: (props: any) => <CharkaCode colorScheme="brand" {...props} />,
+    img: (props: any) => <Image loading="lazy" {...props} />,
     ul: (props: any) => <UnorderedList my={2}>{props.children}</UnorderedList>,
     li: (props: any) => <ListItem color="brand.silver" fontFamily="body" fontSize="xs">{props.children}</ListItem>,
-    a: (props: any) =>  <ExternalLink href={props.href} text={props.children} size="xs" font="body" />,
-    CodeDump: (props) => <CodeDump>{props.children}</CodeDump>
+    a: (props: any) => <ExternalLink href={props.href} text={props.children} size="xs" font="body" />,
+    CodeDump: (props: any) => <CodeDump>{props.children}</CodeDump>
 }

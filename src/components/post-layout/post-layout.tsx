@@ -7,7 +7,7 @@ export default function PostLayout({ children }) {
     <Flex direction="column" h="100%" bgColor="brand.black">
       <Header />
       <Menu />
-      <Flex as="main" direction="column" m="0 auto" pt="4.5rem">
+      <Flex as="main" direction="column" pt="4.5rem">
         {children}
       </Flex>
     </Flex>
