@@ -1,10 +1,24 @@
 import { useEffect, useState } from "react";
-import { Flex, Text, List, ListItem } from '@chakra-ui/react';
-import Link from './../link';
+import { Flex, Text, List, ListItem } from "@chakra-ui/react";
+import Link from "./../link";
 
-export default function Toc() {
+
+type PostDetails = {
+  frontmatter: {
+    title: string;
+    category: string;
+    description: string;
+    published: boolean
+  };
+  slug: string;
+}
+interface TocProps {
+  previous: PostDetails;
+  next: PostDetails;
+}
+
+export default function Toc({ previous, next }: TocProps) {
   const [headings, setHeadings] = useState([]);
-
 
   useEffect(() => {
     const headingElements = document.querySelectorAll("h2, h3, h4");
@@ -50,7 +64,12 @@ export default function Toc() {
 
   return (
     <Flex direction="column" mx={10} my={[10, 0]} p={[0, 5]}>
-      <Text as="h2" id="table-of-contents" color="brand.grey" fontFamily="heading" letterSpacing={2}
+      <Text
+        as="h2"
+        id="table-of-contents"
+        color="brand.grey"
+        fontFamily="heading"
+        letterSpacing={2}
         fontSize={["xs", "xs", "sm", "md"]}
         textDecoration={headings.length > 0 ? "none" : "line-through"}
       >
@@ -60,10 +79,13 @@ export default function Toc() {
         <List my={5} className="table-of-contents">
           {headings.map((heading, i) => (
             <div key={i}>
-              <ListItem
-                key={`heading-${heading.href}`}
-              >
-                <Link font="body" href={heading.href} text={heading.label} size={["xs", "xs", "sm", "xs"]} />
+              <ListItem key={`heading-${heading.href}`}>
+                <Link
+                  font="body"
+                  href={heading.href}
+                  text={heading.label}
+                  size={["xs", "xs", "sm", "xs"]}
+                />
               </ListItem>
             </div>
           ))}
@@ -83,7 +105,8 @@ export default function Toc() {
               content: `close-quote`,
             }}
           >
-            I love to talk about nothing. It's the only thing I know anything about.
+            I love to talk about nothing. It's the only thing I know anything
+            about.
           </Text>
           <Text
             color="brand.grey"
@@ -108,7 +131,26 @@ export default function Toc() {
           </Text>
         </Flex>
       )}
+      <Flex borderTop="solid 2px" borderColor="brand.grey" w="100%" justifyContent="space-evenly">
+      <Flex>
+          {previous ? (
+            <Flex direction="column" alignSelf="flex-start">
+            <Text color="brand.grey" fontSize="xs">The before times...</Text>
+            <Link href={previous.slug} text={previous.frontmatter.title} size="xs" uppercase font="body" />
+            </Flex>
 
+          ): null}
+          </Flex>
+          <Flex>
+          {next ? (
+            <Flex direction="column">
+            <Text color="brand.grey" fontSize="xs">Next up...</Text>
+            <Link href={next.slug} text={next.frontmatter.title} size="xs" uppercase font="body" />
+            </Flex>
+
+          ): null}
+          </Flex>
+      </Flex>
     </Flex>
   );
-};
+}

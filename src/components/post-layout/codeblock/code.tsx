@@ -16,7 +16,8 @@ import Git from "./git";
 import GraphQL from "./graphql";
 
 const Code = ({ children, className }) => {
-  const language = className !== undefined && className.replace(/language-/, "");
+  const language =
+    className !== undefined && className.replace(/language-/, "");
 
   const showLanguage = () => {
     switch (language) {
@@ -99,10 +100,10 @@ const Code = ({ children, className }) => {
                 width: 5px;
               }
               &::-webkit-scrollbar-track {
-                background-color: #EDEDED;
+                background-color: #ededed;
               }
               &::-webkit-scrollbar-thumb {
-                background-color: #1A1A1A;
+                background-color: #1a1a1a;
                 border-radius: 10px;
                 background-clip: content-box;
                 border: 3px solid transparent;

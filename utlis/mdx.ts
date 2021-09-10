@@ -60,11 +60,18 @@ const getCompiledMDX = async (content: string) => {
 
 export const getSingleArticle = async (contentPath: string, slug: string) => {
     const source = getFileContent(contentPath, `${slug}.mdx`);
+    const allArticles = getAllArticles(contentPath);
+    const articleIndex = allArticles.findIndex(article => article.slug === slug);
+    const previousArticle = allArticles[articleIndex - 1];
+    const nextArticle = allArticles[articleIndex + 1];
+
     const { code, frontmatter } = await getCompiledMDX(source);
 
     return {
         frontmatter,
         code,
+        previousArticle,
+        nextArticle,
     };
 };
 
