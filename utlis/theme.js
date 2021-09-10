@@ -7,9 +7,9 @@ export const theme = extendTheme({
     },
     fontSizes: {
         xs: "16pt",
-        sm: "30pt",
-        md: "60pt",
-        lg: "90pt",
+        sm: "20pt",
+        md: "50pt",
+        lg: "80pt",
         header: "20pt"
     },
     colors: {

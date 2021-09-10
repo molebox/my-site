@@ -1,7 +1,11 @@
 import React from 'react';
-import { Heading, Text } from "@chakra-ui/layout";
+import { Heading, Text, Code as CharkaCode, Box, UnorderedList, ListItem } from "@chakra-ui/layout";
 import { As } from '@chakra-ui/system';
+import Image from 'next/image'
 import Code from 'components/post-layout/codeblock/code';
+import Link from 'components/link'
+import { CodeDump } from './../src/components/post-layout/code-dump';
+import ExternalLink from 'components/external-link';
 
 interface HeaderProps {
     as: As<any>;
@@ -26,5 +30,10 @@ export const components = {
     h4: (props: any) => <Header as="h4" size="sm">{props.children}</Header>,
     p: (props: any) => <Text as="p" my={10} fontSize="xs" {...props} color="brand.grey" />,
     code: (props: any) => <Code {...props}/>,
-    inlinecode: (props: any) => <Text as="p" my={10} fontSize="xs" {...props} color="brand.grey" />
+    i: (props: any) => <CharkaCode colorScheme="brand" {...props}/>,
+    img: (props: any) => <Image loading="lazy" {...props}/>,
+    ul: (props: any) => <UnorderedList my={2}>{props.children}</UnorderedList>,
+    li: (props: any) => <ListItem color="brand.silver" fontFamily="body" fontSize="xs">{props.children}</ListItem>,
+    a: (props: any) =>  <ExternalLink href={props.href} text={props.children} size="xs" font="body" />,
+    CodeDump: (props) => <CodeDump>{props.children}</CodeDump>
 }

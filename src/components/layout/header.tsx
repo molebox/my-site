@@ -37,11 +37,11 @@ export default function Header() {
                 borderBottom="solid 2px"
                 borderColor="brand.grey"
             >
-                <Link href="/" text="Home" size="header" uppercase font="body" />
-                <Link href="/posts" text="Blog posts" size="header" uppercase font="body" />
-                {/* <Link href="/posts" text="Short stories" size="header" uppercase font="body" /> */}
-                <Link href="/posts" text="Projects" size="header" uppercase font="body" />
-                <Link href="/posts" text="Who am i" size="header" uppercase font="body" />
+                <Link href="/" text="Home" size="xs" uppercase font="body" />
+                <Link href="/posts" text="Blog posts" size="xs" uppercase font="body" />
+                {/* <Link href="/posts" text="Short stories" size="xs" uppercase font="body" /> */}
+                <Link href="/posts" text="Projects" size="xs" uppercase font="body" />
+                <Link href="/posts" text="Who am i" size="xs" uppercase font="body" />
                 <Flex maxW={300}>
                     <InputGroup>
                         <InputRightElement
@@ -49,7 +49,7 @@ export default function Header() {
                             // eslint-disable-next-line react/no-children-prop
                             children={<SearchIcon fontSize="xs" color="brand.silver" />}
                         />
-                        <Input focusBorderColor="brand.orange" color="brand.grey" type="text" fontSize="xs" fontFamily="body" variant="flushed" placeholder="Search posts" />
+                        <Input focusBorderColor="brand.orange" color="brand.grey" type="text" fontSize="16px" fontFamily="body" variant="flushed" placeholder="Search posts" />
                     </InputGroup>
                 </Flex>
             </Flex>

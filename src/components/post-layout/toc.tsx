@@ -63,7 +63,7 @@ export default function Toc() {
               <ListItem
                 key={`heading-${heading.href}`}
               >
-                <Link href={heading.href} text={heading.label} size={["xs", "xs", "sm", "header"]} />
+                <Link font="body" href={heading.href} text={heading.label} size={["xs", "xs", "sm", "xs"]} />
               </ListItem>
             </div>
           ))}

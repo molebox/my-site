@@ -14,6 +14,7 @@ export default function PostLayout({ children }) {
         direction="column"
         minH="100vh"
         m="0 auto"
+        w="100vw"
       >
         {children}
       </Flex>
