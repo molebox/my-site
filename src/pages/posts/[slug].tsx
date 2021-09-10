@@ -46,7 +46,7 @@ export default function Post({ code, frontmatter, previousArticle, nextArticle }
                         <Text
                             className="reveal"
                             fontFamily="heading"
-                            fontSize={["sm", "sm", "md", "lg"]}
+                            fontSize={["header", "header", "md", "lg"]}
                             letterSpacing={2}
                             css={`
                                 word-spacing: 12px;
@@ -56,7 +56,7 @@ export default function Post({ code, frontmatter, previousArticle, nextArticle }
                             {title}
                         </Text>
                     </Box>
-                    <Text my={[5, 0]} fontFamily="body" fontSize="xs" letterSpacing={2}>
+                    <Text my={[5, 0]} fontFamily="body" fontSize={["mini", "xs"]} letterSpacing={2}>
                         {description}
                     </Text>
                 </Flex>
@@ -68,7 +68,16 @@ export default function Post({ code, frontmatter, previousArticle, nextArticle }
                     alignContent="center"
                     justifyContent="center"
                 >
-                    {prefersReducedMotion ? (
+                    <Text
+                        fontFamily="heading"
+                        textTransform="uppercase"
+                        fontSize={["sm", "md"]}
+                        letterSpacing={2}
+                        color="brand.grey"
+                    >
+                        Content
+                    </Text>
+                    {/* {prefersReducedMotion ? (
                         <Text
                             fontFamily="heading"
                             textTransform="uppercase"
@@ -88,7 +97,7 @@ export default function Post({ code, frontmatter, previousArticle, nextArticle }
                         >
                             <GlitchText>Content</GlitchText>
                         </Text>
-                    )}
+                    )} */}
 
                     <ArrowDown />
                 </Flex>

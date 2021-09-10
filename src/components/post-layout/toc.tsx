@@ -60,10 +60,10 @@ export default function Toc({ previous, next }: TocProps) {
         observer.unobserve(heading);
       });
     };
-  }, [headings]);
+  }, [previous, next]);
 
   return (
-    <Box w="40%" >
+    <Box w={["100%", "40%"]} >
       <Flex direction="column" my={[10, 0]} w="100%" h="100%" position="relative">
         <Text
           as="h2"
@@ -71,15 +71,15 @@ export default function Toc({ previous, next }: TocProps) {
           color="brand.grey"
           fontFamily="heading"
           letterSpacing={2}
-          fontSize={["xs", "xs", "sm", "md"]}
+          fontSize={["header", "xs", "sm", "md"]}
           textDecoration={headings.length > 0 ? "none" : "line-through"}
           mt={10}
-          pl={[0, 5]}
+          pl={5}
         >
           Table of contents
         </Text>
         {headings.length > 0 ? (
-          <List my={5} pl={[0, 5]} className="table-of-contents">
+          <List my={5} pl={5} className="table-of-contents">
             {headings.map((heading, i) => (
               <div key={i}>
                 <ListItem key={`heading-${heading.href}`}>
@@ -94,7 +94,7 @@ export default function Toc({ previous, next }: TocProps) {
             ))}
           </List>
         ) : (
-          <Flex direction="column" pl={[0, 5]}>
+          <Flex direction="column" pl={5}>
             <Text
               as="q"
               color="brand.grey"
@@ -134,13 +134,15 @@ export default function Toc({ previous, next }: TocProps) {
             </Text>
           </Flex>
         )}
-        <Flex borderTop="solid 2px" borderColor="brand.grey" w="100%" justifyContent="space-evenly" direction="row" position="absolute" bottom={0}>
+        <Flex borderTop={"solid 2px"} borderColor="brand.grey" w="100%" justifyContent="space-evenly" direction={["column", "row"]} position={["inherit", "absolute"]} bottom={0}>
 
           {previous ? (
             <Flex
-              direction="column" w="50%"
+              direction="column"
+              w={["100%", "100%", "50%", "50%"]}
               p={5}
-              borderRight="solid 2px"
+              borderRight={["none", "solid 2px"]}
+              borderBottom={["solid 2px", "none"]}
               borderColor="brand.grey"
             >
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>Previous...</Text>
@@ -149,7 +151,8 @@ export default function Toc({ previous, next }: TocProps) {
 
           ) : (
             <Flex
-              direction="column" w="50%"
+              direction="column"
+              w={["100%", "100%", "50%", "50%"]}
               p={5}
               borderRight="solid 2px"
               borderColor="brand.grey"
@@ -160,14 +163,14 @@ export default function Toc({ previous, next }: TocProps) {
 
 
           {next ? (
-            <Flex direction="column" w="50%" p={5}>
+            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>Next up...</Text>
               <Link href={next.slug} text={next.frontmatter.title} size="mini" font="body" />
             </Flex>
 
           ) : (
             <Flex
-              direction="column" w="50%"
+              direction="column" w={["100%", "100%", "50%", "50%"]}
               p={5}
             >
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>End of the line...</Text>
