@@ -142,9 +142,8 @@ export default function Toc({ previous, next }: TocProps) {
               direction="column"
               w={["100%", "100%", "50%", "50%"]}
               p={5}
-              borderRight={["none", "solid 2px"]}
+              borderRight={["none", "solid 2px #EDEDED"]}
               borderBottom={["solid 2px", "none"]}
-              borderColor="brand.grey"
             >
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>Previous...</Text>
               <Link href={previous.slug} text={previous.frontmatter.title} size="mini" font="body" />
@@ -155,8 +154,6 @@ export default function Toc({ previous, next }: TocProps) {
               direction="column"
               w={["100%", "100%", "50%", "50%"]}
               p={5}
-              borderRight={["none", "solid 2px"]}
-              borderColor="brand.grey"
             >
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>No more content this way...</Text>
             </Flex>
