@@ -99,7 +99,7 @@ export default function Post({ code, frontmatter, previousArticle, nextArticle }
                         </Text>
                     )} */}
 
-                    <ArrowDown />
+                    {/* <ArrowDown /> */}
                 </Flex>
                 <Component components={components} />
             </Box>
