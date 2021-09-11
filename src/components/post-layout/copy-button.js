@@ -9,6 +9,7 @@ export default function CopyButton({ value }) {
       color="brand.silver"
       aria-label="Copy text"
       textTransform="uppercase"
+      letterSpacing={2}
       role="button"
       onClick={onCopy}
       fontSize="xs"

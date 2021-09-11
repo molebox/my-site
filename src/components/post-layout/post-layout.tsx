@@ -4,7 +4,7 @@ import Menu from "components/layout/menu";
 
 export default function PostLayout({ children }) {
   return (
-    <Flex direction="column" h="100%" bgColor="brand.black">
+    <Flex direction="column" h="calc(100% - 70px)" bgColor="brand.black">
       <Header />
       <Menu />
       <Flex as="main" direction="column" pt="4.5rem">

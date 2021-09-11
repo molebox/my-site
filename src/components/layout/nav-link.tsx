@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Box } from "@chakra-ui/react";
+import { useContext, useState, useEffect } from "react";
+import { Link as ChakraLink } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { Size } from "utlis/shortcodes";
 import { DispatchContext, StateContext } from "utlis/context";
@@ -24,9 +24,8 @@ export default function NavLink({
 
   return (
     <NextLink href={href}>
-      <Box
-        as="a"
-        color="brand.grey"
+      <ChakraLink
+        color="brand.silver"
         fontFamily={font}
         fontSize={size}
         textTransform={uppercase && uppercase ? "uppercase" : "none"}
@@ -43,11 +42,12 @@ export default function NavLink({
           cursor: "pointer",
           backgroundPosition: "0% calc(100% - 1px), 100% calc(100% - 1px)",
           transition: "0.3s, background-position 0.3s 0.3s",
+          color: "brand.grey",
         }}
         onClick={() => dispatch({ type: "menuOpen", payload: !state.menuOpen })}
       >
         # {text}
-      </Box>
+      </ChakraLink>
     </NextLink>
   );
 }

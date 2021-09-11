@@ -27,7 +27,7 @@ export default function Home() {
             size={["xs", "sm", "md"]}
             uppercase
           />
-          <Link
+          {/* <Link
             href="/posts"
             text="Short stories"
             size={["xs", "sm", "md"]}
@@ -38,7 +38,7 @@ export default function Home() {
             text="Projects"
             size={["xs", "sm", "md"]}
             uppercase
-          />
+          /> */}
           <Link
             href="/posts"
             text="Who am i"

@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import { Flex, Text, List, ListItem, Box } from "@chakra-ui/react";
 import Link from "./../link";
 
-
 export type PostDetails = {
   frontmatter: {
     title: string;
     category: string;
     description: string;
-    published: boolean
+    published: boolean;
   };
   slug: string;
-}
+};
 export interface TocProps {
   previous: PostDetails | null;
   next: PostDetails | null;
@@ -63,8 +62,14 @@ export default function Toc({ previous, next }: TocProps) {
   }, [previous, next]);
 
   return (
-    <Box w={["100%", "40%"]} >
-      <Flex direction="column" my={[10, 0]} w="100%" h="100%" position="relative">
+    <Box w={["100%", "40%"]}>
+      <Flex
+        direction="column"
+        my={[10, 0]}
+        w="100%"
+        h="100%"
+        position="relative"
+      >
         <Text
           as="h2"
           id="table-of-contents"
@@ -74,12 +79,12 @@ export default function Toc({ previous, next }: TocProps) {
           fontSize={["header", "xs", "sm", "md"]}
           textDecoration={headings.length > 0 ? "none" : "line-through"}
           mt={10}
-          pl={5}
+          px={10}
         >
           Table of contents
         </Text>
         {headings.length > 0 ? (
-          <List my={5} pl={5} className="table-of-contents">
+          <List my={5} px={10} className="table-of-contents">
             {headings.map((heading, i) => (
               <div key={i}>
                 <ListItem key={`heading-${heading.href}`}>
@@ -135,8 +140,15 @@ export default function Toc({ previous, next }: TocProps) {
             </Text>
           </Flex>
         )}
-        <Flex borderTop={"solid 2px"} borderColor="brand.grey" w="100%" justifyContent="space-evenly" direction={["column", "row"]} position={["inherit", "absolute"]} bottom={0}>
-
+        <Flex
+          borderTop={"solid 2px"}
+          borderColor="brand.grey"
+          w="100%"
+          justifyContent="space-evenly"
+          direction={["column", "row"]}
+          position={["inherit", "absolute"]}
+          bottom={0}
+        >
           {previous ? (
             <Flex
               direction="column"
@@ -145,37 +157,44 @@ export default function Toc({ previous, next }: TocProps) {
               borderRight={["none", "solid 2px #EDEDED"]}
               borderBottom={["solid 2px", "none"]}
             >
-              <Text color="brand.grey" fontSize="xs" fontWeight={700}>Previous...</Text>
-              <Link href={previous.slug} text={previous.frontmatter.title} size="mini" font="body" />
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>
+                Previous...
+              </Text>
+              <Link
+                href={previous.slug}
+                text={previous.frontmatter.title}
+                size="mini"
+                font="body"
+              />
             </Flex>
-
           ) : (
-            <Flex
-              direction="column"
-              w={["100%", "100%", "50%", "50%"]}
-              p={5}
-            >
-              <Text color="brand.grey" fontSize="xs" fontWeight={700}>No more content this way...</Text>
+            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>
+                No more content this way...
+              </Text>
             </Flex>
           )}
-
 
           {next ? (
             <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
-              <Text color="brand.grey" fontSize="xs" fontWeight={700}>Next up...</Text>
-              <Link href={next.slug} text={next.frontmatter.title} size="mini" font="body" />
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>
+                Next up...
+              </Text>
+              <Link
+                href={next.slug}
+                text={next.frontmatter.title}
+                size="mini"
+                font="body"
+              />
             </Flex>
-
           ) : (
-            <Flex
-              direction="column" w={["100%", "100%", "50%", "50%"]}
-              p={5}
-            >
-              <Text color="brand.grey" fontSize="xs" fontWeight={700}>End of the line...</Text>
+            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
+              <Text color="brand.grey" fontSize="xs" fontWeight={700}>
+                End of the line...
+              </Text>
             </Flex>
           )}
         </Flex>
-
       </Flex>
     </Box>
   );
