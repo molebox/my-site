@@ -1,16 +1,38 @@
 import React from "react";
 import { getAllArticles, POSTS_PATH, Frontmatter } from "utlis/mdx";
-import Link from "components/link";
+import PostIndexLink from "components/posts/post-index-link";
+import useSearchBar from "components/posts/useSearchbar"
+import useCategory from "components/posts/useCategory"
+import Searchbar from "components/posts/searchbar"
 import { Flex, List, ListItem, Heading } from "@chakra-ui/react";
+import uniqBy from 'lodash.uniqby'
 
-import PostLayout from "components/post-layout/post-layout";
+import PostLayout from "components/posts/post-layout";
 
 export default function BlogPosts({ posts }: any) {
+  const { articles, handleSearchQuery } = useSearchBar(posts);
+  const [filteredPosts, setFilteredPosts] = React.useState([]);
+  const { categories, handleCategoryQuery } = useCategory(posts);
+
+
+  // Get a unique list of all the categories from the frontmatter
+  const categoriesList = uniqBy(articles, 'frontmatter.category')
+
+  React.useEffect(() => {
+    let result = articles;
+    if (categories.length === articles.length) {
+      result = articles;
+    } else if (categories.length && categories.length < articles.length) {
+      result = categories;
+    }
+
+    setFilteredPosts(result);
+  }, [categories, articles]);
+
   return (
     <PostLayout>
-      <Flex direction="column" m="0 auto" minH="100vh" h="100%">
+      <Flex direction="column" m="0 auto" minH="100vh" h="100%" w={[300, 400, 500, 1000]}>
         <Heading
-          borderBottom="solid 2px #EDEDED"
           mt={10}
           p={10}
           letterSpacing={2}
@@ -20,15 +42,16 @@ export default function BlogPosts({ posts }: any) {
         >
           Blog posts
         </Heading>
+        <Searchbar
+          handleSearchQuery={handleSearchQuery}
+        />
         <List p={10}>
-          {posts.map((post, index) => (
-            <ListItem key={index}>
-              <Link
+          {filteredPosts.map((post, index) => (
+            <ListItem my={5} key={index}>
+              <PostIndexLink
                 href={`posts/${post.slug}`}
                 text={`${post.frontmatter.title}`}
-                size={["xs", "sm"]}
-                uppercase
-                font="body"
+                description={post.frontmatter.description}
               />
             </ListItem>
           ))}

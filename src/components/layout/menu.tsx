@@ -21,7 +21,7 @@ export default function Menu() {
       flexGrow={1}
       alignItems="center"
       backgroundColor="brand.black"
-      zIndex={999}
+      zIndex={9999}
     >
       <Flex maxW={1000} p={1} direction="column" justify="center">
         <Text

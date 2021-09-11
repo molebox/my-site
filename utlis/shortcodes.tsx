@@ -3,9 +3,9 @@ import React from 'react';
 import { Heading, Text, Code as CharkaCode, Box, UnorderedList, ListItem } from "@chakra-ui/layout";
 import { As } from '@chakra-ui/system';
 import Image from 'next/image'
-import Code from 'components/post-layout/codeblock/code';
+import Code from 'components/posts/codeblock/code';
 import Link from 'components/link'
-import { CodeDump } from './../src/components/post-layout/code-dump';
+import { CodeDump } from '../src/components/posts/code-dump';
 import ExternalLink from 'components/external-link';
 
 interface HeaderProps {

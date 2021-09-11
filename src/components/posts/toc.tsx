@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Flex, Text, List, ListItem, Box } from "@chakra-ui/react";
-import Link from "./../link";
+import Link from "../link";
 
 export type PostDetails = {
   frontmatter: {
@@ -84,9 +84,9 @@ export default function Toc({ previous, next }: TocProps) {
           Table of contents
         </Text>
         {headings.length > 0 ? (
-          <List my={5} px={10} className="table-of-contents">
+          <List my={5} px={10} minH={300} className="table-of-contents">
             {headings.map((heading, i) => (
-              <div key={i}>
+              <Box key={i}>
                 <ListItem key={`heading-${heading.href}`}>
                   <Link
                     font="body"
@@ -95,11 +95,11 @@ export default function Toc({ previous, next }: TocProps) {
                     size={["xs", "xs", "sm", "xs"]}
                   />
                 </ListItem>
-              </div>
+              </Box>
             ))}
           </List>
         ) : (
-          <Flex direction="column" pl={5}>
+          <Flex direction="column" minH={300} pl={5}>
             <Text
               as="q"
               color="brand.grey"
@@ -146,8 +146,6 @@ export default function Toc({ previous, next }: TocProps) {
           w="100%"
           justifyContent="space-evenly"
           direction={["column", "row"]}
-          position={["inherit", "absolute"]}
-          bottom={0}
         >
           {previous ? (
             <Flex
