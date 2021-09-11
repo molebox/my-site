@@ -2,7 +2,6 @@
 title: Statamic as headless CMS with Gatsby
 category: Tutorial
 description: How to use Statamic as a headless CMS with Gatsby
-canonical: https://snipcart.com/blog/statamic-headless-gatsby-blog-tutorial
 published: true
 ---
 
@@ -104,7 +103,7 @@ STATAMIC_API_ROUTE=api
 
 Add the new sites url as the APP_URL, if you changed the port from 80 then append this otherwise you may encounter a 404 page and be scratching your head for a few hours (you're welcome, and my head hurts). The bottom two additions are telling Statamic that we want to use the new content API and setting the url endpoint to api. Now open config/statamic/api.php and change the following:
 
-```js
+```php
 // From
 'enabled' => env('STATAMIC_API_ENABLED', false),
 // To
@@ -113,7 +112,7 @@ Add the new sites url as the APP_URL, if you changed the port from 80 then appen
 
 Now you can open config/statamic/editions.php and change the license to pro, like so:
 
-```js
+```php
 'pro' => true,
 ```
 
