@@ -47,7 +47,7 @@ export default function BlogPosts({ posts }: any) {
         />
         <List p={10}>
           {filteredPosts.map((post, index) => (
-            <ListItem my={5} key={index}>
+            <ListItem my={5} key={index} w="fit-content">
               <PostIndexLink
                 href={`posts/${post.slug}`}
                 text={`${post.frontmatter.title}`}
