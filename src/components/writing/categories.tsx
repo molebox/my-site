@@ -4,6 +4,7 @@ import AllCategoryTag from "./all-category-tag";
 import CategoryTag from "./category-tag";
 
 const Categories = ({ categoriesList, handleCategoryQuery, numberOfPosts }) => {
+
     return (
         <Grid
             templateColumns="repeat(auto-fill, minmax(150px, 1fr))"
@@ -11,7 +12,7 @@ const Categories = ({ categoriesList, handleCategoryQuery, numberOfPosts }) => {
             templateRows={["auto", "1fr"]}
             alignItems="center"
             h="auto"
-            w="100%"
+            w={["100%", "30%"]}
         >
             <AllCategoryTag handleCategoryQuery={handleCategoryQuery} />
             {categoriesList.map(({ frontmatter }, index) => (

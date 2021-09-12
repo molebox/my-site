@@ -41,25 +41,27 @@ export default function Home({ allArticles }) {
         </Text>
         <Flex direction="column" w="fit-content">
           <Link
-            href="/posts"
-            text="Blog posts"
+            href="/writing"
+            text="Writing"
             size={["xs", "sm", "md"]}
             uppercase
           />
           <Link
-            href="/posts"
+            href="/writing"
             text="Projects"
             size={["xs", "sm", "md"]}
             uppercase
           />
           <Link
-            href="/posts"
+            href="/writing"
             text="Who am i"
             size={["xs", "sm", "md"]}
             uppercase
           />
         </Flex>
-        <Text my={5} color="brand.silver" fontSize="mini">(Why complicate things?)</Text>
+        <Text my={5} color="brand.silver" fontSize="mini">
+          Made with <Link isExternal font="body" href="https://nextjs.org/" size="mini" text="Next.js" />, <Link isExternal font="body" href="https://github.com/kentcdodds/mdx-bundler" size="mini" text="mdx-bundler" /> and <Link isExternal font="body" href="https://chakra-ui.com/" size="mini" text="Chakra-ui" />
+        </Text>
       </Flex>
     </Layout>
   );

@@ -99,12 +99,13 @@ export default function Toc({ previous, next }: TocProps) {
             ))}
           </List>
         ) : (
-          <Flex direction="column" minH={300} pl={5}>
+          <Flex direction="column" minH={300} px={10}>
             <Text
               as="q"
               color="brand.grey"
               fontFamily="heading"
               fontSize="xs"
+              mt={[10, 0]}
               letterSpacing={2}
               _before={{
                 content: `open-quote`,
@@ -127,9 +128,9 @@ export default function Toc({ previous, next }: TocProps) {
             <Text
               color="brand.black"
               fontFamily="heading"
-              fontSize="xs"
+              fontSize={["mini", "xs"]}
               fontWeight={700}
-              my={5}
+              my={[10, 5]}
               mx={[2, 0]}
               p={2}
               letterSpacing={2}
@@ -166,7 +167,7 @@ export default function Toc({ previous, next }: TocProps) {
               />
             </Flex>
           ) : (
-            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
+            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5} borderRight={["none", "solid 2px #EDEDED"]} borderBottom={["solid 2px #EDEDED", "none"]}>
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>
                 No more content this way...
               </Text>

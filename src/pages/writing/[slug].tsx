@@ -8,8 +8,8 @@ import {
 } from "utlis/mdx";
 import { components } from "utlis/shortcodes";
 import { Flex, Text, Box, usePrefersReducedMotion } from "@chakra-ui/react";
-import PostLayout from "components/posts/post-layout";
-import Toc, { PostDetails } from "components/posts/toc";
+import PostLayout from "components/writing/writing-layout";
+import Toc, { PostDetails } from "components/writing/toc";
 
 interface PostProps {
     previousArticle?: PostDetails | null;
@@ -57,8 +57,8 @@ export default function Post({
                             fontSize={["header", "header", "md", "lg"]}
                             letterSpacing={2}
                             css={`
-                word-spacing: 12px;
-              `}
+                                word-spacing: 12px;
+                            `}
                             textTransform="uppercase"
                         >
                             {title}

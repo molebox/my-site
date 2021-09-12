@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import Header from "components/layout/header";
 import Menu from "components/layout/menu";
 
-export default function PostLayout({ children }) {
+export default function WritingLayout({ children }) {
   return (
     <Flex direction="column" h="calc(100% - 70px)" bgColor="brand.black">
       <Header />

@@ -1,36 +1,45 @@
 import React from "react";
 import { Button, useTheme } from "@chakra-ui/react";
+import GlitchText from "components/glitch-text";
 
-const AllCategoryTag = ({ handleCategoryQuery, ...rest }) => {
+const CategoryTag = ({
+    category,
+    handleCategoryQuery,
+    numberOfPosts,
+    ...rest
+}) => {
     const getCategory = (category) => handleCategoryQuery(category);
     const theme = useTheme()
+
+    const handleClick = () => {
+        getCategory(category);
+    };
+
     return (
         <Button
             {...rest}
             bg="brand.silver"
-            color="brand.black"
+            color='brand.black'
             variant="solid"
             fontFamily="body"
             fontSize="mini"
             justifyContent="center"
-            h="25px"
-            minW="150px"
+            h={["50px", "150px"]}
+            minW="100px"
             borderRadius={0}
             border={`solid 1px ${theme.colors.brand.black}`}
-            onClick={() => getCategory("All")}
+            onClick={handleClick}
             _hover={{
                 cursor: "pointer",
                 backgroundColor: "brand.grey",
             }}
             _focus={{
                 backgroundColor: "brand.grey",
-                color: "brand.black",
             }}
-            className="cat-tag"
         >
-            All
+            <GlitchText>{category}</GlitchText>
         </Button>
     );
 };
 
-export default AllCategoryTag;
+export default CategoryTag;

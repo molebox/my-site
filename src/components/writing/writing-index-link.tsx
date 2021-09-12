@@ -9,7 +9,7 @@ interface Props {
     description: string;
 }
 
-export default function PostIndexLink({
+export default function WritingIndexLink({
     text,
     href,
     description

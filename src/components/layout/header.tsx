@@ -42,10 +42,9 @@ export default function Header() {
                 borderColor="brand.silver"
             >
                 <Link href="/" text="richardhaines.dev" size="mini" font="body" />
-                <Link href="/posts" text="Blog posts" size="mini" uppercase font="body" />
-                {/* <Link href="/posts" text="Short stories" size="mini" uppercase font="body" /> */}
-                <Link href="/posts" text="Projects" size="mini" uppercase font="body" />
-                <Link href="/posts" text="Who am i" size="mini" uppercase font="body" />
+                <Link href="/writing" text="Writing" size="mini" uppercase font="body" />
+                <Link href="/writing" text="Projects" size="mini" uppercase font="body" />
+                <Link href="/writing" text="Who am i" size="mini" uppercase font="body" />
             </Flex>
         </Box>
     );

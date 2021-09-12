@@ -24,6 +24,7 @@ export const theme = extendTheme({
     colors: {
         brand: {
             silver: "#959595",
+            // silver: "#7A7A7A",
             grey: "#EDEDED",
             orange: "#FF9D00",
             white: "#F4F4F4",

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const useRandomColor = () => {
+export default function useRandomColor() {
   const [hovered, setHover] = React.useState(false);
   const [color, setColor] = React.useState("");
 
