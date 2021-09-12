@@ -8,6 +8,7 @@ import { Flex, List, ListItem, Heading } from "@chakra-ui/react";
 import uniqBy from 'lodash.uniqby'
 
 import PostLayout from "components/posts/post-layout";
+import Categories from "components/posts/categories";
 
 export default function BlogPosts({ posts }: any) {
   const { articles, handleSearchQuery } = useSearchBar(posts);
@@ -17,6 +18,7 @@ export default function BlogPosts({ posts }: any) {
 
   // Get a unique list of all the categories from the frontmatter
   const categoriesList = uniqBy(articles, 'frontmatter.category')
+  console.log({ categoriesList })
 
   React.useEffect(() => {
     let result = articles;
@@ -31,10 +33,9 @@ export default function BlogPosts({ posts }: any) {
 
   return (
     <PostLayout>
-      <Flex direction="column" m="0 auto" minH="100vh" h="100%" w={[300, 400, 500, 1000]}>
+      <Flex p={10} direction="column" m="0 auto" minH="100vh" h="100%" w={[300, 400, 500, 1000]}>
         <Heading
           mt={10}
-          p={10}
           letterSpacing={2}
           color="brand.grey"
           textTransform="uppercase"
@@ -45,7 +46,12 @@ export default function BlogPosts({ posts }: any) {
         <Searchbar
           handleSearchQuery={handleSearchQuery}
         />
-        <List p={10}>
+        <Categories
+          categoriesList={categoriesList}
+          numberOfPosts={filteredPosts.length}
+          handleCategoryQuery={handleCategoryQuery}
+        />
+        <List>
           {filteredPosts.map((post, index) => (
             <ListItem my={5} key={index} w="fit-content">
               <PostIndexLink

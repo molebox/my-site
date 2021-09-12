@@ -48,12 +48,6 @@ export default function Home({ allArticles }) {
           />
           <Link
             href="/posts"
-            text="Short stories"
-            size={["xs", "sm", "md"]}
-            uppercase
-          />
-          <Link
-            href="/posts"
             text="Projects"
             size={["xs", "sm", "md"]}
             uppercase

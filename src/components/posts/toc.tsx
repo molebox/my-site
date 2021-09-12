@@ -38,7 +38,7 @@ export default function Toc({ previous, next }: TocProps) {
       });
     };
 
-    const observer = new IntersectionObserver(callback, { threshold: [1.0] });
+    const observer = new IntersectionObserver(callback, { threshold: [1.0], rootMargin: '30%' });
 
     const headings = Array.from(headingElements)
       .filter((heading) => heading.id !== "table-of-contents")

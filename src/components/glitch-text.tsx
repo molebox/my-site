@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 const Container = styled.div`
   position: relative;
 
-  // &:hover {
+  &:hover {
   &:before {
     content: attr(data-text);
     position: absolute;
@@ -15,10 +15,10 @@ const Container = styled.div`
 
     left: 2px;
     text-shadow: -1px 0 #ededed;
-    background: #1a1a1a;
+    background: #EDEDED;
 
     overflow: hidden;
-    animation: noise-anim-2 4s infinite linear alternate-reverse;
+    animation: noise-anim-2 8s infinite linear alternate-reverse;
   }
 
   &:after {
@@ -31,9 +31,9 @@ const Container = styled.div`
 
     left: -2px;
     text-shadow: -1px 0 #ededed;
-    background: #1a1a1a;
+    background: #EDEDED;
     overflow: hidden;
-    animation: noise-anim 4s infinite linear alternate-reverse;
+    animation: noise-anim 3s infinite linear alternate-reverse;
   }
 
   @keyframes noise-anim {
@@ -101,7 +101,7 @@ const Container = styled.div`
       clip-path: inset(69% 0 9% 0);
     }
   }
-  // }
+  }
 `;
 
 export default function GlitchText({ children }) {

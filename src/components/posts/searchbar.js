@@ -10,6 +10,7 @@ export default function SearchBar({ handleSearchQuery }) {
     <Flex
       justify="center"
       alignItems="center"
+      my={10}
     >
       <VisuallyHidden as="label" htmlFor="search-posts">
         Search Posts

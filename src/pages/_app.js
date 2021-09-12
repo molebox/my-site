@@ -10,12 +10,12 @@ import Provider from '../../utlis/context'
 function MyApp({ Component, pageProps }) {
   return (
     <Provider>
-        <ChakraProvider theme={theme}>
-          <Fonts />
-          <MDXEmbedProvider>
-            <Component {...pageProps} />
-          </MDXEmbedProvider>
-        </ChakraProvider>
+      <ChakraProvider theme={theme}>
+        <Fonts />
+        <MDXEmbedProvider>
+          <Component {...pageProps} />
+        </MDXEmbedProvider>
+      </ChakraProvider>
     </Provider>
   )
 }

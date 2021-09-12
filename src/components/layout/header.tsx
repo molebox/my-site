@@ -39,34 +39,13 @@ export default function Header() {
                 alignItems="center"
                 justifyContent="space-evenly"
                 borderBottom="solid 2px"
-                borderColor="brand.grey"
+                borderColor="brand.silver"
             >
-                {/* <Text
-                    as="h1"
-                    fontFamily="heading"
-                    fontSize={["xs", "xs", "sm", "sm"]}
-                    color="brand.white"
-                    fontWeight={400}
-                    letterSpacing={2}
-                >
-                    richardhaines.dev
-                </Text> */}
-                <Link href="/" text="richardhaines.dev" size="xs" font="body" />
-                <Link href="/posts" text="Blog posts" size="xs" uppercase font="body" />
-                {/* <Link href="/posts" text="Short stories" size="xs" uppercase font="body" /> */}
-                <Link href="/posts" text="Projects" size="xs" uppercase font="body" />
-                <Link href="/posts" text="Who am i" size="xs" uppercase font="body" />
-
-                {/* <Menu>
-                    <MenuButton as={<Searchbar ref={searchRef.current} />} />
-                    <MenuList>
-                        <MenuItem>Download</MenuItem>
-                        <MenuItem>Create a Copy</MenuItem>
-                        <MenuItem>Mark as Draft</MenuItem>
-                        <MenuItem>Delete</MenuItem>
-                        <MenuItem>Attend a Workshop</MenuItem>
-                    </MenuList>
-                </Menu> */}
+                <Link href="/" text="richardhaines.dev" size="mini" font="body" />
+                <Link href="/posts" text="Blog posts" size="mini" uppercase font="body" />
+                {/* <Link href="/posts" text="Short stories" size="mini" uppercase font="body" /> */}
+                <Link href="/posts" text="Projects" size="mini" uppercase font="body" />
+                <Link href="/posts" text="Who am i" size="mini" uppercase font="body" />
             </Flex>
         </Box>
     );
