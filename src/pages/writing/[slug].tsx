@@ -8,7 +8,7 @@ import {
 } from "utlis/mdx";
 import { components } from "utlis/shortcodes";
 import { Flex, Text, Box, usePrefersReducedMotion } from "@chakra-ui/react";
-import PostLayout from "components/writing/writing-layout";
+import PostLayout from "components/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 
 interface PostProps {
@@ -54,7 +54,7 @@ export default function Post({
                         <Text
                             className="reveal"
                             fontFamily="heading"
-                            fontSize={["sm", "header", "md", "lg"]}
+                            fontSize={["sm", "sm", "md", "lg"]}
                             letterSpacing={2}
                             css={`
                                 word-spacing: 12px;

@@ -4,7 +4,7 @@ import {
   Container,
   Stack,
   Text,
-  useColorModeValue,
+  useTheme,
   VisuallyHidden,
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaGithub } from 'react-icons/fa';
@@ -43,10 +43,13 @@ const SocialButton = ({
 };
 
 export default function Footer() {
+  const theme = useTheme()
   return (
     <Box
       bg="brand.black"
-      color="brand.grey">
+      color="brand.grey"
+      borderTop={`solid 2px ${theme.colors.brand.silver}`}
+    >
       <Container
         as={Stack}
         maxW={'6xl'}

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "components/layout/layout";
 import { Flex, useTheme, Text } from "@chakra-ui/react";
 import Link from "components/link";
+import Footer from "components/layout/footer";
 
 export default function Home() {
   const theme = useTheme()
@@ -11,7 +12,14 @@ export default function Home() {
       <Head>
         <title>richardhaines.dev</title>
       </Head>
-      <Flex as="section" w="100%" maxW={[300, 800]} minH="100vh" direction="column" justifyContent="center" m="0 auto">
+      <Flex
+        as="section"
+        w="100%"
+        maxW={[300, 800]}
+        minH="100vh"
+        direction="column"
+        justifyContent="center"
+        m="0 auto">
         <Text
           as="h1"
           fontFamily="heading"
@@ -59,6 +67,7 @@ export default function Home() {
           Made with <Link isExternal font="body" href="https://nextjs.org/" size="mini" text="Next.js" />, <Link isExternal font="body" href="https://github.com/kentcdodds/mdx-bundler" size="mini" text="mdx-bundler" /> and <Link isExternal font="body" href="https://chakra-ui.com/" size="mini" text="Chakra-ui" />
         </Text>
       </Flex>
+      <Footer />
     </Layout>
   );
 }

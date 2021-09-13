@@ -145,6 +145,9 @@ export default function Toc({ previous, next }: TocProps) {
           borderTop={"solid 2px"}
           borderColor="brand.grey"
           w="100%"
+          position="absolute"
+          bottom={0}
+          h="auto"
           justifyContent="space-evenly"
           direction={["column", "row"]}
         >
@@ -175,7 +178,7 @@ export default function Toc({ previous, next }: TocProps) {
           )}
 
           {next ? (
-            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
+            <Flex h="100%" direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>
                 Next up...
               </Text>
@@ -195,6 +198,6 @@ export default function Toc({ previous, next }: TocProps) {
           )}
         </Flex>
       </Flex>
-    </Box>
+    </Box >
   );
 }

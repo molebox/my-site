@@ -7,18 +7,22 @@ interface Props {
     text: string;
     font?: string;
     description: string;
+    isExternal?: boolean;
 }
 
-export default function WritingIndexLink({
+export default function IndexLink({
     text,
     href,
-    description
+    description,
+    isExternal
 }: Props) {
 
     return (
-        <Flex direction="column">
-            <NextLink href={href}>
+        <Flex direction="column" my={5}>
+            <NextLink href={isExternal ? '' : href}>
                 <ChakraLink
+                    href={isExternal ? href : ''}
+                    isExternal={isExternal}
                     color="brand.grey"
                     fontFamily="body"
                     fontSize={["xs", "sm"]}

@@ -1,13 +1,13 @@
 import React from "react";
 import { getAllArticles, POSTS_PATH, Frontmatter } from "utlis/mdx";
-import PostIndexLink from "components/writing/writing-index-link";
+import PostIndexLink from "components/index-link";
 import useSearchBar from "components/writing/useSearchbar"
 import useCategory from "components/writing/useCategory"
 import Searchbar from "components/writing/searchbar"
 import { Flex, List, ListItem, useTheme, Box, Text } from "@chakra-ui/react";
 import uniqBy from 'lodash.uniqby'
 
-import PostLayout from "components/writing/writing-layout";
+import PostLayout from "components/page-layout";
 import Categories from "components/writing/categories";
 
 interface BlogPostsProps {
