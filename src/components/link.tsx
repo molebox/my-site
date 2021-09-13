@@ -25,7 +25,9 @@ export default function Link({
   const [currentPath, setCurrentPath] = useState(false);
 
   useEffect(() => {
-    if (router.asPath.includes(href)) {
+    console.log(router.asPath.slice(1))
+    console.log(href.slice(1))
+    if (href !== '/' && router.asPath.slice(1).includes(href.slice(1))) {
       setCurrentPath(true);
     }
   }, [href, router.asPath]);
@@ -47,7 +49,10 @@ export default function Link({
           }
         `}
         background="linear-gradient(#FF9D00 0 0) 0 100% /var(--d, 0) 2px no-repeat,linear-gradient(#FF9D00 0 0) 100% calc(100% - 6px) /var(--d, 0) 2px no-repeat"
-        transition="0s 0.5s, background-size 0.5s"
+        transition="0s 0.5s, background-size 1s"
+        _focus={{
+          color: "brand.grey",
+        }}
         _hover={{
           cursor: "pointer",
           backgroundPosition: "0% calc(100% - 1px), 100% calc(100% - 1px)",

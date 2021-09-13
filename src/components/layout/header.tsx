@@ -43,8 +43,8 @@ export default function Header() {
             >
                 <Link href="/" text="richardhaines.dev" size="mini" font="body" />
                 <Link href="/writing" text="Writing" size="mini" uppercase font="body" />
-                <Link href="/writing" text="Projects" size="mini" uppercase font="body" />
-                <Link href="/writing" text="Who am i" size="mini" uppercase font="body" />
+                <Link href="/projects" text="Projects" size="mini" uppercase font="body" />
+                <Link href="/who-am-i" text="Who am i" size="mini" uppercase font="body" />
             </Flex>
         </Box>
     );

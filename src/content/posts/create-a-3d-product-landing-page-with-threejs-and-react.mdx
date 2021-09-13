@@ -29,7 +29,7 @@ Our application will be written in React and use [Chakra-ui](https://chakra-ui.c
 
 We will be utilizing Threejs by way of a wonderful React library called [react-three-fiber](https://github.com/pmndrs/react-three-fiber), which allows us to easily interact with Three using common React techniques. The library is a renderer for Three, using it we can skip a lot of mundane work such as scene creation and concentrate on composing our components in a declarative way with props and states. 
 
-The renderer allows us to use all of the Three classes, objects and properties as elements in our markup. All classes constructors arguments can be accessed via an `args` prop. A simple mesh with a box class can be seen below. Don't worry if you don't understand what this means, we will go over everything shortly.
+The renderer allows us to use all of the Three classes, objects and properties as elements in our markup. All classes constructors arguments can be accessed via an _args_ prop. A simple mesh with a box class can be seen below. Don't worry if you don't understand what this means, we will go over everything shortly.
 
 ```jsx
 <mesh visible position={[1, 2, 3]} rotation={[0, 0, 0]}>
@@ -258,7 +258,9 @@ body,
 }
 ```
 
-In order to render something, like a shape, to our canvas we need to use a mesh. A mesh is like a base skeleton that an object is made from, like a wireframe. to create a basic shape, such as a sphere, we would have to attach a geometry so that the wireframe can form into a shape, and a material so that it no longer looks just like a wireframe. I like to think of it like chicken wire. You can have a flat piece of chicken wire which you then form into a shape (geometry attached). You can then cover that chicken wire in some material such as a cloth (material attached). To decide where to place an object on the canvas we can use the position prop on the mesh, this prop takes an array as [x, y, z] which follows the logical axis with z as depth.
+In order to render something, like a shape, to our canvas we need to use a mesh. A mesh is like a base skeleton that an object is made from, like a wireframe. to create a basic shape, such as a sphere, we would have to attach a geometry so that the wireframe can form into a shape, and a material so that it no longer looks just like a wireframe. I like to think of it like chicken wire. 
+
+You can have a flat piece of chicken wire which you then form into a shape (geometry attached). You can then cover that chicken wire in some material such as a cloth (material attached). To decide where to place an object on the canvas we can use the position prop on the mesh, this prop takes an array as [x, y, z] which follows the logical axis with z as depth.
 
 Each Three class takes constructor arguments which enable you to modify it's appearance. To pass these constructor arguments to our Three element we use the args prop which again uses the array syntax.  Let's look at an example of this. The box geometry class accepts 3 main arguments, width, height and depth. These can be used like so with react-three-fiber
 

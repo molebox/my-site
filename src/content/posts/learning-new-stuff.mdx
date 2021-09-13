@@ -53,7 +53,7 @@ The whole concept behind what Docker is and how you can use it is something i'll
 
 So this box can be started and stopped. You can put things in this box and control how they behave. Some of the things you put into the box are called images, these are like snapshots of outside world programs/databases/programs/OSs/some other super cool thing.
 
-One way to control how the things in the box behave is by using a `docker-compose.yml` file. This file will enable you to specify what should be used in the box.
+One way to control how the things in the box behave is by using a _docker-compose.yml_ file. This file will enable you to specify what should be used in the box.
 
 ```bash
 # Set the version of docker compose to use
@@ -73,7 +73,7 @@ services:
       POSTGRES_DB: tests
 ```
 
-This is some high level explanation right now so bear with me. The services are the images or containers that make up the main project. In the above example a `db` container is defined using the `postgres` image,
+This is some high level explanation right now so bear with me. The services are the images or containers that make up the main project. In the above example a _db_ container is defined using the _postgres_ image,
 that is, a cloud image of a postgres instance which is downloaded to the users (the person that runs this container) machine. The environment variables are how an "outside" application could connect to the database.
 
 ### Docker and Prisma....

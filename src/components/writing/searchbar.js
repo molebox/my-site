@@ -11,6 +11,9 @@ export default function SearchBar({ handleSearchQuery }) {
       justify="center"
       alignItems="center"
       my={10}
+      position="sticky"
+      top="75px"
+      bgColor="brand.black"
     >
       <VisuallyHidden as="label" htmlFor="search-posts">
         Search Posts

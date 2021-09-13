@@ -59,17 +59,37 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
           fontWeight={700}
           borderRight={["none", "none", "none", `solid 2px ${theme.colors.brand.black}`]}
         >
-          <Box overflow="hidden">
+          <Box position="relative">
             <Text
               className="reveal"
               fontFamily="heading"
-              fontSize={["sm", "md", "lg", "massive"]}
+              fontSize={["md", "md", "lg", "massive"]}
               letterSpacing={2}
               fontWeight={400}
               css={`
                 word-spacing: 12px;
               `}
               textTransform="uppercase"
+              _before={{
+                content: '""',
+                height: "100%",
+                width: "100%",
+                borderLeft: `solid 2px ${theme.colors.brand.silver}`,
+                position: "absolute",
+                top: 0,
+                left: -5,
+                visibility: ["hidden", "hidden", "hidden", "visible"],
+              }}
+              _after={{
+                content: '""',
+                height: "100%",
+                width: "100%",
+                borderBottom: `solid 2px ${theme.colors.brand.silver}`,
+                position: "absolute",
+                bottom: 5,
+                left: -10,
+                visibility: ["hidden", "hidden", "hidden", "visible"],
+              }}
             >
               Writing
             </Text>

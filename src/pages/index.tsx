@@ -15,7 +15,7 @@ export default function Home({ allArticles }) {
       <Head>
         <title>richardhaines.dev</title>
       </Head>
-      <Flex w="100%" maxW={[400, 800]} as="section" minH="100vh" direction="column" justifyContent="center" m="0 auto">
+      <Flex w="100%" maxW={[300, 800]} as="section" minH="100vh" direction="column" justifyContent="center" m="0 auto">
         <Text
           as="h1"
           fontFamily="heading"
@@ -43,19 +43,19 @@ export default function Home({ allArticles }) {
           <Link
             href="/writing"
             text="Writing"
-            size={["xs", "sm", "md"]}
+            size={["sm", "md"]}
             uppercase
           />
           <Link
-            href="/writing"
+            href="/projects"
             text="Projects"
-            size={["xs", "sm", "md"]}
+            size={["sm", "md"]}
             uppercase
           />
           <Link
-            href="/writing"
+            href="/who-am-i"
             text="Who am i"
-            size={["xs", "sm", "md"]}
+            size={["sm", "md"]}
             uppercase
           />
         </Flex>

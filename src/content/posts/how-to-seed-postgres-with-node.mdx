@@ -21,7 +21,7 @@ The seed script will aim to accomplish the following:
 - Create a csv file and populate it with fake data using the [faker](https://github.com/Marak/Faker.js) library. It will default to 10 rows but allow the user to specify an amount if they like.
 - Parse that data and insert it into the table - seed the database.
 
-Begin by creating a `schema.sql` file at the root of your project. This file will enable you to lay the groundwork for how your database and its table will look.
+Begin by creating a _schema.sql_ file at the root of your project. This file will enable you to lay the groundwork for how your database and its table will look.
 
 ### schema.sql
 
@@ -50,7 +50,7 @@ ALTER TABLE Translations
 
 ### db.js
 
-To interact with the Postgres database, you can install the [node-postgres](https://node-postgres.com/) package, a collection of modules made for interacting with Postgres. You'll use it to establish an initial connection to the database and insert some fake data. Create a new file `src/db.js` and add the following:
+To interact with the Postgres database, you can install the [node-postgres](https://node-postgres.com/) package, a collection of modules made for interacting with Postgres. You'll use it to establish an initial connection to the database and insert some fake data. Create a new file _src/db.js_ and add the following:
 
 ```js
 const { Pool } = require('pg');
@@ -75,7 +75,7 @@ module.exports = {
 };
 ```
 
-The Pool class takes some optional config and the values passed in enable a connection with the database. They are set as environment variables (env vars) and imported from a separate config file. This file exports two functions. The query, which will be used to run an `INSERT` statement, and a connect function which will be used to connect to the database.
+The Pool class takes some optional config and the values passed in enable a connection with the database. They are set as environment variables (env vars) and imported from a separate config file. This file exports two functions. The query, which will be used to run an _INSERT_ statement, and a connect function which will be used to connect to the database.
 
 ### config.js
 
@@ -112,7 +112,7 @@ In a real-world scenario, you would perhaps have some data stored in a csv file.
 yarn add dotenv faker fast-csv minimist pg validator
 ```
 
-Use the Faker library by creating a function that will mimic the shape of the table set in `schema.sql`. It will return a template literal string to be added to a csv file later on.
+Use the Faker library by creating a function that will mimic the shape of the table set in _schema.sql_. It will return a template literal string to be added to a csv file later on.
 
 ```js
 const faker = require('faker');
@@ -142,7 +142,7 @@ const output = './src/output.csv';
 const stream = fs.createWriteStream(output);
 ```
 
-Enabling the user to choose how many rows they would like to seed the database with is an extra and worthwhile step. The `minimist` package helps with parsing argument options. In the case of the script, it allows the user the option to pass in an amount, if the user chooses not to pass any additional arguments then you can set a default value. Create a new function that will write the fake data to the csv file.
+Enabling the user to choose how many rows they would like to seed the database with is an extra and worthwhile step. The _minimist_ package helps with parsing argument options. In the case of the script, it allows the user the option to pass in an amount, if the user chooses not to pass any additional arguments then you can set a default value. Create a new function that will write the fake data to the csv file.
 
 ```js
 // other imports..
@@ -161,7 +161,7 @@ async function writeToCsvFile() {
 }
 ```
 
-Now that the csv file is created and populated with fake data, you can begin the process of actually seeding that data into the Postgres database. `fast-csv` is a library for parsing and formatting csv files. You'll use it in combination with the `validator` library and `node-postgres`.
+Now that the csv file is created and populated with fake data, you can begin the process of actually seeding that data into the Postgres database. _fast-csv_ is a library for parsing and formatting csv files. You'll use it in combination with the _validator_ library and _node-postgres_.
 
 <CodeDump>
 
@@ -221,11 +221,11 @@ function insertFromCsv() {
 
 </CodeDump>
 
-The function first validates the contents of the row using the contains function from the `validator` library. This is necessary because some countries can have an extra comma in their name. An extra comma in a csv file equates to an extra column and the table created and defined in the `schema.sql` file dictates that only 3 columns will exist. If this check fails `fast-csv `will not accept the row and throw an event, which is used to print a message to the console to inform the user.
+The function first validates the contents of the row using the contains function from the _validator_ library. This is necessary because some countries can have an extra comma in their name. An extra comma in a csv file equates to an extra column and the table created and defined in the _schema.sql_ file dictates that only 3 columns will exist. If this check fails _fast-csv _will not accept the row and throw an event, which is used to print a message to the console to inform the user.
 
-If the row is accepted then it is added to an array. Once the parsing is finished and all the row data is added to the array the connection is established with the Postgres database. The data array is then iterated over, for each row in the array a client instance is acquired from the pool and an `INSERT` query is used as an argument, along with the row data. If the row is successfully inserted into the table then its corresponding data is printed to the console, if any errors occur they are also printed to the console. Finally, the done function is called to release the clients back to the pool.
+If the row is accepted then it is added to an array. Once the parsing is finished and all the row data is added to the array the connection is established with the Postgres database. The data array is then iterated over, for each row in the array a client instance is acquired from the pool and an _INSERT_ query is used as an argument, along with the row data. If the row is successfully inserted into the table then its corresponding data is printed to the console, if any errors occur they are also printed to the console. Finally, the done function is called to release the clients back to the pool.
 
-The final function called seed is where the data is written to the csv file, a stream is created to read the data from the output file and then the `INSERT` function is piped to the stream.
+The final function called seed is where the data is written to the csv file, a stream is created to read the data from the output file and then the _INSERT_ function is piped to the stream.
 
 ```js
 // all the other code from main.js
@@ -239,7 +239,7 @@ async function seed() {
 seed();
 ```
 
-Add two scripts to the `package.json` file. The first `create-db` will ask the user to login and connect to their Postgres database and then run the commands in the `schema.sql` file. The second script will run the first before running the seed function.
+Add two scripts to the _package.json_ file. The first _create-db_ will ask the user to login and connect to their Postgres database and then run the commands in the _schema.sql_ file. The second script will run the first before running the seed function.
 
 The user may run the script with additional arguments to set the number of rows created in the table.
 

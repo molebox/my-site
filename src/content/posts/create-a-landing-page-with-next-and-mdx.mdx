@@ -69,7 +69,7 @@ module.exports = withMDX({
 });
 ```
 
-Now we can run `yarn dev`, Next will spin up a dev server for us on port 3000, and if everything went well we should see the contents of our index.mdx file - MDX is amazing!
+Now we can run _yarn dev_, Next will spin up a dev server for us on port 3000, and if everything went well we should see the contents of our index.mdx file - MDX is amazing!
 
 ## Get some styling in there
 
@@ -216,7 +216,7 @@ export default MyApp;
 
 ## MDX Components
 
-MDX is just markdown that can render React components. That means that as well as using typical markdown syntax such as the pounds for titles and dashes for lists we can map custom components to these default markdown elements, enabling us to personalise our file while at the same time writing it in standard markdown syntax. Lets add use some of the Chakra components and map them to our markdown elements and pass them into the MDXProvider.
+MDX is just markdown that can render React components. That means that as well as using typical markdown syntax such as the pounds for titles and dashes for lists we can map custom components to these default markdown elements, enabling us to personalize our file while at the same time writing it in standard markdown syntax. Lets add use some of the Chakra components and map them to our markdown elements and pass them into the MDXProvider.
 
 ```jsx
 //  Creating the components mapping
@@ -386,7 +386,9 @@ const Layout = ({ children }) => {
 };
 ```
 
-We take advantage of the Chakra Grid component and pass in any children, these will amount to the columns and rows. Our page will be responsive so and look like a poster. We have used percentages for the rows as this gives us some flexibility when the viewport changes size. Our 3 columns are set to take up all available space. We set a grid gap and the background color to our grey/white, that way the gaps appear to actually be the background of the page. By giving the grid a max width of 1000px we are keeping to the poster format and our classic margin trick of vertical 0, horizontal auto centers the whole thing.
+We take advantage of the Chakra Grid component and pass in any children, these will amount to the columns and rows. Our page will be responsive so and look like a poster. We have used percentages for the rows as this gives us some flexibility when the viewport changes size. Our 3 columns are set to take up all available space. We set a grid gap and the background color to our grey/white, that way the gaps appear to actually be the background of the page. 
+
+By giving the grid a max width of 1000px we are keeping to the poster format and our classic margin trick of vertical 0, horizontal auto centers the whole thing.
 
 Moving on to our header component then.
 
@@ -415,7 +417,9 @@ const Header = ({ children }) => {
 export default Header;
 ```
 
-This will be the black strip that runs along the top of the page and houses 3 pieces of text. Chakras Flex component is basically just a div with some nice flex like defaults, for example, if we don't specify it will default to flex-direction="row". Another nice touch that should be utilized when using Chakra is the as prop. With this we can keep our components and in turn our HTML semantic. Our header is in fact a header so we set it as so. The grid row is quite obvious. The grid column however may look a little strange but really its quite simple. We are saying that this component should start at column 1 and end at the last columns edge. Much like if we were to grab the last element form an array, -1 tells grid that we want the end.
+This will be the black strip that runs along the top of the page and houses 3 pieces of text. Chakras Flex component is basically just a div with some nice flex like defaults, for example, if we don't specify it will default to flex-direction="row". Another nice touch that should be utilized when using Chakra is the as prop. With this we can keep our components and in turn our HTML semantic. Our header is in fact a header so we set it as so. 
+
+The grid row is quite obvious. The grid column however may look a little strange but really its quite simple. We are saying that this component should start at column 1 and end at the last columns edge. Much like if we were to grab the last element form an array, -1 tells grid that we want the end.
 
 Our header component accepts children, those children will be our next component, the HeaderText.
 
