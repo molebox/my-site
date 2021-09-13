@@ -35,25 +35,19 @@ export default function Menu() {
           richardhaines.dev
         </Text>
         <NavLink
-          href="/posts"
-          text="Blog posts"
+          href="/writing"
+          text="Writing"
           size={["xs", "sm", "md"]}
           uppercase
         />
         <NavLink
-          href="/posts"
-          text="Short stories"
-          size={["xs", "sm", "md"]}
-          uppercase
-        />
-        <NavLink
-          href="/posts"
+          href="/projects"
           text="Projects"
           size={["xs", "sm", "md"]}
           uppercase
         />
         <NavLink
-          href="/posts"
+          href="/who-am-i"
           text="Who am i"
           size={["xs", "sm", "md"]}
           uppercase
