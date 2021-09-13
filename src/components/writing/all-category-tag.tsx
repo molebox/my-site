@@ -13,7 +13,7 @@ const AllCategoryTag = ({ handleCategoryQuery, ...rest }) => {
             fontFamily="body"
             fontSize="mini"
             justifyContent="center"
-            h={["50px", "150px"]}
+            h={["50px", "100px"]}
             minW="100px"
             borderRadius={0}
             border={`solid 1px ${theme.colors.brand.black}`}

@@ -11,7 +11,7 @@ export default function Menu() {
       as="section"
       h="100vh"
       justifyContent="center"
-      top={state.menuOpen ? 0 : -1000}
+      top={state.menuOpen ? 0 : -2500}
       transition="top 650ms ease-in-out"
       position="fixed"
       bottom={0}
@@ -21,7 +21,7 @@ export default function Menu() {
       flexGrow={1}
       alignItems="center"
       backgroundColor="brand.black"
-      zIndex={9999}
+      zIndex={999}
     >
       <Flex maxW={1000} p={1} direction="column" justify="center">
         <Text
