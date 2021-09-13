@@ -9,7 +9,6 @@ import uniqBy from 'lodash.uniqby'
 
 import PostLayout from "components/writing/writing-layout";
 import Categories from "components/writing/categories";
-import { useState } from "react";
 
 interface BlogPostsProps {
   posts: Frontmatter[]
@@ -39,6 +38,7 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
   return (
     <PostLayout>
       <Flex
+        as="section"
         direction={["column", "column", "column", "row"]}
         w="100%"
         mb={10}
@@ -101,7 +101,7 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
           handleCategoryQuery={handleCategoryQuery}
         />
       </Flex>
-      <Box w={[300, 400, 500, 1000]} minH="100vh" h="100%" m={["2rem auto", "0 1rem", "0 auto"]}>
+      <Box as="section" w={[300, 400, 500, 1000]} minH="100vh" h="100%" m={["2rem auto", "0 1rem", "0 auto"]}>
         <Searchbar
           handleSearchQuery={handleSearchQuery}
         />

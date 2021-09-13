@@ -2,20 +2,16 @@ import Head from "next/head";
 import Layout from "components/layout/layout";
 import { Flex, useTheme, Text } from "@chakra-ui/react";
 import Link from "components/link";
-import uniqBy from 'lodash.uniqby'
-import { getAllArticles, POSTS_PATH } from "utlis/mdx";
 
-export default function Home({ allArticles }) {
+export default function Home() {
   const theme = useTheme()
-  console.log({ allArticles })
-  const articles = uniqBy(allArticles, 'frontmatter.category')
-  console.log({ articles })
+
   return (
     <Layout>
       <Head>
         <title>richardhaines.dev</title>
       </Head>
-      <Flex w="100%" maxW={[300, 800]} as="section" minH="100vh" direction="column" justifyContent="center" m="0 auto">
+      <Flex as="section" w="100%" maxW={[300, 800]} minH="100vh" direction="column" justifyContent="center" m="0 auto">
         <Text
           as="h1"
           fontFamily="heading"
@@ -65,16 +61,6 @@ export default function Home({ allArticles }) {
       </Flex>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  const allArticles = getAllArticles(POSTS_PATH)
-
-  return {
-    props: {
-      allArticles,
-    },
-  };
 }
 
 // Home.getLayout = function getLayout(page: ReactElement) {

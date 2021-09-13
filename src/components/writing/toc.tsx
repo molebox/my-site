@@ -127,7 +127,7 @@ export default function Toc({ previous, next }: TocProps) {
             </Text>
             <Text
               color="brand.black"
-              fontFamily="heading"
+              fontFamily="body"
               fontSize={["mini", "xs"]}
               fontWeight={700}
               my={[10, 5]}

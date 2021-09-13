@@ -12,7 +12,7 @@ export default function CopyButton({ value }) {
       letterSpacing={2}
       role="button"
       onClick={onCopy}
-      fontSize="xs"
+      fontSize="mini"
       bgColor="brand.black"
       fontFamily="body"
       mr={10}
