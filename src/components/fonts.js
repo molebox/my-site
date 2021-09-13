@@ -9,6 +9,7 @@ const Fonts = () => (
         font-family: 'Pomfret Web';
         font-style: normal;
         font-weight: 400;
+        font-display: swap;
       }
       `}
   />
