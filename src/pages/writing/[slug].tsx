@@ -54,7 +54,7 @@ export default function Post({
                         <Text
                             className="reveal"
                             fontFamily="heading"
-                            fontSize={["header", "header", "md", "lg"]}
+                            fontSize={["header", "header", "sm", "lg"]}
                             letterSpacing={2}
                             css={`
                                 word-spacing: 12px;
