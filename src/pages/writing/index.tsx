@@ -64,9 +64,6 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
               fontSize={["md", "md", "lg", "massive"]}
               letterSpacing={2}
               fontWeight={400}
-              _focus={{
-                outline: "none"
-              }}
               css={`
                 word-spacing: 12px;
                 @keyframes blink {
@@ -85,7 +82,7 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
                 top: 0,
                 left: -5,
                 visibility: ["hidden", "hidden", "hidden", "visible"],
-                animation: "blink 1.3s linear infinite"
+                animation: "blink 0.6s linear alternate infinite"
               }}
               _after={{
                 content: '""',
