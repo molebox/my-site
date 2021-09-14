@@ -8,7 +8,7 @@ import {
 } from "utlis/mdx";
 import { components } from "utlis/shortcodes";
 import { Flex, Text, Box, usePrefersReducedMotion } from "@chakra-ui/react";
-import PostLayout from "components/page-layout";
+import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 
 interface PostProps {

@@ -1,6 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import Header from "components/layout/header";
 import Menu from "components/layout/menu";
+import Footer from "./footer";
 
 export default function PageLayout({ children }) {
   return (
@@ -10,6 +11,7 @@ export default function PageLayout({ children }) {
       <Flex as="main" direction="column" pt="4.5rem">
         {children}
       </Flex>
+      <Footer/>
     </Flex>
   );
 }

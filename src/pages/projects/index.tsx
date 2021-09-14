@@ -1,6 +1,6 @@
 
 import { Flex, Text, useTheme, Box } from '@chakra-ui/react';
-import ProjectsLayout from 'components/page-layout';
+import ProjectsLayout from 'components/layout/page-layout';
 import ProjectIndexLink from 'components/index-link'
 
 export default function Projects() {

@@ -25,8 +25,6 @@ export default function Link({
   const [currentPath, setCurrentPath] = useState(false);
 
   useEffect(() => {
-    console.log(router.asPath.slice(1))
-    console.log(href.slice(1))
     if (href !== '/' && router.asPath.slice(1).includes(href.slice(1))) {
       setCurrentPath(true);
     }

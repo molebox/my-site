@@ -2,16 +2,15 @@
 import { Grid } from '@chakra-ui/react';
 import AllCategoryTag from './all-category-tag';
 import CategoryTag from './category-tag';
-import { Frontmatter } from "utlis/mdx";
+import { PostDetails } from './toc';
 
 interface CategoryBarProps {
-  categoriesList: any;
+  categoriesList: PostDetails[];
   handleCategoryQuery: () => void;
   numberOfPosts: number;
 }
 
 export default function CategoryBar({ categoriesList, handleCategoryQuery, numberOfPosts }: CategoryBarProps) {
-console.log({ categoriesList, handleCategoryQuery, numberOfPosts })
   return (
       <Grid 
       templateColumns="repeat(auto-fill, minmax(150px, 1fr))"

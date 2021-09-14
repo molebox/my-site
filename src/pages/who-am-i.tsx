@@ -1,7 +1,7 @@
 
 import { Flex, Text, Box, useTheme } from '@chakra-ui/react';
 import ExternalLink from 'components/external-link';
-import WhoAmILayout from "components/page-layout";
+import WhoAmILayout from "components/layout/page-layout";
 import Image from 'next/image'
 import imageOfme from "../../public/cartoon-me-no-bg.png"
 

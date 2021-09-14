@@ -7,11 +7,12 @@ import Searchbar from "components/writing/searchbar"
 import { Flex, List, ListItem, useTheme, Box, Text } from "@chakra-ui/react";
 import uniqBy from 'lodash.uniqby'
 
-import PostLayout from "components/page-layout";
+import PostLayout from "components/layout/page-layout";
 import CategoryBar from "components/writing/category-bar";
+import { PostDetails } from "components/writing/toc";
 
 interface BlogPostsProps {
-  posts: Frontmatter[]
+  posts: PostDetails[]
 }
 
 export default function BlogPosts({ posts }: BlogPostsProps) {
