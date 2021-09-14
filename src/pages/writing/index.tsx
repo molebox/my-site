@@ -10,6 +10,20 @@ import uniqBy from 'lodash.uniqby'
 import PostLayout from "components/layout/page-layout";
 import CategoryBar from "components/writing/category-bar";
 import { PostDetails } from "components/writing/toc";
+import getShareImage from '@jlengstorf/get-share-image/src/index.js';
+
+
+const socialImage = getShareImage({
+  title: 'Deploy a Node.js App to DigitalOcean with SSL',
+  tagline: '#devops #nodejs #ssl',
+  cloudName: 'jlengstorf',
+  imagePublicID: 'lwj/blog-post-card',
+  titleFont: 'futura',
+  taglineFont: 'futura',
+  textColor: '232129',
+  taglineColor: '',
+  titleColor: ''
+});
 
 interface BlogPostsProps {
   posts: PostDetails[]

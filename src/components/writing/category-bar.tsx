@@ -12,23 +12,23 @@ interface CategoryBarProps {
 
 export default function CategoryBar({ categoriesList, handleCategoryQuery, numberOfPosts }: CategoryBarProps) {
   return (
-      <Grid 
-      templateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+    <Grid
+      templateColumns="repeat(auto-fill, minmax(100px, 1fr))"
       gap={1}
       templateRows={["auto", "1fr"]}
       alignItems="center"
       h="auto"
       w="100%"
-      >
-            <AllCategoryTag handleCategoryQuery={handleCategoryQuery} />
-            {categoriesList.map(({ frontmatter }, index) => (
-                <CategoryTag
-                    key={frontmatter.category + index}
-                    category={frontmatter.category}
-                    numberOfPosts={numberOfPosts}
-                    handleCategoryQuery={handleCategoryQuery}
-                />
-            ))}
-      </Grid>
+    >
+      <AllCategoryTag handleCategoryQuery={handleCategoryQuery} />
+      {categoriesList.map(({ frontmatter }, index) => (
+        <CategoryTag
+          key={frontmatter.category + index}
+          category={frontmatter.category}
+          numberOfPosts={numberOfPosts}
+          handleCategoryQuery={handleCategoryQuery}
+        />
+      ))}
+    </Grid>
   )
 }
