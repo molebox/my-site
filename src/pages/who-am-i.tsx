@@ -1,6 +1,9 @@
 
 import { Flex, Text, Box, useTheme } from '@chakra-ui/react';
+import ExternalLink from 'components/external-link';
 import WhoAmILayout from "components/page-layout";
+import Image from 'next/image'
+import imageOfme from "../../public/cartoon-me-no-bg.png"
 
 
 export default function WhoAmI() {
@@ -10,9 +13,9 @@ export default function WhoAmI() {
     <WhoAmILayout>
       <Flex
         as="section"
-        direction={["column", "column", "column", "row"]}
         w="100%"
-        mb={10}
+        justifyContent="center"
+        alignItems="center"
         borderBottom="solid 2px"
         borderColor="brand.grey"
         minH={300}>
@@ -64,6 +67,27 @@ export default function WhoAmI() {
               Who am i
             </Text>
           </Box>
+        </Flex>
+      </Flex>
+      <Flex 
+      direction={["column", "column", "column", "row"]} 
+      minH={600}
+      h="auto"
+      justifyContent="center"
+      alignItems="center"
+      w={[300, 400, 500, 1440]}
+      m="0 auto"
+      pb={10}
+      >
+        <Image src={imageOfme} alt="A hand drawn image of Rich Haines wearing an Oasis tee" width={400} height={600} placeholder="blur"/>
+        <Flex 
+        direction="column" 
+        maxW={500}
+        mt={[0, 20]}
+        >
+          <Text my={5} color="brand.grey" fontSize={["mini","xs"]}>Hey friends! My name is Rich Haines, I'm the Director of Documentation at <ExternalLink href="https://vercel.com/" text="Vercel" font="body" size={["mini","xs"]}/>.</Text>
+          <Text my={5} color="brand.grey" fontSize={["mini","xs"]}>When I'm not creating random side projects and delving into docs, I enjoy chilling with my family (I've got 3 little rascals), playing guitar and watching my beloved <ExternalLink href="https://www.tottenhamhotspur.com/" text="Tottenham Hotspur" font="body" size={["mini","xs"]}/>.</Text>
+          <Text my={10} color="brand.silver" fontSize="mini">(Psst, you see that cool picture of me? My wife draw that! She's super talented isn't she!)</Text>
         </Flex>
       </Flex>
     </WhoAmILayout>

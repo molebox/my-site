@@ -99,7 +99,7 @@ export default function Toc({ previous, next }: TocProps) {
             ))}
           </List>
         ) : (
-          <Flex direction="column" minH={300} px={10}>
+          <Flex direction="column" minH={300} px={10} alignItems={["center", "flex-start"]}>
             <Text
               as="q"
               color="brand.grey"
@@ -145,7 +145,7 @@ export default function Toc({ previous, next }: TocProps) {
           borderTop={"solid 2px"}
           borderColor="brand.grey"
           w="100%"
-          position="absolute"
+          position={["relative", "absolute"]}
           bottom={0}
           h="auto"
           justifyContent="space-evenly"

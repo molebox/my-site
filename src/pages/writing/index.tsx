@@ -8,7 +8,7 @@ import { Flex, List, ListItem, useTheme, Box, Text } from "@chakra-ui/react";
 import uniqBy from 'lodash.uniqby'
 
 import PostLayout from "components/page-layout";
-import Categories from "components/writing/categories";
+import CategoryBar from "components/writing/category-bar";
 
 interface BlogPostsProps {
   posts: Frontmatter[]
@@ -19,7 +19,6 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
   const [filteredPosts, setFilteredPosts] = React.useState([]);
   const { categories, handleCategoryQuery } = useCategory(posts);
   const theme = useTheme()
-
 
   // Get a unique list of all the categories from the frontmatter
   const categoriesList = uniqBy(posts, 'frontmatter.category')
@@ -39,13 +38,12 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
     <PostLayout>
       <Flex
         as="section"
-        direction={["column", "column", "column", "row"]}
         w="100%"
-        mb={10}
+        justifyContent="center"
+        alignItems="center"
         borderBottom="solid 2px"
         borderColor="brand.grey"
-        minH={300}
-      >
+        minH={[200, 300]}>
         <Flex
           direction="column"
           justifyContent="center"
@@ -95,17 +93,16 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
             </Text>
           </Box>
         </Flex>
-        <Categories
-          categoriesList={categoriesList}
-          numberOfPosts={filteredPosts.length}
-          handleCategoryQuery={handleCategoryQuery}
-        />
       </Flex>
       <Box as="section" w={[300, 400, 500, 1000]} minH="100vh" h="100%" m={["2rem auto", "0 1rem", "0 auto"]}>
         <Searchbar
           handleSearchQuery={handleSearchQuery}
         />
-
+        <CategoryBar
+          categoriesList={categoriesList}
+          numberOfPosts={filteredPosts.length}
+          handleCategoryQuery={handleCategoryQuery}
+        />
         <List>
           {filteredPosts.map((post, index) => (
             <ListItem my={5} key={index} w="fit-content">

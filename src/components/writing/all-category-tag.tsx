@@ -6,30 +6,55 @@ const AllCategoryTag = ({ handleCategoryQuery, ...rest }) => {
     const theme = useTheme()
     return (
         <Button
-            {...rest}
-            bg="brand.silver"
-            color="brand.black"
-            variant="solid"
-            fontFamily="body"
-            fontSize="mini"
-            justifyContent="center"
-            h={["50px", "100px"]}
-            minW="100px"
-            borderRadius={0}
-            border={`solid 1px ${theme.colors.brand.black}`}
-            onClick={() => getCategory("All")}
-            _hover={{
-                cursor: "pointer",
-                backgroundColor: "brand.grey",
-            }}
-            _focus={{
-                backgroundColor: "brand.grey",
-                color: "brand.black",
-            }}
-            className="cat-tag"
-        >
-            All
-        </Button>
+        {...rest}
+        bg="brand.silver"
+        color="brand.black"
+        variant="solid"
+        fontFamily="body"
+        fontSize="mini"
+        justifyContent="center"
+        h={50}
+        minW="100px"
+        borderRadius={0}
+        border={`solid 1px ${theme.colors.brand.black}`}
+        onClick={() => getCategory("All")}
+        _hover={{
+            cursor: "pointer",
+            backgroundColor: "brand.grey",
+        }}
+        _focus={{
+            backgroundColor: "brand.grey",
+            color: "brand.black",
+        }}
+        className="cat-tag"
+    >
+        All
+    </Button>
+        // <Button
+        //     {...rest}
+        //     bg="brand.silver"
+        //     color="brand.black"
+        //     variant="solid"
+        //     fontFamily="body"
+        //     fontSize="mini"
+        //     justifyContent="center"
+        //     h={["50px", "100px"]}
+        //     minW="100px"
+        //     borderRadius={0}
+        //     border={`solid 1px ${theme.colors.brand.black}`}
+        //     onClick={() => getCategory("All")}
+        //     _hover={{
+        //         cursor: "pointer",
+        //         backgroundColor: "brand.grey",
+        //     }}
+        //     _focus={{
+        //         backgroundColor: "brand.grey",
+        //         color: "brand.black",
+        //     }}
+        //     className="cat-tag"
+        // >
+        //     All
+        // </Button>
     );
 };
 
