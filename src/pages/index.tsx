@@ -7,7 +7,6 @@ import ExternalLink from "components/external-link";
 
 export default function Home() {
   const theme = useTheme()
-
   return (
     <Layout>
       <Head>
@@ -22,6 +21,7 @@ export default function Home() {
         justifyContent="center"
         m="0 auto">
         <Text
+        className="title"
           as="h1"
           fontFamily="heading"
           fontSize={["xs", "xs", "sm", "sm"]}
@@ -32,6 +32,7 @@ export default function Home() {
           richardhaines.dev
         </Text>
         <Text
+          className="chapters"
           as="h2"
           fontFamily="body"
           fontSize="mini"
@@ -41,23 +42,37 @@ export default function Home() {
           textTransform="uppercase"
           my={5}
           borderBottom={`solid 2px ${theme.colors.brand.silver}`}
+          animation="expand border-bottom .5s ease-in"
+          css={`
+           @keyframes expand {
+             from: {
+               transform: scale(0)
+             }
+             to: {
+               transform: scale(1);
+             }
+           }
+          `}
         >
           chapters
         </Text>
         <Flex direction="column" w="fit-content">
           <Link
+          className="writing"
             href="/writing"
             text="Writing"
             size={["sm", "md"]}
             uppercase
           />
           <Link
+          className="projects"
             href="/projects"
             text="Projects"
             size={["sm", "md"]}
             uppercase
           />
           <Link
+          className="who"
             href="/who-am-i"
             text="Who am i"
             size={["sm", "md"]}

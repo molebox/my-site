@@ -60,13 +60,20 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
         >
           <Box position="relative">
             <Text
-              className="reveal"
               fontFamily="heading"
               fontSize={["md", "md", "lg", "massive"]}
               letterSpacing={2}
               fontWeight={400}
+              _focus={{
+                outline: "none"
+              }}
               css={`
                 word-spacing: 12px;
+                @keyframes blink {
+                  0%{opacity: 0;}
+                  50%{opacity: .5;}
+                  100%{opacity: 1;}
+                  }
               `}
               textTransform="uppercase"
               _before={{
@@ -78,6 +85,7 @@ export default function BlogPosts({ posts }: BlogPostsProps) {
                 top: 0,
                 left: -5,
                 visibility: ["hidden", "hidden", "hidden", "visible"],
+                animation: "blink 1.3s linear infinite"
               }}
               _after={{
                 content: '""',

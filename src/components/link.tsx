@@ -11,6 +11,7 @@ interface Props {
   uppercase?: boolean;
   font?: string;
   isExternal?: boolean;
+  className?: string;
 }
 
 export default function Link({
@@ -19,7 +20,8 @@ export default function Link({
   size,
   uppercase = false,
   font = "heading",
-  isExternal
+  isExternal,
+  className
 }: Props) {
   const router = useRouter();
   const [currentPath, setCurrentPath] = useState(false);
@@ -33,6 +35,7 @@ export default function Link({
   return (
     <NextLink href={isExternal ? '' : href}>
       <ChakraLink
+        className={className}
         href={isExternal ? href : ''}
         isExternal={isExternal}
         color={currentPath ? "brand.grey" : "brand.silver"}
