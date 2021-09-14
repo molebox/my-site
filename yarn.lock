@@ -1021,7 +1021,7 @@
 
 "@jlengstorf/get-share-image@https://github.com/molebox/get-share-image.git":
   version "0.8.0"
-  resolved "https://github.com/molebox/get-share-image.git#b23557d44b3872134585c7fe3e1172ebfc23cfd2"
+  resolved "https://github.com/molebox/get-share-image.git#c68a105beeafcb625110a4b5a3de6c45e871b322"
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"

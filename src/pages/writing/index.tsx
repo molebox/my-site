@@ -10,7 +10,7 @@ import uniqBy from 'lodash.uniqby'
 import PostLayout from "components/layout/page-layout";
 import CategoryBar from "components/writing/category-bar";
 import { PostDetails } from "components/writing/toc";
-import getShareImage from '@jlengstorf/get-share-image/src/index.js';
+import getShareImage from '@jlengstorf/get-share-image/src/index';
 
 
 const socialImage = getShareImage({
