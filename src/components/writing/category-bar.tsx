@@ -5,7 +5,7 @@ import CategoryTag from './category-tag';
 import { Frontmatter } from "utlis/mdx";
 
 interface CategoryBarProps {
-  categoriesList: Frontmatter[];
+  categoriesList: any;
   handleCategoryQuery: () => void;
   numberOfPosts: number;
 }
