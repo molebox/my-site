@@ -16,7 +16,6 @@
     "@emotion/styled": "^11",
     "@fontsource/inconsolata": "^4.5.0",
     "@fontsource/inter": "^4.5.0",
-    "@jlengstorf/get-share-image": "https://github.com/molebox/get-share-image.git",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "esbuild": "^0.12.24",
