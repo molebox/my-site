@@ -21,7 +21,7 @@ async function getOgImage(path, baseUrl = 'https://richardhaines-og-image.vercel
   });
 
   const page = await browser.newPage();
-  await page.setViewportSize({ width: 1200, height: 630 });
+  await page.setViewport({ width: 1200, height: 630 });
   await page.goto(url, { waitUntil: 'networkidle' });
   const buffer = await page.screenshot({ type: 'png' });
   await browser.close();
