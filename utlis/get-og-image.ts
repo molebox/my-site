@@ -1,4 +1,5 @@
 import chrome from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer';
 import { createHash } from 'crypto';
 import fs from 'fs';
 
@@ -14,7 +15,7 @@ async function getOgImage(path, baseUrl = 'https://richardhaines-og-image.vercel
   const imagePath = `${ogImageDir}/${hash}.png`;
   const publicPath = `${process.env.BASE_URL}/og-images/${hash}.png`;
 
-  const browser = await chrome.puppeteer.launch({
+  const browser = await puppeteer.launch({
     args: chrome.args,
     executablePath: await chrome.executablePath,
     headless: chrome.headless
