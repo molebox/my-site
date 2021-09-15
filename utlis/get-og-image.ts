@@ -17,7 +17,8 @@ async function getOgImage(path, baseUrl = 'https://richardhaines-og-image.vercel
 
   const browser = await puppeteer.launch({
     args: chrome.args,
-    executablePath: await chrome.executablePath,
+    // executablePath: await chrome.executablePath,
+    executablePath: '/usr/local/bin/chromium',
     headless: chrome.headless
   });
 
