@@ -11,7 +11,7 @@ export default function PageLayout({ children }) {
       <Flex as="main" direction="column" pt="4.5rem">
         {children}
       </Flex>
-      <Footer/>
+      <Footer />
     </Flex>
   );
 }

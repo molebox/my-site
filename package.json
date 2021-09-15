@@ -27,6 +27,8 @@
     "mdx-embed": "^0.0.19",
     "next": "11.1.2",
     "next-seo": "^4.26.0",
+    "playwright-aws-lambda": "^0.7.0",
+    "playwright-core": "^1.14.1",
     "prism-react-renderer": "^1.2.1",
     "react": "17.0.2",
     "react-animated-burgers": "^1.2.8",

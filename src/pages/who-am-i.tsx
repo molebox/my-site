@@ -1,13 +1,11 @@
-
-import { Flex, Text, Box, useTheme } from '@chakra-ui/react';
-import ExternalLink from 'components/external-link';
+import { Flex, Text, Box, useTheme } from "@chakra-ui/react";
+import ExternalLink from "components/external-link";
 import WhoAmILayout from "components/layout/page-layout";
-import Image from 'next/image'
-import imageOfme from "../../public/cartoon-me-no-bg.png"
-
+import Image from "next/image";
+import imageOfme from "../../public/cartoon-me-no-bg.png";
 
 export default function WhoAmI() {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <WhoAmILayout>
@@ -18,7 +16,8 @@ export default function WhoAmI() {
         alignItems="center"
         borderBottom="solid 2px"
         borderColor="brand.grey"
-        minH={300}>
+        minH={300}
+      >
         <Flex
           direction="column"
           justifyContent="center"
@@ -30,7 +29,12 @@ export default function WhoAmI() {
           bgColor="brand.black"
           color="brand.grey"
           fontWeight={700}
-          borderRight={["none", "none", "none", `solid 2px ${theme.colors.brand.black}`]}
+          borderRight={[
+            "none",
+            "none",
+            "none",
+            `solid 2px ${theme.colors.brand.black}`,
+          ]}
         >
           <Box position="relative">
             <Text
@@ -80,18 +84,44 @@ export default function WhoAmI() {
         pb={10}
       >
         <Box opacity={0.7}>
-          <Image src={imageOfme} alt="A hand drawn image of Rich Haines wearing an Oasis tee" width={400} height={600} placeholder="blur" />
+          <Image
+            src={imageOfme}
+            alt="A hand drawn image of Rich Haines wearing an Oasis tee"
+            width={400}
+            height={600}
+            placeholder="blur"
+          />
         </Box>
-        <Flex
-          direction="column"
-          maxW={500}
-          mt={[0, 20]}
-        >
-          <Text my={5} color="brand.grey" fontSize={["mini", "xs"]}>Hey friends! My name is Rich Haines, I'm the Director of Documentation at <ExternalLink href="https://vercel.com/" text="Vercel" font="body" size={["mini", "xs"]} />.</Text>
-          <Text my={5} color="brand.grey" fontSize={["mini", "xs"]}>When I'm not creating random side projects and delving into docs, I enjoy chilling with my family (I've got 3 little rascals), playing guitar and watching my beloved <ExternalLink href="https://www.tottenhamhotspur.com/" text="Tottenham Hotspur" font="body" size={["mini", "xs"]} />.</Text>
-          <Text my={10} color="brand.silver" fontSize="mini">(Psst, you see that cool picture of me? My wife draw that! She's super talented isn't she!)</Text>
+        <Flex direction="column" maxW={500} mt={[0, 20]}>
+          <Text my={5} color="brand.grey" fontSize={["mini", "xs"]}>
+            Hey friends! My name is Rich Haines, I'm the Director of
+            Documentation at{" "}
+            <ExternalLink
+              href="https://vercel.com/"
+              text="Vercel"
+              font="body"
+              size={["mini", "xs"]}
+            />
+            .
+          </Text>
+          <Text my={5} color="brand.grey" fontSize={["mini", "xs"]}>
+            When I'm not creating random side projects and delving into docs, I
+            enjoy chilling with my family (I've got 3 little rascals), playing
+            guitar and watching my beloved{" "}
+            <ExternalLink
+              href="https://www.tottenhamhotspur.com/"
+              text="Tottenham Hotspur"
+              font="body"
+              size={["mini", "xs"]}
+            />
+            .
+          </Text>
+          <Text my={10} color="brand.silver" fontSize="mini">
+            (Psst, you see that cool picture of me? My wife draw that! She's
+            super talented isn't she!)
+          </Text>
         </Flex>
       </Flex>
     </WhoAmILayout>
-  )
+  );
 }

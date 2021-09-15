@@ -35,7 +35,7 @@ export default function ExternalLink({
       background="linear-gradient(#FF9D00 0 0) 0 100% /var(--d, 0) 2px no-repeat,linear-gradient(#FF9D00 0 0) 100% calc(100% - 6px) /var(--d, 0) 2px no-repeat"
       transition="0s 0.5s, background-size 0.5s"
       _focus={{
-          color: "brand.silver",
+        color: "brand.silver",
       }}
       _hover={{
         cursor: "pointer",

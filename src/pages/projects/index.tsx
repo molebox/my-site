@@ -1,21 +1,21 @@
-
-import { Flex, Text, useTheme, Box } from '@chakra-ui/react';
-import ProjectsLayout from 'components/layout/page-layout';
-import ProjectIndexLink from 'components/index-link'
+import { Flex, Text, useTheme, Box } from "@chakra-ui/react";
+import ProjectsLayout from "components/layout/page-layout";
+import ProjectIndexLink from "components/index-link";
 
 export default function Projects() {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <ProjectsLayout>
-            <Flex
+      <Flex
         as="section"
         w="100%"
         justifyContent="center"
         alignItems="center"
         borderBottom="solid 2px"
         borderColor="brand.grey"
-        minH={300}>
+        minH={300}
+      >
         <Flex
           direction="column"
           justifyContent="center"
@@ -27,7 +27,12 @@ export default function Projects() {
           bgColor="brand.black"
           color="brand.grey"
           fontWeight={700}
-          borderRight={["none", "none", "none", `solid 2px ${theme.colors.brand.black}`]}
+          borderRight={[
+            "none",
+            "none",
+            "none",
+            `solid 2px ${theme.colors.brand.black}`,
+          ]}
         >
           <Box position="relative">
             <Text
@@ -130,5 +135,5 @@ export default function Projects() {
         />
       </Flex>
     </ProjectsLayout>
-  )
+  );
 }

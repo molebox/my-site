@@ -38,7 +38,10 @@ export default function Toc({ previous, next }: TocProps) {
       });
     };
 
-    const observer = new IntersectionObserver(callback, { threshold: [1.0], rootMargin: '30%' });
+    const observer = new IntersectionObserver(callback, {
+      threshold: [1.0],
+      rootMargin: "30%",
+    });
 
     const headings = Array.from(headingElements)
       .filter((heading) => heading.id !== "table-of-contents")
@@ -99,7 +102,12 @@ export default function Toc({ previous, next }: TocProps) {
             ))}
           </List>
         ) : (
-          <Flex direction="column" minH={300} px={10} alignItems={["center", "flex-start"]}>
+          <Flex
+            direction="column"
+            minH={300}
+            px={10}
+            alignItems={["center", "flex-start"]}
+          >
             <Text
               as="q"
               color="brand.grey"
@@ -170,7 +178,13 @@ export default function Toc({ previous, next }: TocProps) {
               />
             </Flex>
           ) : (
-            <Flex direction="column" w={["100%", "100%", "50%", "50%"]} p={5} borderRight={["none", "solid 2px #EDEDED"]} borderBottom={["solid 2px #EDEDED", "none"]}>
+            <Flex
+              direction="column"
+              w={["100%", "100%", "50%", "50%"]}
+              p={5}
+              borderRight={["none", "solid 2px #EDEDED"]}
+              borderBottom={["solid 2px #EDEDED", "none"]}
+            >
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>
                 No more content this way...
               </Text>
@@ -178,7 +192,12 @@ export default function Toc({ previous, next }: TocProps) {
           )}
 
           {next ? (
-            <Flex h="100%" direction="column" w={["100%", "100%", "50%", "50%"]} p={5}>
+            <Flex
+              h="100%"
+              direction="column"
+              w={["100%", "100%", "50%", "50%"]}
+              p={5}
+            >
               <Text color="brand.grey" fontSize="xs" fontWeight={700}>
                 Next up...
               </Text>
@@ -198,6 +217,6 @@ export default function Toc({ previous, next }: TocProps) {
           )}
         </Flex>
       </Flex>
-    </Box >
+    </Box>
   );
 }

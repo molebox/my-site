@@ -1,8 +1,7 @@
-
-import { Grid } from '@chakra-ui/react';
-import AllCategoryTag from './all-category-tag';
-import CategoryTag from './category-tag';
-import { PostDetails } from './toc';
+import { Grid } from "@chakra-ui/react";
+import AllCategoryTag from "./all-category-tag";
+import CategoryTag from "./category-tag";
+import { PostDetails } from "./toc";
 
 interface CategoryBarProps {
   categoriesList: PostDetails[];
@@ -10,7 +9,11 @@ interface CategoryBarProps {
   numberOfPosts: number;
 }
 
-export default function CategoryBar({ categoriesList, handleCategoryQuery, numberOfPosts }: CategoryBarProps) {
+export default function CategoryBar({
+  categoriesList,
+  handleCategoryQuery,
+  numberOfPosts,
+}: CategoryBarProps) {
   return (
     <Grid
       templateColumns="repeat(auto-fill, minmax(100px, 1fr))"
@@ -30,5 +33,5 @@ export default function CategoryBar({ categoriesList, handleCategoryQuery, numbe
         />
       ))}
     </Grid>
-  )
+  );
 }

@@ -21,22 +21,22 @@ export default function Link({
   uppercase = false,
   font = "heading",
   isExternal,
-  className
+  className,
 }: Props) {
   const router = useRouter();
   const [currentPath, setCurrentPath] = useState(false);
 
   useEffect(() => {
-    if (href !== '/' && router.asPath.slice(1).includes(href.slice(1))) {
+    if (href !== "/" && router.asPath.slice(1).includes(href.slice(1))) {
       setCurrentPath(true);
     }
   }, [href, router.asPath]);
 
   return (
-    <NextLink href={isExternal ? '' : href}>
+    <NextLink href={isExternal ? "" : href}>
       <ChakraLink
         className={className}
-        href={isExternal ? href : ''}
+        href={isExternal ? href : ""}
         isExternal={isExternal}
         color={currentPath ? "brand.grey" : "brand.silver"}
         fontFamily={font}

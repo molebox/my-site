@@ -6,7 +6,7 @@ import Footer from "components/layout/footer";
 import ExternalLink from "components/external-link";
 
 export default function Home() {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <Layout>
       <Head>
@@ -19,9 +19,10 @@ export default function Home() {
         minH="100vh"
         direction="column"
         justifyContent="center"
-        m="0 auto">
+        m="0 auto"
+      >
         <Text
-        className="title"
+          className="title"
           as="h1"
           fontFamily="heading"
           fontSize={["xs", "xs", "sm", "sm"]}
@@ -44,35 +45,35 @@ export default function Home() {
           borderBottom={`solid 2px ${theme.colors.brand.silver}`}
           animation="expand border-bottom .5s ease-in"
           css={`
-           @keyframes expand {
-             from: {
-               transform: scale(0)
-             }
-             to: {
-               transform: scale(1);
-             }
-           }
+            @keyframes expand {
+              from: {
+                transform: scale(0);
+              }
+              to: {
+                transform: scale(1);
+              }
+            }
           `}
         >
           chapters
         </Text>
         <Flex direction="column" w="fit-content">
           <Link
-          className="writing"
+            className="writing"
             href="/writing"
             text="Writing"
             size={["sm", "md"]}
             uppercase
           />
           <Link
-          className="projects"
+            className="projects"
             href="/projects"
             text="Projects"
             size={["sm", "md"]}
             uppercase
           />
           <Link
-          className="who"
+            className="who"
             href="/who-am-i"
             text="Who am i"
             size={["sm", "md"]}
@@ -80,7 +81,27 @@ export default function Home() {
           />
         </Flex>
         <Text my={5} color="brand.silver" fontSize="mini">
-          Made with <ExternalLink font="body" href="https://nextjs.org/" size="mini" text="Next.js" />, <ExternalLink font="body" href="https://github.com/kentcdodds/mdx-bundler" size="mini" text="mdx-bundler" /> and <ExternalLink font="body" href="https://chakra-ui.com/" size="mini" text="Chakra-ui" />
+          Made with{" "}
+          <ExternalLink
+            font="body"
+            href="https://nextjs.org/"
+            size="mini"
+            text="Next.js"
+          />
+          ,{" "}
+          <ExternalLink
+            font="body"
+            href="https://github.com/kentcdodds/mdx-bundler"
+            size="mini"
+            text="mdx-bundler"
+          />{" "}
+          and{" "}
+          <ExternalLink
+            font="body"
+            href="https://chakra-ui.com/"
+            size="mini"
+            text="Chakra-ui"
+          />
         </Text>
       </Flex>
       <Footer />
