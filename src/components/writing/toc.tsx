@@ -145,7 +145,7 @@ export default function Toc({ previous, next }: TocProps) {
           borderTop={"solid 2px"}
           borderColor="brand.grey"
           w="100%"
-          position={["relative", "absolute"]}
+          position={["relative"]}
           bottom={0}
           h="auto"
           justifyContent="space-evenly"
