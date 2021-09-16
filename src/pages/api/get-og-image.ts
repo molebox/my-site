@@ -11,6 +11,8 @@ const BASE_URL = 'https://richardhaines-og-image.vercel.app'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { body: { path } } = req;
 
+  console.log({ path })
+
   // if (process.env.NODE_ENV === 'development') {
   //   return 'og image will be generated in production';
   // }

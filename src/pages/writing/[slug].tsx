@@ -137,6 +137,7 @@ export const getStaticProps = async ({ params }) => {
     }
   }
   )
+  console.log({ogImage});
   return {
     props: {
       ...post,
