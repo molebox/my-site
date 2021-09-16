@@ -19,7 +19,7 @@ interface PostProps {
   nextArticle?: PostDetails | null;
   code: string;
   frontmatter: Frontmatter;
-  ogImage?: string;
+  ogImage: string | null;
 }
 
 export default function Post({
@@ -43,7 +43,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage || ''}` },
           ],
           site_name: "richardhaines.dev",
         }}
@@ -138,7 +138,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       ...post,
-      ogImage: ogImage,
+      ogImage: ogImage || null,
       paths: paths ? paths : null,
     },
   };
