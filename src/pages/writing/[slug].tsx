@@ -162,7 +162,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: ogImage.data.publicPath,
+      ogImage: ogImage.data.publicPath || 'something went wrong',
       paths: paths ? paths : null,
     },
     revalidate: 1
