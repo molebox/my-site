@@ -21,7 +21,7 @@ export default async function getOgImage(path: string) {
   const browser = await playwright.chromium.launch({ 
     // args: chrome.args,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    executablePath: await chrome.executablePath || "C:\\Users\\richa\\AppData\\Local\\ms-playwright\\chromium-907428\\chrome-win\\chrome.exe",
+    // executablePath: await chrome.executablePath || "C:\\Users\\richa\\AppData\\Local\\ms-playwright\\chromium-907428\\chrome-win\\chrome.exe",
     // executablePath: await chrome.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: chrome.headless,
   });
@@ -30,7 +30,7 @@ export default async function getOgImage(path: string) {
   const hash = createHash('md5').update(url).digest('hex');
   const ogImageDir = `./public/og-images`;
   const imagePath = `${ogImageDir}/${hash}.png`;
-  const publicPath = `${process.env.BASE_URL}/og-images/${hash}.png`;
+  const publicPath = `${BASE_URL}/og-images/${hash}.png`;
 
   console.log({publicPath})
 
