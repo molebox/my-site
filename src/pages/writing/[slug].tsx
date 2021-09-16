@@ -144,7 +144,7 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
-  // let ogImage: string = 'un-assigned';
+  let ogImage: any;
   // axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
   //   path: `/?title=${title}&description=${description}`})
   //   .then(({ data }) => {
@@ -152,12 +152,18 @@ export const getStaticProps = async ({ params }) => {
   //     ogImage = data.publicPath;
   //   })
   //   .catch((e) => console.log(e));
-  const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  try {
+    ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
       path: `/?title=${title}&description=${description}`
   }
   )
-  // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
   console.log({ogImage});
+  } catch (error) {
+      console.log(`axios error: ${error}`)
+  }
+ 
+  // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
+
   return {
     props: {
       ...post,
