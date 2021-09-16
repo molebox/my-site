@@ -34,6 +34,7 @@ export default function Post({
   axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`})
     .then(({ data }) => {
+      console.log({data})
       ogImage.current = data.publicPath;
     })
     .catch((e) => console.log(e));
