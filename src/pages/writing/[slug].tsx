@@ -133,7 +133,7 @@ export const getStaticProps = async ({ params }) => {
   //     path: `/?title=${title}&description=${description}`
   // }
   // )
-  const ogImage = getOgImage(`/?title=${title}&description=${description}`);
+  const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
   console.log({ogImage});
   return {
     props: {
