@@ -31,7 +31,7 @@ export default function Post({
   const { title, description, slug } = frontmatter;
   let ogImage = useRef<string | null>(null);
 
-  axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  axios.post(`/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`})
     .then(({ data }) => {
       console.log({data})
