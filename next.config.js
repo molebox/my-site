@@ -3,7 +3,7 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: `/*`,
+        source: `/`,
         destination: '/writing/',
         permanent: true
       }
