@@ -20,7 +20,8 @@ export default async function getOgImage(path: string) {
 
   const browser = await playwright.chromium.launch({ 
     args: chrome.args,
-    executablePath: await chrome.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: await chrome.executablePath || '"D:\\chrome-win\\chrome.exe"',
+    // executablePath: await chrome.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: chrome.headless,
   });
 
