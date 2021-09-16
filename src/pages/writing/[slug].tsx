@@ -34,7 +34,7 @@ export default function Post({
   useEffect(() => {
 
     const getOg = async () => { 
-      ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+      ogImage.current = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`})
     }
     console.log({ogImage})
