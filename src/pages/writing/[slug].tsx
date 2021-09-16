@@ -144,27 +144,28 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
-  let ogImage: string = 'un-assigned';
-  axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-    path: `/?title=${title}&description=${description}`})
-    .then(({ data }) => {
-      console.log({data})
-      ogImage = data.publicPath;
-    })
-    .catch((e) => console.log(e));
-  // const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-  //     path: `/?title=${title}&description=${description}`
-  // }
-  // )
+  // let ogImage: string = 'un-assigned';
+  // axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  //   path: `/?title=${title}&description=${description}`})
+  //   .then(({ data }) => {
+  //     console.log({data})
+  //     ogImage = data.publicPath;
+  //   })
+  //   .catch((e) => console.log(e));
+  const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+      path: `/?title=${title}&description=${description}`
+  }
+  )
   // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
   // console.log({ogImage});
   return {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: ogImage,
+      ogImage: ogImage.data.publicPath,
       paths: paths ? paths : null,
     },
+    revalidate: 1
   };
 };
 
