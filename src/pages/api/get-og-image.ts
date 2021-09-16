@@ -8,8 +8,8 @@ import fs from 'fs';
 
 const BASE_URL = 'https://richardhaines-og-image.vercel.app'
 
-export default async function getOgImage(path: string) {
-
+export default async function getOgImage(res: NextApiResponse, req: NextApiRequest) {
+  const { body: { path }} = req
   console.log({ path })
 
   // if (process.env.NODE_ENV === 'development') {
@@ -32,13 +32,8 @@ export default async function getOgImage(path: string) {
   const imagePath = `${ogImageDir}/${hash}.png`;
   const publicPath = `${process.env.BASE_URL}/og-images/${hash}.png`;
 
-  // if (fs.existsSync(imagePath)) {
-  //   res.send({
-  //     status: 200,
-  //     publicPath
-  //   });
-  // }
-
+  console.log({publicPath})
+  
   const page = await browser.newPage({
     viewport: {
       width: 1200,
@@ -54,9 +49,9 @@ export default async function getOgImage(path: string) {
   fs.mkdirSync(ogImageDir, { recursive: true });
   fs.writeFileSync(imagePath, buffer);
 
- return publicPath
+ res.send(publicPath);
  } catch(e) {
-  console.log(`There was an error: ${e.message}`)
+  res.send(`There was an error: ${e.message}`)
  }
 }
 
