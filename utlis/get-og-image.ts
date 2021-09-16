@@ -1,7 +1,7 @@
   
 import type { NextApiRequest, NextApiResponse } from 'next'
 import chrome from 'chrome-aws-lambda';
-import playwright from 'playwright-core';
+import playwright from 'playwright';
 import { createHash } from 'crypto';
 import fs from 'fs';
 // path, baseUrl = 'https://richardhaines-og-image.vercel.app/'
@@ -20,7 +20,7 @@ export default async function getOgImage(path: string) {
 
   const browser = await playwright.chromium.launch({ 
     args: chrome.args,
-    executablePath: await chrome.executablePath || "D:\\chrome-win\\chrome.exe",
+    // executablePath: await chrome.executablePath || "D:\\chrome-win\\chrome.exe",
     // executablePath: await chrome.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: chrome.headless,
   });
