@@ -9,7 +9,7 @@ import fs from 'fs';
 const BASE_URL = 'https://richardhaines-og-image.vercel.app'
 
 export default async function getOgImage(res: NextApiResponse, req: NextApiRequest) {
-  const { body: { path } } = req
+  const { body: { path } } = req;
   console.log({ path })
 
   // if (process.env.NODE_ENV === 'development') {
@@ -39,7 +39,10 @@ export default async function getOgImage(res: NextApiResponse, req: NextApiReque
         res.send(publicPath);
       }
     } catch (e) {
-      res.send(`There was an error: ${e.message}`)
+      res.send({
+        status: 500,
+        message: `Error: ${e.message}`,
+      })
     }
 
     // const page = await browser.newPage({
@@ -60,7 +63,10 @@ export default async function getOgImage(res: NextApiResponse, req: NextApiReque
     // return publicPath;
     res.send(publicPath);
   } catch (e) {
-    res.send(`There was an error: ${e.message}`)
+    res.send({
+      status: 500,
+      message: `Error: ${e.message}`,
+    })
     // return `There was an error: ${e.message}`;
   }
 }

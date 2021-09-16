@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { NextSeo } from "next-seo";
 import {
@@ -12,7 +12,7 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 import axios from "axios";
-import getOgImage from "api/get-og-image";
+// import getOgImage from "src/pages/api/get-og-image";
 
 interface PostProps {
   previousArticle?: PostDetails | null;
@@ -34,7 +34,7 @@ export default function Post({
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
 
-  console.log({ogImage});
+  console.log({ ogImage });
   // let ogImage = useRef<string | null>(null);
 
   // useEffect(() => {
@@ -154,14 +154,15 @@ export const getStaticProps = async ({ params }) => {
   //   .catch((e) => console.log(e));
   try {
     ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-      path: `/?title=${title}&description=${description}`},
-      {headers:{"Content-Type" : "application/json"}})
+      path: `/?title=${title}&description=${description}`
+    },
+      { headers: { "Content-Type": "application/json" } })
 
-      console.log({ogImage});
+    console.log({ ogImage });
   } catch (error) {
-      console.log(`axios error: ${error}`)
+    console.log(`axios error: ${error}`)
   }
- 
+
   // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
 
   return {
