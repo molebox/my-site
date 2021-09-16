@@ -33,6 +33,13 @@ export default async function getOgImage(res: NextApiResponse, req: NextApiReque
   const publicPath = `${process.env.BASE_URL}/og-images/${hash}.png`;
 
   console.log({publicPath})
+
+  try {
+    fs.statSync(imagePath);
+    return publicPath;
+  } catch (e) {
+    res.send(`There was an error: ${e.message}`)
+  }
   
   const page = await browser.newPage({
     viewport: {

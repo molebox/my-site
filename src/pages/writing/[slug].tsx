@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { NextSeo } from "next-seo";
 import {
@@ -29,7 +29,7 @@ export default function Post({
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description, slug } = frontmatter;
-  let ogImage: string | null;
+  let ogImage = useRef<string | null>(null);
 
   useEffect(() => {
 
@@ -37,6 +37,7 @@ export default function Post({
       ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`})
     }
+    console.log({ogImage})
 
     getOg();
 
@@ -53,7 +54,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage || ''}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current || ''}` },
           ],
           site_name: "richardhaines.dev",
         }}
