@@ -31,13 +31,15 @@ export default function Post({
   const { title, description, slug } = frontmatter;
   let ogImage = useRef<string | null>(null);
 
-  axios.post(`/api/get-og-image`, {
-    path: `/?title=${title}&description=${description}`})
-    .then(({ data }) => {
-      console.log({data})
-      ogImage.current = data.publicPath;
-    })
-    .catch((e) => console.log(e));
+  useEffect(() => {
+    axios.post(`/api/get-og-image`, {
+      path: `/?title=${title}&description=${description}`})
+      .then(({ data }) => {
+        console.log({data})
+        ogImage.current = data.publicPath;
+      })
+      .catch((e) => console.log(e));
+  });
 
   return (
     <PostLayout>
