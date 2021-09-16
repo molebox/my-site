@@ -44,7 +44,7 @@ export default function Post({
         ogImage.current = data.publicPath;
       })
       .catch((e) => console.log(e));
-  }, [title, description]);
+  });
 
   return (
     <PostLayout>
@@ -57,7 +57,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current}` },
           ],
           site_name: "richardhaines.dev",
         }}
