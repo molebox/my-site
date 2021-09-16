@@ -12,7 +12,7 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 import axios from "axios";
-import getOgImage from "src/pages/api/get-og-image";
+import getOgImage from "api/get-og-image";
 
 interface PostProps {
   previousArticle?: PostDetails | null;
