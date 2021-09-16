@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { NextSeo } from "next-seo";
 import {
@@ -19,7 +19,6 @@ interface PostProps {
   nextArticle?: PostDetails | null;
   code: string;
   frontmatter: Frontmatter;
-  ogImage: string | null;
 }
 
 export default function Post({
@@ -27,10 +26,21 @@ export default function Post({
   frontmatter,
   previousArticle,
   nextArticle,
-  ogImage,
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description, slug } = frontmatter;
+  let ogImage: string | null;
+
+  useEffect(() => {
+
+    const getOg = async () => { 
+      ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+    path: `/?title=${title}&description=${description}`})
+    }
+
+    getOg();
+
+  }, [])
 
   return (
     <PostLayout>
@@ -129,16 +139,16 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
-  const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-      path: `/?title=${title}&description=${description}`
-  }
-  )
+  // const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  //     path: `/?title=${title}&description=${description}`
+  // }
+  // )
   // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
-  console.log({ogImage});
+  // console.log({ogImage});
   return {
     props: {
       ...post,
-      ogImage: ogImage.data.publicPath || null,
+      // ogImage: ogImage.data.publicPath || null,
       paths: paths ? paths : null,
     },
   };
