@@ -29,23 +29,22 @@ export default function Post({
   previousArticle,
   nextArticle,
   slug,
-  ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
 
-  console.log({ ogImage });
-  // let ogImage = useRef<string | null>(null);
+  let ogImage = useRef<string | null>(null);
 
-  // useEffect(() => {
-  //   axios.post(`/api/get-og-image`, {
-  //     path: `/?title=${title}&description=${description}`})
-  //     .then(({ data }) => {
-  //       console.log({data})
-  //       ogImage.current = data.publicPath;
-  //     })
-  //     .catch((e) => console.log(e));
-  // }, [title, description]);
+  useEffect(() => {
+    axios.post(`/api/get-og-image`, {
+      path: `/?title=${title}&description=${description}`
+    })
+      .then(({ data }) => {
+        console.log({ data })
+        ogImage.current = data.publicPath;
+      })
+      .catch((e) => console.log(e));
+  }, [title, description]);
 
   return (
     <PostLayout>
@@ -152,16 +151,16 @@ export const getStaticProps = async ({ params }) => {
   //     ogImage = data.publicPath;
   //   })
   //   .catch((e) => console.log(e));
-  try {
-    ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-      path: `/?title=${title}&description=${description}`
-    },
-      { headers: { "Content-Type": "application/json" } })
+  // try {
+  //   ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  //     path: `/?title=${title}&description=${description}`
+  //   },
+  //     { headers: { "Content-Type": "application/json" } })
 
-    console.log({ ogImage });
-  } catch (error) {
-    console.log(`axios error: ${error}`)
-  }
+  //   console.log({ ogImage });
+  // } catch (error) {
+  //   console.log(`axios error: ${error}`)
+  // }
 
   // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
 
@@ -169,7 +168,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: ogImage.data.publicPath || 'something went wrong',
+      // ogImage: ogImage ? ogImage.data.publicPath : 'something went wrong',
       paths: paths ? paths : null,
     },
     revalidate: 1
