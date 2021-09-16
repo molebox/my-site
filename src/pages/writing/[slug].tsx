@@ -20,6 +20,7 @@ interface PostProps {
   code: string;
   frontmatter: Frontmatter;
   slug: string;
+  ogImage: string;
 }
 
 export default function Post({
@@ -27,21 +28,22 @@ export default function Post({
   frontmatter,
   previousArticle,
   nextArticle,
-  slug
+  slug,
+  ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
-  let ogImage = useRef<string | null>(null);
+  // let ogImage = useRef<string | null>(null);
 
-  useEffect(() => {
-    axios.post(`/api/get-og-image`, {
-      path: `/?title=${title}&description=${description}`})
-      .then(({ data }) => {
-        console.log({data})
-        ogImage.current = data.publicPath;
-      })
-      .catch((e) => console.log(e));
-  }, [title, description]);
+  // useEffect(() => {
+  //   axios.post(`/api/get-og-image`, {
+  //     path: `/?title=${title}&description=${description}`})
+  //     .then(({ data }) => {
+  //       console.log({data})
+  //       ogImage.current = data.publicPath;
+  //     })
+  //     .catch((e) => console.log(e));
+  // }, [title, description]);
 
   return (
     <PostLayout>
@@ -54,7 +56,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current || ''}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage}` },
           ],
           site_name: "richardhaines.dev",
         }}
@@ -140,6 +142,14 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
+  let ogImage: string = 'un-assigned';
+  axios.post(`/api/get-og-image`, {
+    path: `/?title=${title}&description=${description}`})
+    .then(({ data }) => {
+      console.log({data})
+      ogImage = data.publicPath;
+    })
+    .catch((e) => console.log(e));
   // const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
   //     path: `/?title=${title}&description=${description}`
   // }
@@ -150,7 +160,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      // ogImage: ogImage.data.publicPath || null,
+      ogImage: ogImage,
       paths: paths ? paths : null,
     },
   };
