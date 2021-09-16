@@ -36,6 +36,7 @@ export default function Post({
     .then(({ data }) => {
       ogImage.current = data.publicPath;
     })
+    .catch((e) => console.log(e));
 
   return (
     <PostLayout>
