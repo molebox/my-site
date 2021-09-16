@@ -31,17 +31,11 @@ export default function Post({
   const { title, description, slug } = frontmatter;
   let ogImage = useRef<string | null>(null);
 
-  useEffect(() => {
-
-    const getOg = async () => { 
-      ogImage.current = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`})
-    }
-    console.log({ogImage})
-
-    getOg();
-
-  }, [])
+    .then(({ data }) => {
+      ogImage.current = data.publicPath;
+    })
 
   return (
     <PostLayout>
