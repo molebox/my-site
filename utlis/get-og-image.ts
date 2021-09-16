@@ -8,8 +8,8 @@ import fs from 'fs';
 
 const BASE_URL = 'https://richardhaines-og-image.vercel.app'
 
-export default async function getOgImage(res: NextApiResponse, req: NextApiRequest) {
-  const { body: { path }} = req
+export default async function getOgImage(path: string) {
+  // const { body: { path }} = req
   console.log({ path })
 
   // if (process.env.NODE_ENV === 'development') {
@@ -57,9 +57,11 @@ export default async function getOgImage(res: NextApiResponse, req: NextApiReque
   fs.mkdirSync(ogImageDir, { recursive: true });
   fs.writeFileSync(imagePath, buffer);
 
- res.send(publicPath);
+  return publicPath;
+ // res.send(publicPath);
  } catch(e) {
-  res.send(`There was an error: ${e.message}`)
+  // res.send(`There was an error: ${e.message}`)
+  return `There was an error: ${e.message}`;
  }
 }
 
