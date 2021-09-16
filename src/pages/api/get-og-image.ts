@@ -6,7 +6,7 @@ import { createHash } from 'crypto';
 import fs from 'fs';
 // path, baseUrl = 'https://richardhaines-og-image.vercel.app/'
 
-const BASE_URL = 'https://richardhaines-og-image.vercel.app/'
+const BASE_URL = 'https://richardhaines-og-image.vercel.app'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { body: { path } } = req;
