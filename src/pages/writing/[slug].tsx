@@ -11,7 +11,7 @@ import { components } from "utlis/shortcodes";
 import { Flex, Text, Box } from "@chakra-ui/react";
 import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
-import getOgImage from "utlis/get-og-image";
+import axios from "axios";
 
 interface PostProps {
   previousArticle?: PostDetails | null;
@@ -128,13 +128,19 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
-  const ogImage = await getOgImage(
-    `/?title=${title}&description=${description}`
-  );
+  const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/get-og-image`, {
+      path: `/?title=${title}&description=${description}`
+  },
+  {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  )
   return {
     props: {
       ...post,
-      ogImage,
+      ogImage: ogImage.data.ogImage,
       paths: paths ? paths : null,
     },
   };
