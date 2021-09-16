@@ -145,7 +145,7 @@ export const getStaticProps = async ({ params }) => {
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
   let ogImage: string = 'un-assigned';
-  axios.post(`/api/get-og-image`, {
+  axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`})
     .then(({ data }) => {
       console.log({data})
