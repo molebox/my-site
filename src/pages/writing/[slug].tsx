@@ -128,13 +128,8 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
-  const ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  const ogImage = await axios.post(`/api/get-og-image`, {
       path: `/?title=${title}&description=${description}`
-  },
-  {
-    headers: {
-      'Content-Type': 'application/json'
-    }
   }
   )
   console.log({ogImage});
