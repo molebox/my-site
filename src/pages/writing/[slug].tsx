@@ -19,6 +19,7 @@ interface PostProps {
   nextArticle?: PostDetails | null;
   code: string;
   frontmatter: Frontmatter;
+  slug: string;
 }
 
 export default function Post({
@@ -26,9 +27,10 @@ export default function Post({
   frontmatter,
   previousArticle,
   nextArticle,
+  slug
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
-  const { title, description, slug } = frontmatter;
+  const { title, description } = frontmatter;
   let ogImage = useRef<string | null>(null);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function Post({
         ogImage.current = data.publicPath;
       })
       .catch((e) => console.log(e));
-  });
+  }, [title, description]);
 
   return (
     <PostLayout>
@@ -147,6 +149,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       ...post,
+      slug: params.slug,
       // ogImage: ogImage.data.publicPath || null,
       paths: paths ? paths : null,
     },
