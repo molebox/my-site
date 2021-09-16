@@ -1,5 +1,5 @@
 import chrome from 'chrome-aws-lambda';
-import puppeteer from 'puppeteer-core';
+import puppeteer from 'puppeteer';
 import { createHash } from 'crypto';
 import fs from 'fs';
 
