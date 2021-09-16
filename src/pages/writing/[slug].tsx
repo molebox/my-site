@@ -18,7 +18,7 @@ interface PostProps {
   nextArticle?: PostDetails | null;
   code: string;
   frontmatter: Frontmatter;
-  ogImage: string;
+  ogImage?: string;
 }
 
 export default function Post({

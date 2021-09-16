@@ -53,14 +53,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   fs.mkdirSync(ogImageDir, { recursive: true });
   fs.writeFileSync(imagePath, buffer);
 
-  res.json({
+  res.send({
     status: 200,
     publicPath
   });
  } catch(e) {
   res.send({
     status: 500,
-    message: e.message,
+    message: `There was an error: ${e.message}`,
   })
  }
 }
