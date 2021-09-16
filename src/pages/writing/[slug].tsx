@@ -33,6 +33,8 @@ export default function Post({
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
+
+  console.log({ogImage});
   // let ogImage = useRef<string | null>(null);
 
   // useEffect(() => {

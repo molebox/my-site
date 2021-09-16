@@ -35,8 +35,9 @@ export default async function getOgImage(res: NextApiResponse, req: NextApiReque
   console.log({publicPath})
 
   try {
-    fs.statSync(imagePath);
-    return publicPath;
+    if (fs.existsSync(imagePath)) {
+      return publicPath;
+    }
   } catch (e) {
     res.send(`There was an error: ${e.message}`)
   }
