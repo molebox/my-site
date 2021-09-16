@@ -154,12 +154,12 @@ export const getStaticProps = async ({ params }) => {
   //   .catch((e) => console.log(e));
   try {
     ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-      path: `/?title=${title}&description=${description}`
-  }
-  )
-  console.log({ogImage});
+      path: `/?title=${title}&description=${description}`},
+      {headers:{"Content-Type" : "application/json"}})
+      
+      console.log({ogImage});
   } catch (error) {
-      console.log(`axios error: ${error}`)
+      console.log(`axios error: ${error.response.data}`)
   }
  
   // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
