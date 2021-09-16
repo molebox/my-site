@@ -19,7 +19,8 @@ export default async function getOgImage(path: string) {
   try {
 
   const browser = await playwright.chromium.launch({ 
-    args: chrome.args,
+    // args: chrome.args,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
     // executablePath: await chrome.executablePath || "D:\\chrome-win\\chrome.exe",
     // executablePath: await chrome.executablePath || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: chrome.headless,
