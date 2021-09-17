@@ -35,6 +35,7 @@ export default function Post({
   const [ogImage, setOgImage] = useState<string>('')
 
   useEffect(() => {
+    console.log('useEffect run')
 
     async function createOgImage() {
       const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
@@ -47,6 +48,7 @@ export default function Post({
             'Content-Type': 'application/json'
           }
         })
+      console.log({ response })
       const { imageExists } = response.data;
       if (imageExists) {
         const image = buildUrl(`og_images/${slug}`, {
@@ -54,6 +56,8 @@ export default function Post({
             cloudName: 'richardhaines',
           },
         })
+
+        console.log({ image })
 
         setOgImage(image)
       }
@@ -67,11 +71,11 @@ export default function Post({
   return (
     <PostLayout>
       <NextSeo
-        title="Using More of Config"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
+        title={title}
+        description={description}
+        canonical={`https://www.richardhaines.dev/${slug}`}
         openGraph={{
-          url: `https://next-mdx-bundler-chakra-blog.vercel.app/${slug}`,
+          url: `https://www.richardhaines.dev/${slug}`,
           title: title,
           description: description,
           images: [
@@ -81,7 +85,7 @@ export default function Post({
         }}
         twitter={{
           handle: "@studio_hungry",
-          site: "@site",
+          site: "https://twitter.com/studio_hungry",
           cardType: "summary_large_image",
         }}
       />
