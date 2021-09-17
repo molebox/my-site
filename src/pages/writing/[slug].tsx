@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { NextSeo } from "next-seo";
 import {
@@ -32,8 +32,7 @@ export default function Post({
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
-
-  let ogImage = useRef<string | null>(null);
+  const [ogImage, setOgImage] = useState<string>('')
 
   useEffect(() => {
 
@@ -48,21 +47,20 @@ export default function Post({
             'Content-Type': 'application/json'
           }
         })
-      return {
-        imageCreated: response.data.imageCreated,
-        imageExists: response.data.imageExists
-      }
-    }
-
-    createOgImage().then((response) => {
-      if (response.imageCreated && response.imageExists) {
-        ogImage.current = buildUrl(`og_images/${slug}`, {
+      const { imageExists } = response.data;
+      if (imageExists) {
+        const image = buildUrl(`og_images/${slug}`, {
           cloud: {
             cloudName: 'richardhaines',
           },
         })
+
+        setOgImage(image)
       }
-    }).catch((error) => console.log({ error }))
+    }
+
+    createOgImage()
+
 
   }, [description, slug, title]);
 
@@ -77,7 +75,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current || 'nope'}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage || 'no image'}` },
           ],
           site_name: "richardhaines.dev",
         }}
