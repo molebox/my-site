@@ -143,9 +143,8 @@ export const getStaticProps = async ({ params }) => {
   }));
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
-  let ogImage: any;
 
-  const { data } = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+  const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
     path: `/?title=${title}&description=${description}`,
     slug: params.slug
   })
@@ -174,7 +173,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: ogImage ? data.publicPath : 'something went wrong',
+      ogImage: data ? data.publicPath : 'something went wrong',
       paths: paths ? paths : null,
     },
     revalidate: 1

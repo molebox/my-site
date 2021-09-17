@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import getImage from 'utlis/get-image';
 
-export default async function getOgImage(res: NextApiResponse, req: NextApiRequest) {
+export default async function handler(res: NextApiResponse, req: NextApiRequest) {
   const { body: { path, slug } } = req;
   console.log({ path })
 
