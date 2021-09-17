@@ -144,6 +144,12 @@ export const getStaticProps = async ({ params }) => {
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
   let ogImage: any;
+
+  const { data } = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
+    path: `/?title=${title}&description=${description}`,
+    slug: params.slug
+  })
+
   // axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
   //   path: `/?title=${title}&description=${description}`})
   //   .then(({ data }) => {
@@ -168,7 +174,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      // ogImage: ogImage ? ogImage.data.publicPath : 'something went wrong',
+      ogImage: ogImage ? data.publicPath : 'something went wrong',
       paths: paths ? paths : null,
     },
     revalidate: 1
