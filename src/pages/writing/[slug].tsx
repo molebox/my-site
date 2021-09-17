@@ -37,15 +37,15 @@ export default function Post({
 
   useEffect(() => {
 
-    // async function createOgImage() {
-    //   await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-    //     title,
-    //     description,
-    //     slug
-    //   })
-    // }
+    async function createOgImage() {
+      await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+        title,
+        description,
+        slug
+      })
+    }
 
-    // createOgImage()
+    createOgImage().then((res) => console.log({ res }))
 
 
     ogImage.current = buildUrl(`og_images/${slug}`, {
@@ -151,12 +151,6 @@ export const getStaticProps = async ({ params }) => {
   const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
     params: { slug },
   }));
-
-  await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    slug: params.slug
-  })
 
   return {
     props: {
