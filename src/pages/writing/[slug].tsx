@@ -48,6 +48,7 @@ export default function Post({
             'Content-Type': 'application/json'
           }
         })
+      console.log('serverless function called')
       console.log({ response })
       const { imageExists } = response.data;
       if (imageExists) {
