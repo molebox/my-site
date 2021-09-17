@@ -128,29 +128,31 @@ export default function Post({
 export const getStaticProps = async ({ params }) => {
   const post = await getSingleArticle(POSTS_PATH, params.slug);
 
-  await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    slug: params.slug
-  },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }
-    })
+  // ---REMOVED TO GET BUILD WORKING---
 
-  const image = buildUrl(`og_images/${params.slug}`, {
-    cloud: {
-      cloudName: 'richardhaines',
-    },
-  })
+  // await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+  //   title: post.frontmatter.title,
+  //   description: post.frontmatter.description,
+  //   slug: params.slug
+  // },
+  //   {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //     }
+  //   })
+
+  // const image = buildUrl(`og_images/${params.slug}`, {
+  //   cloud: {
+  //     cloudName: 'richardhaines',
+  //   },
+  // })
 
   return {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: image,
+      // ogImage: image,
     }
   };
 };
