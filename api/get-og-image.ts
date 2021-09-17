@@ -9,6 +9,7 @@ export default async function handler(res: NextApiResponse, req: NextApiRequest)
   try {
 
     const publicPath = await getImage(path, slug)
+    console.log({ publicPath })
 
     res.send(publicPath);
   } catch (e) {

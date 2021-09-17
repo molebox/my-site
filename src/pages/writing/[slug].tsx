@@ -29,25 +29,27 @@ export default function Post({
   previousArticle,
   nextArticle,
   slug,
+  ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
 
-  let ogImage = useRef<string | null>(null);
+  // let ogImage = useRef<string | null>(null);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    async function getData() {
-      const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
-        path: `/?title=${title}&description=${description}`,
-        slug: slug
-      })
-      ogImage.current = data.publicPath;
-    }
+  //   async function getData() {
+  //     const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
+  //       path: `/?title=${title}&description=${description}`,
+  //       slug: slug
+  //     })
+  //     console.log({ data })
+  //     ogImage.current = data.publicPath;
+  //   }
 
-    getData()
+  //   getData()
 
-  }, [description, slug, title]);
+  // }, [description, slug, title]);
 
   return (
     <PostLayout>
@@ -60,7 +62,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage}` },
           ],
           site_name: "richardhaines.dev",
         }}
@@ -147,10 +149,10 @@ export const getStaticProps = async ({ params }) => {
   const title = post.frontmatter.title;
   const description = post.frontmatter.description;
 
-  // const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
-  //   path: `/?title=${title}&description=${description}`,
-  //   slug: params.slug
-  // })
+  const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
+    path: `/?title=${title}&description=${description}`,
+    slug: params.slug
+  })
 
   // axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
   //   path: `/?title=${title}&description=${description}`})
@@ -176,7 +178,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      // ogImage: data ? data.publicPath : 'something went wrong',
+      ogImage: data ? data.publicPath : 'something went wrong',
       paths: paths ? paths : null,
     },
     revalidate: 1
