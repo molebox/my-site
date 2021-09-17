@@ -30,47 +30,46 @@ export default function Post({
   previousArticle,
   nextArticle,
   slug,
-  ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
-  // const [ogImage, setOgImage] = useState<string>('')
+  const [ogImage, setOgImage] = useState<string>('')
 
-  // useEffect(() => {
-  //   console.log('useEffect run')
+  useEffect(() => {
+    console.log('useEffect run')
 
-  //   async function createOgImage() {
-  //     const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-  //       title: title,
-  //       description: description,
-  //       slug: slug
-  //     },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Access-Control-Allow-Origin': '*',
-  //         }
-  //       })
-  //     console.log('serverless function called')
-  //     console.log(response.data)
-  //     const { imageExists } = response.data;
-  //     if (imageExists) {
-  //       const image = buildUrl(`og_images/${slug}`, {
-  //         cloud: {
-  //           cloudName: 'richardhaines',
-  //         },
-  //       })
+    async function createOgImage() {
+      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+        title: title,
+        description: description,
+        slug: slug
+      },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          }
+        })
+      console.log('serverless function called')
+      console.log(response.data)
+      const { imageExists } = response.data;
+      if (imageExists) {
+        const image = buildUrl(`og_images/${slug}`, {
+          cloud: {
+            cloudName: 'richardhaines',
+          },
+        })
 
-  //       console.log({ image })
+        console.log({ image })
 
-  //       setOgImage(image)
-  //     }
-  //   }
+        setOgImage(image)
+      }
+    }
 
-  //   createOgImage()
+    createOgImage()
 
 
-  // });
+  });
 
   return (
     <PostLayout>
@@ -167,35 +166,35 @@ export const getStaticProps = async ({ params }) => {
   const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
     params: { slug },
   }));
-  let image = ''
+  // let image = ''
 
-  const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    slug: params.slug
-  },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }
-    })
-  console.log('serverless function called')
-  console.log({ response })
+  // const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+  //   title: post.frontmatter.title,
+  //   description: post.frontmatter.description,
+  //   slug: params.slug
+  // },
+  //   {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //     }
+  //   })
+  // console.log('serverless function called')
+  // console.log({ response })
 
-  image = buildUrl(`og_images/${params.slug}`, {
-    cloud: {
-      cloudName: 'richardhaines',
-    },
-  })
+  // image = buildUrl(`og_images/${params.slug}`, {
+  //   cloud: {
+  //     cloudName: 'richardhaines',
+  //   },
+  // })
 
-  console.log({ image })
+  // console.log({ image })
 
   return {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: image,
+      // ogImage: image,
       paths: paths ? paths : null,
     }
   };
