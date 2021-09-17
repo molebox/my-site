@@ -76,9 +76,9 @@ export default function Post({
       <NextSeo
         title={title}
         description={description}
-        canonical={`https://www.richardhaines.dev/${slug}`}
+        canonical={`https://www.richardhaines.dev/writing/${slug}`}
         openGraph={{
-          url: `https://www.richardhaines.dev/${slug}`,
+          url: `https://www.richardhaines.dev/writing/${slug}`,
           title: title,
           description: description,
           images: [
