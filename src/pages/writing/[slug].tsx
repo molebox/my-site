@@ -187,29 +187,26 @@ export async function getServerSideProps({ params }) {
   console.log({ image })
   return {
     props: {
-      ogImage: image
+      ogImage: image,
+      ...post,
+      slug: params.slug,
     }, // will be passed to the page component as props
   }
 }
 
 // Rendered at build time (server-side) and passes the props
 // through to the page
-export const getStaticProps = async ({ params }) => {
-  const post = await getSingleArticle(POSTS_PATH, params.slug);
-  const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
-    params: { slug },
-  }));
+// export const getStaticProps = async ({ params }) => {
+//   const post = await getSingleArticle(POSTS_PATH, params.slug);
 
 
-  return {
-    props: {
-      ...post,
-      slug: params.slug,
-      // ogImage: image,
-      paths: paths ? paths : null,
-    }
-  };
-};
+//   return {
+//     props: {
+//       ...post,
+//       slug: params.slug,
+//     }
+//   };
+// };
 
 // Rendered at build time (server-side) Defines a list of dymanic paths to be rendered
 export const getStaticPaths = async () => {
