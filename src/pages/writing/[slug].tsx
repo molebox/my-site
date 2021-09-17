@@ -38,21 +38,31 @@ export default function Post({
   useEffect(() => {
 
     async function createOgImage() {
-      await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
         title: title,
         description: description,
         slug: slug
-      })
+      },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+      return {
+        imageCreated: response.data.imageCreated,
+        imageExists: response.data.imageExists
+      }
     }
 
-    createOgImage().then((res) => console.log({ res }))
-
-
-    ogImage.current = buildUrl(`og_images/${slug}`, {
-      cloud: {
-        cloudName: 'richardhaines',
-      },
-    })
+    createOgImage().then((response) => {
+      if (response.imageCreated && response.imageExists) {
+        ogImage.current = buildUrl(`og_images/${slug}`, {
+          cloud: {
+            cloudName: 'richardhaines',
+          },
+        })
+      }
+    }).catch((error) => console.log({ error }))
 
   }, [description, slug, title]);
 
@@ -67,7 +77,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current || 'nope'}` },
           ],
           site_name: "richardhaines.dev",
         }}
