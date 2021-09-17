@@ -13,7 +13,6 @@ import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 import axios from "axios";
 import { buildUrl } from 'cloudinary-build-url'
-import image from "next/image";
 
 interface PostProps {
   previousArticle?: PostDetails | null;
@@ -34,43 +33,6 @@ export default function Post({
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
-  // const [ogImage, setOgImage] = useState<string>('')
-
-  // useEffect(() => {
-  //   console.log('useEffect run')
-
-  //   async function createOgImage() {
-  //     const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-  //       title: title,
-  //       description: description,
-  //       slug: slug
-  //     },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Access-Control-Allow-Origin': '*',
-  //         }
-  //       })
-  //     console.log('serverless function called')
-  //     console.log(response.data)
-  //     const { imageExists } = response.data;
-  //     if (imageExists) {
-  //       const image = buildUrl(`og_images/${slug}`, {
-  //         cloud: {
-  //           cloudName: 'richardhaines',
-  //         },
-  //       })
-
-  //       console.log({ image })
-
-  //       setOgImage(image)
-  //     }
-  //   }
-
-  //   createOgImage()
-
-
-  // });
 
   return (
     <PostLayout>
@@ -160,14 +122,13 @@ export default function Post({
   );
 }
 
-export async function getServerSideProps({ params }) {
-  const post = await getSingleArticle(POSTS_PATH, params.slug);
-  const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
-    params: { slug },
-  }));
-  let image = ''
 
-  const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+// Rendered at build time (server-side) and passes the props
+// through to the page
+export const getStaticProps = async ({ params }) => {
+  const post = await getSingleArticle(POSTS_PATH, params.slug);
+
+  await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     slug: params.slug
@@ -178,47 +139,29 @@ export async function getServerSideProps({ params }) {
         'Access-Control-Allow-Origin': '*',
       }
     })
-  console.log('serverless function called')
-  console.log({ response })
 
-  image = buildUrl(`og_images/${params.slug}`, {
+  const image = buildUrl(`og_images/${params.slug}`, {
     cloud: {
       cloudName: 'richardhaines',
     },
   })
 
-  console.log({ image })
   return {
     props: {
-      ogImage: image,
       ...post,
       slug: params.slug,
-      paths
-    }, // will be passed to the page component as props
-  }
-}
-
-// Rendered at build time (server-side) and passes the props
-// through to the page
-// export const getStaticProps = async ({ params }) => {
-//   const post = await getSingleArticle(POSTS_PATH, params.slug);
-
-
-//   return {
-//     props: {
-//       ...post,
-//       slug: params.slug,
-//     }
-//   };
-// };
+      ogImage: image,
+    }
+  };
+};
 
 // Rendered at build time (server-side) Defines a list of dymanic paths to be rendered
-// export const getStaticPaths = async () => {
-//   const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
-//     params: { slug },
-//   }));
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// };
+export const getStaticPaths = async () => {
+  const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
+    params: { slug },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+};
