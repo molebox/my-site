@@ -162,6 +162,9 @@ export default function Post({
 
 export async function getServerSideProps({ params }) {
   const post = await getSingleArticle(POSTS_PATH, params.slug);
+  const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
+    params: { slug },
+  }));
   let image = ''
 
   const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
@@ -190,6 +193,7 @@ export async function getServerSideProps({ params }) {
       ogImage: image,
       ...post,
       slug: params.slug,
+      paths
     }, // will be passed to the page component as props
   }
 }
@@ -209,12 +213,12 @@ export async function getServerSideProps({ params }) {
 // };
 
 // Rendered at build time (server-side) Defines a list of dymanic paths to be rendered
-export const getStaticPaths = async () => {
-  const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
-    params: { slug },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-};
+// export const getStaticPaths = async () => {
+//   const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
+//     params: { slug },
+//   }));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
