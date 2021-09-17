@@ -49,7 +49,7 @@ export default function Post({
           }
         })
       console.log('serverless function called')
-      console.log({ response })
+      console.log(response.data)
       const { imageExists } = response.data;
       if (imageExists) {
         const image = buildUrl(`og_images/${slug}`, {
