@@ -181,18 +181,15 @@ export const getStaticProps = async ({ params }) => {
       }
     })
   console.log('serverless function called')
-  console.log(response.data)
-  const { imageExists } = response.data;
-  if (imageExists) {
-    image = buildUrl(`og_images/${params.slug}`, {
-      cloud: {
-        cloudName: 'richardhaines',
-      },
-    })
+  console.log({ response })
 
-    console.log({ image })
+  image = buildUrl(`og_images/${params.slug}`, {
+    cloud: {
+      cloudName: 'richardhaines',
+    },
+  })
 
-  }
+  console.log({ image })
 
   return {
     props: {
