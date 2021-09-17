@@ -39,9 +39,9 @@ export default function Post({
 
     async function createOgImage() {
       await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-        title,
-        description,
-        slug
+        title: title,
+        description: description,
+        slug: slug
       })
     }
 
