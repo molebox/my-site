@@ -12,7 +12,7 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 import axios from "axios";
-// import getOgImage from "src/pages/api/get-og-image";
+import { buildUrl } from 'cloudinary-build-url'
 
 interface PostProps {
   previousArticle?: PostDetails | null;
@@ -29,27 +29,32 @@ export default function Post({
   previousArticle,
   nextArticle,
   slug,
-  ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
 
-  // let ogImage = useRef<string | null>(null);
+  let ogImage = useRef<string | null>(null);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   async function getData() {
-  //     const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
-  //       path: `/?title=${title}&description=${description}`,
-  //       slug: slug
-  //     })
-  //     console.log({ data })
-  //     ogImage.current = data.publicPath;
-  //   }
+    async function createOgImage() {
+      await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+        title,
+        description,
+        slug
+      })
+    }
 
-  //   getData()
+    createOgImage()
 
-  // }, [description, slug, title]);
+
+    ogImage.current = buildUrl(`og_images/${slug}`, {
+      cloud: {
+        cloudName: 'richardhaines',
+      },
+    })
+
+  }, [description, slug, title]);
 
   return (
     <PostLayout>
@@ -62,7 +67,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage.current}` },
           ],
           site_name: "richardhaines.dev",
         }}
@@ -146,42 +151,13 @@ export const getStaticProps = async ({ params }) => {
   const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
     params: { slug },
   }));
-  const title = post.frontmatter.title;
-  const description = post.frontmatter.description;
-
-  const { data } = await axios.post(`https://www.richardhaines.dev/api/get-og-image`, {
-    path: `/?title=${title}&description=${description}`,
-    slug: params.slug
-  })
-
-  // axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-  //   path: `/?title=${title}&description=${description}`})
-  //   .then(({ data }) => {
-  //     console.log({data})
-  //     ogImage = data.publicPath;
-  //   })
-  //   .catch((e) => console.log(e));
-  // try {
-  //   ogImage = await axios.post(`https://next-mdx-bundler-chakra-blog.vercel.app/api/get-og-image`, {
-  //     path: `/?title=${title}&description=${description}`
-  //   },
-  //     { headers: { "Content-Type": "application/json" } })
-
-  //   console.log({ ogImage });
-  // } catch (error) {
-  //   console.log(`axios error: ${error}`)
-  // }
-
-  // const ogImage = await getOgImage(`/?title=${title}&description=${description}`);
 
   return {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: data ? data.publicPath : 'something went wrong',
       paths: paths ? paths : null,
-    },
-    revalidate: 1
+    }
   };
 };
 
