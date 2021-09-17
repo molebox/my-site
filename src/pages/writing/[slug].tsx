@@ -62,7 +62,7 @@ export default function Post({
     createOgImage()
 
 
-  }, [description, slug, title]);
+  });
 
   return (
     <PostLayout>
@@ -75,7 +75,7 @@ export default function Post({
           title: title,
           description: description,
           images: [
-            { url: `https://richardhaines-og-image.vercel.app/${ogImage || 'no image'}` },
+            { url: `https://richardhaines-og-image.vercel.app/${ogImage}` },
           ],
           site_name: "richardhaines.dev",
         }}
