@@ -37,20 +37,12 @@ export default function Post({
   const getImage = useCallback(async () => {
     console.log('getImage called')
     try {
-      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-        title: title,
-        description: description,
-        slug: slug
-      }, {
-        headers: {
-          'Access-Control-Allow-Methods': ['POST,OPTIONS']
-        }
-      })
+      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/test`)
 
       console.log(response.data)
-      if (response) {
-        setOgImage(response.data.image)
-      }
+      // if (response) {
+      //   setOgImage(response.data.image)
+      // }
     } catch (error) {
       console.log({ error })
     }
