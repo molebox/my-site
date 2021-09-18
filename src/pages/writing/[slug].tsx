@@ -39,10 +39,13 @@ export default function Post({
     console.log('useEffect run')
 
     async function createOgImage() {
-      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-        title: title,
-        description: description,
-        slug: slug
+      const response = await axios(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+        method: 'POST',
+        data: {
+          title: title,
+          description: description,
+          slug: slug
+        }
       })
       console.log('serverless function called')
       console.log(response.data)
