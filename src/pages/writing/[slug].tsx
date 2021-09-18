@@ -39,6 +39,7 @@ export default function Post({
     console.log('useEffect run')
 
     async function createOgImage() {
+      console.log('createOgImage run')
       const response = await axios(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
         method: 'POST',
         data: {
@@ -49,19 +50,9 @@ export default function Post({
       })
       console.log('serverless function called')
       console.log(response.data)
-      const { imageExists } = response.data;
-      
-      if (imageExists) {
-        const image = buildUrl(`og_images/${slug}`, {
-          cloud: {
-            cloudName: 'richardhaines',
-          },
-        })
+      const { image } = response.data;
+      setOgImage(image)
 
-        console.log({ image })
-
-        setOgImage(image)
-      }
     }
 
     createOgImage()
