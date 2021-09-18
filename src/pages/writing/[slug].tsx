@@ -36,6 +36,7 @@ export default function Post({
 
   useEffect(() => {
     async function getImage() {
+      console.log('getImage called')
       const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
         title: title,
         description: description,
