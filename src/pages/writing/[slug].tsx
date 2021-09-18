@@ -44,6 +44,7 @@ export default function Post({
       }, {
         headers: {
           'Access-Control-Allow-Methods': 'POST,OPTIONS',
+          "Access-Control-Allow-Origin": "*"
         }
       })
 
