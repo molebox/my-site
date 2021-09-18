@@ -28,10 +28,27 @@ export default function Post({
   previousArticle,
   nextArticle,
   slug,
-  ogImage
+  // ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
+  const [ogImage, setOgImage] = useState('')
+
+  useEffect(() => {
+    async function getImage() {
+      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+        title: title,
+        description: description,
+        slug: slug
+      })
+
+      console.log({ response })
+
+      setOgImage(response.data.image)
+    }
+
+    getImage()
+  })
 
   return (
     <PostLayout>
@@ -127,19 +144,19 @@ export default function Post({
 export const getStaticProps = async ({ params }) => {
   const post = await getSingleArticle(POSTS_PATH, params.slug);
 
-  const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    slug: params.slug
-  })
+  // const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+  //   title: post.frontmatter.title,
+  //   description: post.frontmatter.description,
+  //   slug: params.slug
+  // })
 
-  const image = response.data.image;
+  // const image = response.data.image;
 
   return {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: image || '',
+      // ogImage: image || '',
     }
   };
 };
