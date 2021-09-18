@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { NextSeo } from "next-seo";
 import {
@@ -34,9 +34,9 @@ export default function Post({
   const { title, description } = frontmatter;
   const [ogImage, setOgImage] = useState('')
 
-  useEffect(() => {
-    async function getImage() {
-      console.log('getImage called')
+  const getImage = useCallback(async () => {
+    console.log('getImage called')
+    try {
       const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
         title: title,
         description: description,
@@ -44,12 +44,17 @@ export default function Post({
       })
 
       console.log(response.data)
-
-      setOgImage(response.data.image)
+      if (response) {
+        setOgImage(response.data.image)
+      }
+    } catch (error) {
+      console.log({ error })
     }
+  }, [description, slug, title])
 
+  useEffect(() => {
     getImage()
-  })
+  }, [getImage])
 
   return (
     <PostLayout>
