@@ -42,7 +42,7 @@ export default function Post({
         slug: slug
       })
 
-      console.log({ response })
+      console.log(response.data)
 
       setOgImage(response.data.image)
     }
