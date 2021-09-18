@@ -43,8 +43,7 @@ export default function Post({
         slug: slug
       }, {
         headers: {
-          'Access-Control-Allow-Methods': 'POST,OPTIONS',
-          "Access-Control-Allow-Origin": "*"
+          'Access-Control-Allow-Methods': ['POST,OPTIONS']
         }
       })
 
