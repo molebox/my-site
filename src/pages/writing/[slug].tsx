@@ -131,13 +131,7 @@ export const getStaticProps = async ({ params }) => {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     slug: params.slug
-  },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }
-    })
+  })
 
   const image = response.data.image;
 
