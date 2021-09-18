@@ -12,7 +12,6 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 import axios from "axios";
-import { buildUrl } from 'cloudinary-build-url'
 
 interface PostProps {
   previousArticle?: PostDetails | null;
@@ -128,31 +127,25 @@ export default function Post({
 export const getStaticProps = async ({ params }) => {
   const post = await getSingleArticle(POSTS_PATH, params.slug);
 
-  // ---REMOVED TO GET BUILD WORKING---
+  const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    slug: params.slug
+  },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }
+    })
 
-  // await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
-  //   title: post.frontmatter.title,
-  //   description: post.frontmatter.description,
-  //   slug: params.slug
-  // },
-  //   {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Access-Control-Allow-Origin': '*',
-  //     }
-  //   })
-
-  // const image = buildUrl(`og_images/${params.slug}`, {
-  //   cloud: {
-  //     cloudName: 'richardhaines',
-  //   },
-  // })
+  const image = response.data.image;
 
   return {
     props: {
       ...post,
       slug: params.slug,
-      // ogImage: image,
+      ogImage: image,
     }
   };
 };
