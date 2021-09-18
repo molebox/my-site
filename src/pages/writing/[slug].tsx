@@ -41,6 +41,10 @@ export default function Post({
         title: title,
         description: description,
         slug: slug
+      }, {
+        headers: {
+          'Access-Control-Allow-Methods': 'POST,OPTIONS',
+        }
       })
 
       console.log(response.data)
