@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { getMDXComponent } from "mdx-bundler/client";
 import { NextSeo } from "next-seo";
 import {
@@ -12,6 +12,8 @@ import { Flex, Text, Box } from "@chakra-ui/react";
 import PostLayout from "components/layout/page-layout";
 import Toc, { PostDetails } from "components/writing/toc";
 import axios from "axios";
+import { buildUrl } from 'cloudinary-build-url'
+import image from "next/image";
 
 interface PostProps {
   previousArticle?: PostDetails | null;
@@ -28,29 +30,41 @@ export default function Post({
   previousArticle,
   nextArticle,
   slug,
-  // ogImage
 }: PostProps) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   const { title, description } = frontmatter;
-  const [ogImage, setOgImage] = useState('')
-
-  const getImage = useCallback(async () => {
-    console.log('getImage called')
-    try {
-      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/test`)
-
-      console.log(response.data)
-      // if (response) {
-      //   setOgImage(response.data.image)
-      // }
-    } catch (error) {
-      console.log({ error })
-    }
-  }, [description, slug, title])
+  const [ogImage, setOgImage] = useState<string>('')
 
   useEffect(() => {
-    getImage()
-  }, [getImage])
+    console.log('useEffect run')
+
+    async function createOgImage() {
+      const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
+        title: title,
+        description: description,
+        slug: slug
+      })
+      console.log('serverless function called')
+      console.log(response.data)
+      const { imageExists } = response.data;
+      
+      if (imageExists) {
+        const image = buildUrl(`og_images/${slug}`, {
+          cloud: {
+            cloudName: 'richardhaines',
+          },
+        })
+
+        console.log({ image })
+
+        setOgImage(image)
+      }
+    }
+
+    createOgImage()
+
+
+  });
 
   return (
     <PostLayout>
@@ -140,25 +154,43 @@ export default function Post({
   );
 }
 
-
 // Rendered at build time (server-side) and passes the props
 // through to the page
 export const getStaticProps = async ({ params }) => {
   const post = await getSingleArticle(POSTS_PATH, params.slug);
+  const paths = getAllArticles(POSTS_PATH).map(({ slug }) => ({
+    params: { slug },
+  }));
+  // let image = ''
 
   // const response = await axios.post(`https://richardhaines-og-image.vercel.app/api/get-og-image`, {
   //   title: post.frontmatter.title,
   //   description: post.frontmatter.description,
   //   slug: params.slug
+  // },
+  //   {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Access-Control-Allow-Origin': '*',
+  //     }
+  //   })
+  // console.log('serverless function called')
+  // console.log({ response })
+
+  // image = buildUrl(`og_images/${params.slug}`, {
+  //   cloud: {
+  //     cloudName: 'richardhaines',
+  //   },
   // })
 
-  // const image = response.data.image;
+  // console.log({ image })
 
   return {
     props: {
       ...post,
       slug: params.slug,
-      // ogImage: image || '',
+      // ogImage: image,
+      paths: paths ? paths : null,
     }
   };
 };
