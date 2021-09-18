@@ -139,7 +139,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       ...post,
       slug: params.slug,
-      ogImage: image,
+      ogImage: image || '',
     }
   };
 };
