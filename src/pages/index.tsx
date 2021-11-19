@@ -25,7 +25,7 @@ export default function Home({weather}) {
       const ticks = Math.max(200, 500 * (timeLeft / duration));
       skew = Math.max(0.8, skew - 0.001);
 
-      if (weather.includes("rain")) {
+      if (weather.toLowerCase().includes("rain")) {
         confetti({
           particleCount: 2,
           startVelocity: 0,
@@ -47,7 +47,7 @@ export default function Home({weather}) {
         if (timeLeft > 0) {
           requestAnimationFrame(frame);
         }
-      } else if (weather.includes("snow")) {
+      } else if (weather.toLowerCase().includes("snow")) {
         confetti({
           particleCount: 1,
           startVelocity: 0,
