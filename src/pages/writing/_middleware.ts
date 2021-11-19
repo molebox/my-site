@@ -2,12 +2,12 @@ import { NextRequest, NextFetchEvent, NextResponse } from 'next/server'
 import { weatherAPI } from 'utlis/weather-api'
 
 export async function middleware(req: NextRequest, event: NextFetchEvent) {
-  const { nextUrl: url, geo } = req
+  const { geo } = req
   console.log({geo})
 
   const res = NextResponse.next()
-  const weather = await weatherAPI(geo.city.normalize("NFD").replace(/[\u0300-\u036f]/g, ""), process.env.WEATHER_API_KEY)
-  console.log(weather)
-  res.headers.append('x-visitors-weather',  weather.current.condition.text)
+  const weather = await weatherAPI(geo.city.normalize('NFD').replace(/[\u0300-\u036f]/g, ""), process.env.WEATHER_API_KEY)
+  const visitorsWeather = weather.current.condition.text || 'No weather data'
+  res.headers.append('x-visitors-weather',  visitorsWeather)
   return res
 }
