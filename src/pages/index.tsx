@@ -4,6 +4,7 @@ import { Flex, useTheme, Text } from "@chakra-ui/react";
 import Link from "components/link";
 import Footer from "components/layout/footer";
 import ExternalLink from "components/external-link";
+import { GetServerSideProps } from "next";
 
 export default function Home() {
   const theme = useTheme();
@@ -109,10 +110,13 @@ export default function Home() {
   );
 }
 
-// Home.getLayout = function getLayout(page: ReactElement) {
-//   return (
-//     <Layout>
-//       <NestedLayout>{page}</NestedLayout>
-//     </Layout>
-//   )
-// }
+export const getServerSideProps: GetServerSideProps = async ({req}) => {
+  console.log(req.headers)
+  const city: string | string[] = req.headers['x-visitors-city'] || 'No city'
+  console.log(city)
+  return {
+    props: {
+      city
+    },
+  }
+}
