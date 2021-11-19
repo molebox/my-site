@@ -5,11 +5,11 @@ export async function middleware(req: NextRequest, event: NextFetchEvent) {
   const { geo } = req
   console.log({geo})
 
-  const res = NextResponse;
-  const weather = await weatherAPI(geo.city.normalize("NFD").replace(/[\u0300-\u036f]/g, ""), process.env.WEATHER_API_KEY)
-
+  const next = NextResponse
+  const weather = await weatherAPI(geo.city, process.env.WEATHER_API_KEY)
+  const res = new next();
   // const weather = await weatherAPI(geo.city.normalize('NFD').replace(/[\u0300-\u036f]/g, ""), process.env.WEATHER_API_KEY)
   const visitorsWeather = weather.current.condition.text || 'No weather data'
   res.headers.append('x-visitors-weather',  visitorsWeather)
-  res.next()
+  return res
 }
