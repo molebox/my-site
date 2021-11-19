@@ -5,9 +5,75 @@ import Link from "components/link";
 import Footer from "components/layout/footer";
 import ExternalLink from "components/external-link";
 import { GetServerSideProps } from "next";
+import confetti from "canvas-confetti";
+import { useEffect } from "react";
 
-export default function Home() {
+export default function Home({weather}) {
   const theme = useTheme();
+
+  useEffect(() => {
+    const duration = 10000 * 1000;
+    const animationEnd = Date.now() + duration;
+    let skew = 1;
+  
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+  
+    const frame = () => {
+      const timeLeft = animationEnd - Date.now();
+      const ticks = Math.max(200, 500 * (timeLeft / duration));
+      skew = Math.max(0.8, skew - 0.001);
+
+      if (weather.includes("rain")) {
+        confetti({
+          particleCount: 2,
+          startVelocity: 0,
+          ticks: ticks,
+          origin: {
+            x: Math.random(),
+            y: 0
+            // since particles fall down, skew start toward the top
+            // y: Math.random() * skew - 0.6,
+          },
+          colors: ["#808080"],
+          shapes: ["circle"],
+          gravity: randomInRange(4.4, 2.6),
+          scalar: randomInRange(0.4, 0.5),
+          drift: randomInRange(-0.4, 0.4),
+          disableForReducedMotion: true,
+        });
+    
+        if (timeLeft > 0) {
+          requestAnimationFrame(frame);
+        }
+      } else if (weather.includes("snow")) {
+        confetti({
+          particleCount: 1,
+          startVelocity: 0,
+          ticks: ticks,
+          origin: {
+            x: Math.random(),
+            // since particles fall down, skew start toward the top
+            y: Math.random() * skew - 0.2,
+          },
+          colors: ["#ffffff"],
+          shapes: ["circle"],
+          gravity: randomInRange(0.4, 0.6),
+          scalar: randomInRange(0.4, 0.5),
+          drift: randomInRange(-0.4, 0.4),
+          disableForReducedMotion: true,
+        });
+    
+        if (timeLeft > 0) {
+          requestAnimationFrame(frame);
+        }
+      };
+      }
+
+      frame()
+    
+  }, [weather])
   return (
     <Layout>
       <Head>
@@ -112,11 +178,11 @@ export default function Home() {
 
 export const getServerSideProps: GetServerSideProps = async ({req}) => {
   console.log(req.headers)
-  const city: string | string[] = req.headers['x-visitors-city'] || 'No city'
-  console.log(city)
+  const weather: string | string[] = req.headers['x-visitors-weather'] || 'No weather'
+  console.log(weather)
   return {
     props: {
-      city
+      weather
     },
   }
 }
