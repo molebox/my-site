@@ -8,6 +8,7 @@ import { GetServerSideProps } from "next";
 import confetti from "canvas-confetti";
 import { useEffect } from "react";
 import { Sun } from "components/sun";
+import { Cloud } from "components/cloud";
 
 export default function Home({weather}) {
   const theme = useTheme();
@@ -77,8 +78,8 @@ export default function Home({weather}) {
       <Head>
         <title>richardhaines.dev</title>
       </Head>
-      {weather.toLowerCase().includes("sunny") || weather.toLowerCase().includes("clear") && <Sun />}
-      <Sun/>
+      {weather !== "No weather" && weather.toLowerCase().includes("sunny") || weather.toLowerCase().includes("clear") ? <Sun /> : null}
+      {weather !== "No weather" && weather.toLowerCase().includes("cloudy") || weather.toLowerCase().includes("overcast") ? <Cloud /> : null}
       <Flex
         as="section"
         w="100%"
