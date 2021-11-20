@@ -7,6 +7,7 @@ import ExternalLink from "components/external-link";
 import { GetServerSideProps } from "next";
 import confetti from "canvas-confetti";
 import { useEffect } from "react";
+import { Sun } from "components/sun";
 
 export default function Home({weather}) {
   const theme = useTheme();
@@ -25,7 +26,7 @@ export default function Home({weather}) {
       const ticks = Math.max(200, 500 * (timeLeft / duration));
       skew = Math.max(0.8, skew - 0.001);
 
-      if (weather.toLowerCase().includes("rain")) {
+      if (weather.toLowerCase().includes("rain") || weather.toLowerCase().includes("drizzle")) {
         confetti({
           particleCount: 2,
           startVelocity: 0,
@@ -33,8 +34,6 @@ export default function Home({weather}) {
           origin: {
             x: Math.random(),
             y: 0
-            // since particles fall down, skew start toward the top
-            // y: Math.random() * skew - 0.6,
           },
           colors: ["#808080"],
           shapes: ["circle"],
@@ -47,14 +46,13 @@ export default function Home({weather}) {
         if (timeLeft > 0) {
           requestAnimationFrame(frame);
         }
-      } else if (weather.toLowerCase().includes("snow")) {
+      } else if (weather.toLowerCase().includes("snow") || weather.toLowerCase().includes("sleet") || weather.toLowerCase().includes("ice")) {
         confetti({
           particleCount: 1,
           startVelocity: 0,
           ticks: ticks,
           origin: {
             x: Math.random(),
-            // since particles fall down, skew start toward the top
             y: Math.random() * skew - 0.2,
           },
           colors: ["#ffffff"],
@@ -79,6 +77,8 @@ export default function Home({weather}) {
       <Head>
         <title>richardhaines.dev</title>
       </Head>
+      {weather.toLowerCase().includes("sunny") || weather.toLowerCase().includes("clear") && <Sun />}
+      <Sun/>
       <Flex
         as="section"
         w="100%"
