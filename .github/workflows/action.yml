@@ -1,20 +1,15 @@
-name: Broken link check
-on: [push]
+name: Check Markdown links
+
+on: push
 
 jobs:
-  broken_link_checker_job:
+  markdown-link-check:
     runs-on: ubuntu-latest
-    name: Check for broken links
     steps:
-    - name: Check for broken links
-      id: link-report
-      uses: celinekurpershoek/link-checker@v1.0.1
+    - uses: actions/checkout@master
+    - uses: gaurav-nelson/github-action-markdown-link-check@v1
       with:
-        # Required:
-        url: 'https://richardhaines.dev/writing/'
-        # optional:
-        honorRobotExclusions: false
-        ignorePatterns: 'github,google'
-        recursiveLinks: true # Check all URLs on all reachable pages (could take a while)
-    - name: Get the result
-      run: echo "${{steps.link-report.outputs.result}}"
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'yes'
+        folder-path: 'src/pages/writing/'
+        file-extension: '.mdx'
