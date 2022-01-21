@@ -6,8 +6,6 @@ import { MDXEmbedProvider } from 'mdx-embed';
 import { theme } from 'utlis/theme'
 import Fonts from "../components/fonts"
 import Provider from '../../utlis/context'
-import confetti from "canvas-confetti";
-import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
 

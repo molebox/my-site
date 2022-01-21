@@ -1,0 +1,42 @@
+---
+title: WTF is the Edge?
+category: Whatever
+description: A brief, analogous description of the Edge.
+published: true
+---
+
+What the fuck is the Edge? What does that even mean? Edge of what? It's taken me a beat to fully grasp what it is, and even now,
+with the ability to chat with some super sharp minds at work, I'm still not 100% sure I have a grasp of what it means.
+
+I like to create mental models of things to help me understand their meaning. For me that means using analogies to help drive the message home.
+
+Being able to replace the hard parts, with things that my brain can relate to helps me form a picture in my head and understand, the "thing".
+
+## Simpler times
+
+Before we attempt to figure out WTF the Edge is, let's roll it back a tad and cover what a Content Delivery Network (CDN) is. When you open your laptop and hit the internet to view your fav site, the browser (AKA the internet thing: Chrome, Firefox, etc) is going to make a request to a server.
+
+Wait, what's a server Rich? Great question! A server is just a computer that provides a service to another computer. Think of it like this, you go to a restaurant and sit down for a fab steak. The server is the waiter you give your order too. They take your order, process it, then give you your steak.
+
+In computer lingo, I give you, the four horsemen of the internet:
+
+- You are the **client**
+- The waiter is the **server**
+- Your steak is the **request**
+- The waiter delivers your steak as a **response**
+
+In terms of a CDN, a server is one of many computers dotted around the globe and part of a network. So in our restaurant, every waiter is a server. They form a network of waiters, all waiting to take your order (request). The restaurant is the internet, and we are literally the clients!
+
+When the restaurants menu is being given our to the waiters, they receive a set list of meals that can be on the menu and served to the clients. Each waiter has a section of the restaurant so that they are as close as possible to each table in their section.
+
+- The waiters menu is made up of static assets, and we are deploying them to the CDN. They remember the items on the menu (**cached**)
+- The waiters can _only_ serve the menu items to the clients - no adding more melted cheese to that bolognese
+- But the waiters can serve you your food super quick, because they are close to you
+
+The down side is that it's not dynamic, you can't make changes to your order!
+
+## The Edge!
+
+Ok, let's drop the analogies for a second. This is where we go into the weeds. What does Edge mean when we talk about a CDN?
+
+In a nutshell it's compute close to the user. It's a server that operates on a globally distributed network, that can

@@ -35,5 +35,6 @@ export const components = {
     ul: (props: any) => <UnorderedList my={2}>{props.children}</UnorderedList>,
     li: (props: any) => <ListItem color="brand.silver" fontFamily="body" fontSize="xs">{props.children}</ListItem>,
     a: (props: any) => <ExternalLink href={props.href} text={props.children} size="xs" font="body" />,
-    CodeDump: (props: any) => <CodeDump>{props.children}</CodeDump>
+    CodeDump: (props: any) => <CodeDump>{props.children}</CodeDump>,
+    strong: (props: any) => <Text as="strong" color="brand.orange" fontWeight={600} {...props} />,
 }
