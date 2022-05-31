@@ -130,21 +130,21 @@ export default function Home({weather}) {
             className="writing"
             href="/writing"
             text="Writing"
-            size={["sm", "md"]}
+            size="sm"
             uppercase
           />
           <Link
             className="projects"
             href="/projects"
             text="Projects"
-            size={["sm", "md"]}
+            size="sm"
             uppercase
           />
           <Link
             className="who"
             href="/who-am-i"
             text="Who am i"
-            size={["sm", "md"]}
+            size="sm"
             uppercase
           />
         </Flex>
